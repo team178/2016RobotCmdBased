@@ -21,22 +21,24 @@ public class DriveTrain extends Subsystem
 		right1 = new TalonSRX(2);
 		right2 = new TalonSRX(3);
 	}
+	
+	
+	public void drive(double LeftMotors, double RightMotors)
+	{
+		left1.set(LeftMotors);
+		left2.set(LeftMotors);
+		right1.set(RightMotors);
+		right2.set(RightMotors);
+	}
+
+
+	@Override
 	protected void initDefaultCommand() {
+		// TODO Auto-generated method stub
 		
 	}
 	
-	protected void execute()
-	{
-		
-	}
 	
-	protected boolean isFinished()
-	{
-		return false;
-	}
-	
-	protected void end() {}
-	
-	protected void interrupted() {}
+
 
 }
