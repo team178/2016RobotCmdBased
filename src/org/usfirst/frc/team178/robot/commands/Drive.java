@@ -5,6 +5,54 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team178.robot.Robot;
 import org.usfirst.frc.team178.robot.subsystems.DriveTrain;
 
+
+public class Drive extends CommandBase{
+	double yVal,xVal;
+	public Drive()
+	{
+		requires(drivetrain);
+		
+		
+	}
+	
+	 protected void initialize() {
+	 }
+
+	    // Called repeatedly when this Command is scheduled to run
+	    protected void execute() {
+	    	
+	    	yVal = -1*oi.gety();
+			xVal = -1*oi.getx();
+
+	    	double leftSide = -xVal+yVal;
+	        double rightSide =-xVal-yVal;
+	    	drivetrain.drive(leftSide,rightSide );
+	    }
+
+	    // Make this return true when this Command no longer needs to run execute()
+	    protected boolean isFinished() {
+			if(Math.abs(yVal)>0.1 || Math.abs(xVal)>0.1){
+				return false;
+			}
+			else {
+				return true;
+			}
+		}
+
+		protected void end() {
+			drivetrain.drive(0,0);
+		}
+
+		protected void interrupted() {
+			drivetrain.drive(0,0);
+
+		}
+	
+public void initDefaultCommand() {
+}
+
+}
+/*
 public class Drive extends Command{
 	DriveTrain drivetrain;
 	Joystick joystick;
@@ -54,5 +102,7 @@ public class Drive extends Command{
 
 	protected void interrupted() {
 		drivetrain.drive(0,0);
+
 	}
 }
+*/

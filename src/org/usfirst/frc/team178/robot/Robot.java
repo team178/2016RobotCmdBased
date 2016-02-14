@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team178.robot.commands.ExampleCommand;
+import org.usfirst.frc.team178.robot.commands.TeleOp;
 import org.usfirst.frc.team178.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team178.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -26,6 +27,7 @@ public class Robot extends IterativeRobot {
 	public static final Kicker kicker = new Kicker();
 
     Command autonomousCommand;
+    Command Teleop;
     SendableChooser chooser;
 
     /**
@@ -93,6 +95,7 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+        Teleop = new TeleOp();
     }
 
     /**
@@ -100,6 +103,8 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        Teleop.start();
+        
     }
     
     /**
