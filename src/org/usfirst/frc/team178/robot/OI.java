@@ -43,15 +43,15 @@ public class OI {
     // There are a few additional built in buttons you can use. Additionally,
     // by subclassing Button you can create custom triggers and bind those to
     // commands the same as any other Button.
-    public double getx (){
+    public double getX (){
     	return TriggerHappy.getX();
     }
     
-    public double gety (){
+    public double getY (){
     	return TriggerHappy.getY();
     }
     
-    public double getz (){
+    public double getTwist (){
     	return TriggerHappy.getTwist();
     }
     

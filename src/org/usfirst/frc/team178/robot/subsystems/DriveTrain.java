@@ -38,16 +38,4 @@ public class DriveTrain extends Subsystem
 		
 	}
 }
-	
 
-/*
-	public void drive(double leftnum, double rightnum){
-    	left1.set(leftnum);
-    	left2.set(leftnum);
-    	right1.set(rightnum);
-    	right2.set(rightnum);
-    }
-	
-
-
-}*/
