@@ -29,7 +29,13 @@ public class Kick extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+    	double passedTime = timeSinceInitialized();
+    	if (passedTime >= 2) {
+    		return true;
+    	}
+    	else {
+    		return false;
+    	}
     }
 
     // Called once after isFinished returns true
