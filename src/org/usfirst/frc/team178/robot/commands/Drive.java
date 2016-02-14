@@ -6,8 +6,7 @@ import org.usfirst.frc.team178.robot.*;
 import org.usfirst.frc.team178.robot.subsystems.DriveTrain;
 
 public class Drive extends CommandBase{
-	DriveTrain drivetrain;
-	OI joystick;
+
 	double yVal,twistVal;
 	
 	public Drive()
@@ -21,8 +20,8 @@ public class Drive extends CommandBase{
 	protected void execute() {
 		//Joystick returns from -1 to 1, motor takes values from -1 to 1.
 		//TODO clean up this section. The negatives are quite ghetto. It's hard to understand.
-		yVal = -1*joystick.getY();
-		twistVal = -1*joystick.getTwist();
+		yVal = -1*oi.getY();
+		twistVal = -1*oi.getTwist();
 
 		// 6wl tank drive has two motors on one gearbox that drive in the same direction.
 		//TODO Debug and optimize this code. It does things weirdly. It's more logical to turn based on twist.
