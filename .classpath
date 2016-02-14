@@ -3,10 +3,16 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="var" path="wpilib" sourcepath="wpilib.sources"/>
 	<classpathentry exported="true" kind="var" path="networktables" sourcepath="networktables.sources"/>
+<<<<<<< HEAD
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Anusha/wpilib/java/current/lib/NetworkTables.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Anusha/wpilib/java/current/lib/WPILib.jar"/>
+=======
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="lib" path="C:/Users/pswam/wpilib/java/current/lib/WPILib.jar"/>
 	<classpathentry kind="lib" path="C:/Users/pswam/wpilib/java/current/lib/NetworkTables.jar"/>
 	<classpathentry kind="lib" path="C:/Users/pswam/wpilib/java/current/lib/NetworkTables-sources.jar"/>
 	<classpathentry kind="lib" path="C:/Users/pswam/wpilib/java/current/lib/WPILib-sources.jar"/>
+>>>>>>> 51f432dd03f4f093d8a0b1be0a517346e06e801a
 	<classpathentry kind="output" path="bin"/>
 </classpath>

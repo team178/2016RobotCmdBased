@@ -1,42 +1,24 @@
 package org.usfirst.frc.team178.robot.commands;
 
-import org.usfirst.frc.team178.robot.OI;
-import org.usfirst.frc.team178.robot.Robot;
-import org.usfirst.frc.team178.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team178.robot.subsystems.Encoders;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class CommandBase extends Command {
+public class Tester extends CommandBase {
 
-<<<<<<< HEAD
-	DriveTrain drivetrain = new DriveTrain();
-	Encoders encoder = new Encoders();
-=======
-	DriveTrain drivetrain;
->>>>>>> 51f432dd03f4f093d8a0b1be0a517346e06e801a
-	
-	public static OI oi;
-
-	
-    public CommandBase() {
+    public Tester() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	
-    	
+        requires(encoder);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	oi = Robot.oi;
-    	drivetrain = Robot.drivetrain;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	encoder.testDistance();
     }
 
     // Make this return true when this Command no longer needs to run execute()

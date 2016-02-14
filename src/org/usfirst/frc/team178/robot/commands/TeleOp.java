@@ -8,7 +8,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class TeleOp extends CommandGroup {
     
     public  TeleOp() {
+<<<<<<< HEAD
+    	addSequential(new Tester());
+=======
     	addParallel(new Drive());
+>>>>>>> 51f432dd03f4f093d8a0b1be0a517346e06e801a
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
