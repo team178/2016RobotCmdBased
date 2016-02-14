@@ -11,6 +11,7 @@ import org.usfirst.frc.team178.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team178.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc.team178.robot.subsystems.Kicker;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -23,6 +24,7 @@ public class Robot extends IterativeRobot {
 
 	public static final DriveTrain drivetrain = new DriveTrain();
 	public static OI oi;
+	public static final Kicker kicker = new Kicker();
 
     Command autonomousCommand;
     Command Teleop;

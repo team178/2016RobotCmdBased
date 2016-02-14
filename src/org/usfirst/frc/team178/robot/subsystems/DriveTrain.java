@@ -15,10 +15,10 @@ public class DriveTrain extends Subsystem
 	
 	public DriveTrain()  {
 		
-		left1 = new CANTalon(0);
-		left2 = new CANTalon(1);
-		right1 = new CANTalon(2);
-		right2 = new CANTalon(3);
+		left1 = new CANTalon(10);
+		left2 = new CANTalon(11);
+		right1 = new CANTalon(14);
+		right2 = new CANTalon(15);
 	}
 	
 
@@ -38,16 +38,4 @@ public class DriveTrain extends Subsystem
 		
 	}
 }
-	
 
-/*
-	public void drive(double leftnum, double rightnum){
-    	left1.set(leftnum);
-    	left2.set(leftnum);
-    	right1.set(rightnum);
-    	right2.set(rightnum);
-    }
-	
-
-
-}*/
