@@ -39,10 +39,8 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
 		oi = new OI();
         chooser = new SendableChooser();
-<<<<<<< HEAD
-        
-=======
->>>>>>> 51f432dd03f4f093d8a0b1be0a517346e06e801a
+
+
 //        chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
     }
