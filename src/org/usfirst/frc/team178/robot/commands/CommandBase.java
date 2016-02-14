@@ -3,6 +3,7 @@ package org.usfirst.frc.team178.robot.commands;
 import org.usfirst.frc.team178.robot.OI;
 import org.usfirst.frc.team178.robot.Robot;
 import org.usfirst.frc.team178.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team178.robot.subsystems.Encoders;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -12,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class CommandBase extends Command {
 
 	DriveTrain drivetrain = new DriveTrain();
+	Encoders encoder = new Encoders();
 	
 	public static OI oi;
 
