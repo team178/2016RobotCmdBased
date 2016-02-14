@@ -1,6 +1,7 @@
 package org.usfirst.frc.team178.robot.commands;
 
 import org.usfirst.frc.team178.robot.OI;
+import org.usfirst.frc.team178.robot.Robot;
 import org.usfirst.frc.team178.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -24,7 +25,7 @@ public class CommandBase extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	oi = new OI();
+    	oi = Robot.oi;
     }
 
     // Called repeatedly when this Command is scheduled to run
