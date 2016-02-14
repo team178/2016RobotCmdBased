@@ -10,12 +10,12 @@ import org.usfirst.frc.team178.robot.commands.ExampleCommand;
  */
  
 public class OI {
-<<<<<<< HEAD
 	
     
 	
 	Joystick TriggerHappy = new Joystick(RobotMap.JoystickPort);
-=======
+
+/*
     Joystick mainJoy = new Joystick(0);
     Button button1 = new JoystickButton(mainJoy, 1);
         button2 = new JoystickButton(mainJoy, 2);
@@ -29,7 +29,8 @@ public class OI {
         Button10 = new JoystickButton(mainJoy, 10);
         Button11 = new JoystickButton(mainJoy, 11);
         Button12 = new JoystickButton(mainJoy, 12);
->>>>>>> 875da309eb4fd5004542029d2e812888df9f20c2
+        */
+
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
     // You create one by telling it which joystick it's on and which button

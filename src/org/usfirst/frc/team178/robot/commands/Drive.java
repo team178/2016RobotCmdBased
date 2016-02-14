@@ -5,9 +5,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team178.robot.Robot;
 import org.usfirst.frc.team178.robot.subsystems.DriveTrain;
 
-<<<<<<< HEAD
+
 public class Drive extends CommandBase{
-	
+	double yVal,xVal;
 	public Drive()
 	{
 		requires(drivetrain);
@@ -20,28 +20,39 @@ public class Drive extends CommandBase{
 
 	    // Called repeatedly when this Command is scheduled to run
 	    protected void execute() {
-	    	double leftSide = oi.gety()-oi.getx();
-	        double rightSide = oi.gety()+oi.getx();
+	    	
+	    	yVal = -1*oi.gety();
+			xVal = -1*oi.getx();
+
+	    	double leftSide = -xVal+yVal;
+	        double rightSide =-xVal-yVal;
 	    	drivetrain.drive(leftSide,rightSide );
 	    }
 
 	    // Make this return true when this Command no longer needs to run execute()
 	    protected boolean isFinished() {
-	        return false;
-	    }
+			if(Math.abs(yVal)>0.1 || Math.abs(xVal)>0.1){
+				return false;
+			}
+			else {
+				return true;
+			}
+		}
 
-	    // Called once after isFinished returns true
-	    protected void end() {
-	    }
+		protected void end() {
+			drivetrain.drive(0,0);
+		}
 
-	    // Called when another command which requires one or more of the same
-	    // subsystems is scheduled to run
-	    protected void interrupted() {
-	    }
+		protected void interrupted() {
+			drivetrain.drive(0,0);
+
+		}
 	
 public void initDefaultCommand() {
-		
-=======
+}
+
+}
+/*
 public class Drive extends Command{
 	DriveTrain drivetrain;
 	Joystick joystick;
@@ -91,6 +102,7 @@ public class Drive extends Command{
 
 	protected void interrupted() {
 		drivetrain.drive(0,0);
->>>>>>> 875da309eb4fd5004542029d2e812888df9f20c2
+
 	}
 }
+*/

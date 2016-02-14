@@ -21,7 +21,7 @@ public class DriveTrain extends Subsystem
 		right2 = new CANTalon(3);
 	}
 	
-<<<<<<< HEAD
+
 	
 	public void drive(double LeftMotors, double RightMotors)
 	{
@@ -37,10 +37,10 @@ public class DriveTrain extends Subsystem
 		// TODO Auto-generated method stub
 		
 	}
-	
+}
 	
 
-=======
+/*
 	public void drive(double leftnum, double rightnum){
     	left1.set(leftnum);
     	left2.set(leftnum);
@@ -48,6 +48,6 @@ public class DriveTrain extends Subsystem
     	right2.set(rightnum);
     }
 	
->>>>>>> 875da309eb4fd5004542029d2e812888df9f20c2
 
-}
+
+}*/
