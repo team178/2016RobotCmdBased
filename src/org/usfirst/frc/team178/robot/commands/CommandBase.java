@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class CommandBase extends Command {
 
-	DriveTrain drivetrain = new DriveTrain();
+	DriveTrain drivetrain;
 	
 	public static OI oi;
 
@@ -26,6 +26,7 @@ public class CommandBase extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	oi = Robot.oi;
+    	drivetrain = Robot.drivetrain;
     }
 
     // Called repeatedly when this Command is scheduled to run
