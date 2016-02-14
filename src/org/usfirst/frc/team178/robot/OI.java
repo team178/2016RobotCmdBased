@@ -2,7 +2,9 @@ package org.usfirst.frc.team178.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
-import org.usfirst.frc.team178.robot.commands.ExampleCommand;
+import org.usfirst.frc.team178.robot.commands.*;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -11,25 +13,8 @@ import org.usfirst.frc.team178.robot.commands.ExampleCommand;
  
 public class OI {
 	
-    
-	
 	Joystick TriggerHappy = new Joystick(RobotMap.JoystickPort);
-
-/*
-    Joystick mainJoy = new Joystick(0);
-    Button button1 = new JoystickButton(mainJoy, 1);
-        button2 = new JoystickButton(mainJoy, 2);
-        button3 = new JoystickButton(mainJoy, 3);
-        button4 = new JoystickButton(mainJoy, 4);
-        button5 = new JoystickButton(mainJoy, 5);
-        button6 = new JoystickButton(mainJoy, 6);
-        Button7 = new JoystickButton(mainJoy, 7);
-        Button8 = new JoystickButton(mainJoy, 8);
-        Button9 = new JoystickButton(mainJoy, 9);
-        Button10 = new JoystickButton(mainJoy, 10);
-        Button11 = new JoystickButton(mainJoy, 11);
-        Button12 = new JoystickButton(mainJoy, 12);
-        */
+	Button button = new JoystickButton (TriggerHappy, 1);
 
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
@@ -37,9 +22,12 @@ public class OI {
     // number it is.
     // Joystick stick = new Joystick(port);
     // Button button = new JoystickButton(stick, buttonNumber);
+	
+	
     public OI (){
-    	//new JoystickButton.whenPressed{};
+        button.whenPressed(new Kick());
     }
+    
     // There are a few additional built in buttons you can use. Additionally,
     // by subclassing Button you can create custom triggers and bind those to
     // commands the same as any other Button.
@@ -58,7 +46,7 @@ public class OI {
     public boolean isPressed (int ButtonNumber){
     	return TriggerHappy.getRawButton(ButtonNumber);
     }
-    
+
     //// TRIGGERING COMMANDS WITH BUTTONS
     // Once you have a button, it's trivial to bind it to a button in one of
     // three ways:
