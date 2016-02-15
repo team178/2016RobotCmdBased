@@ -2,12 +2,8 @@ package org.usfirst.frc.team178.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
-<<<<<<< HEAD
-=======
 import org.usfirst.frc.team178.robot.commands.*;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
->>>>>>> 51f432dd03f4f093d8a0b1be0a517346e06e801a
-
 
 /**
  * This class is the glue that binds the controls on the physical operator
