@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class TeleOp extends CommandGroup {
     
     public  TeleOp() {
-    	addParallel(new Drive());
+    	addParallel(new JoystickDrive());
 
         // Add Commands here:
         // e.g. addSequential(new Command1());

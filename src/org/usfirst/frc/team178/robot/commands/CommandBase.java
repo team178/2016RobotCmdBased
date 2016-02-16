@@ -13,10 +13,8 @@ import edu.wpi.first.wpilibj.command.Command;
 public class CommandBase extends Command {
 
 
-	DriveTrain drivetrain = new DriveTrain();
-	Encoders encoder = new Encoders();
-
 	DriveTrain drivetrain;
+	Encoders encoders;
 	
 	public static OI oi;
 
@@ -32,6 +30,7 @@ public class CommandBase extends Command {
     protected void initialize() {
     	oi = Robot.oi;
     	drivetrain = Robot.drivetrain;
+    	encoders = Robot.encoders;
     }
 
     // Called repeatedly when this Command is scheduled to run
