@@ -5,11 +5,11 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team178.robot.*;
 import org.usfirst.frc.team178.robot.subsystems.DriveTrain;
 
-public class Drive extends CommandBase{
+public class JoystickDrive extends CommandBase{
 
 	double yVal,twistVal;
 	
-	public Drive()
+	public JoystickDrive()
 	{
 		requires(Robot.drivetrain);
 	}
