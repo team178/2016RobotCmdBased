@@ -5,11 +5,11 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import org.usfirst.frc.team178.robot.commands.ExampleCommand;
-import org.usfirst.frc.team178.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team178.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.usfirst.frc.team178.robot.commands.*;
+import org.usfirst.frc.team178.robot.subsystems.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -20,20 +20,38 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 
-	public static final DriveTrain drivetrain = new DriveTrain();
+	public static DriveTrain drivetrain;
 	public static OI oi;
+	public static Kicker kicker;
+	public static Encoders encoders;
 
+<<<<<<< HEAD
     Command autonomousCommand;
+    Command Teleop;
+    Command anotherRelay;
     SendableChooser chooser;
+=======
+    public static Command autonomousCommand;
+    public static Command Teleop;
+    public static SendableChooser chooser;
+>>>>>>> 27c480b787417e899922e97ede1e3788b91b99fe
 
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
-		oi = new OI();
+    	oi = new OI();
         chooser = new SendableChooser();
-        chooser.addDefault("Default Auto", new ExampleCommand());
+<<<<<<< HEAD
+        anotherRelay = new AlwaysOn();
+        
+=======
+        drivetrain = new DriveTrain();
+        kicker = new Kicker();
+        encoders = new Encoders();
+>>>>>>> 27c480b787417e899922e97ede1e3788b91b99fe
+
 //        chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
     }
@@ -83,6 +101,7 @@ public class Robot extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        anotherRelay.start();
     }
 
     public void teleopInit() {
@@ -91,6 +110,7 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+        Teleop = new TeleOp();
     }
 
     /**
@@ -98,6 +118,8 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        Teleop.start();
+        anotherRelay.start();
     }
     
     /**
@@ -105,5 +127,6 @@ public class Robot extends IterativeRobot {
      */
     public void testPeriodic() {
         LiveWindow.run();
+        anotherRelay.start();
     }
 }
