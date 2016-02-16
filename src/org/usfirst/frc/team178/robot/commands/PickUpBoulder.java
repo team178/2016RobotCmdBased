@@ -1,36 +1,28 @@
 package org.usfirst.frc.team178.robot.commands;
 
-import org.usfirst.frc.team178.robot.OI;
-import org.usfirst.frc.team178.robot.Robot;
-import org.usfirst.frc.team178.robot.subsystems.DriveTrain;
-
 import edu.wpi.first.wpilibj.command.Command;
-
+import org.usfirst.frc.team178.robot.subsystems.*;
+import org.usfirst.frc.team178.robot.Robot;
 /**
  *
  */
-public class CommandBase extends Command {
-
-	DriveTrain drivetrain;
+public class PickUpBoulder extends Command {
 	
-	public static OI oi;
 
-	
-    public CommandBase() {
+    public PickUpBoulder() {
+    	requires (Robot.encoders);
+    	requires (Robot.intake);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	
-    	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	oi = Robot.oi;
-    	drivetrain = Robot.drivetrain;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

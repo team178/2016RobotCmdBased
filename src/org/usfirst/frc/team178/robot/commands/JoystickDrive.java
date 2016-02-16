@@ -3,16 +3,26 @@ package org.usfirst.frc.team178.robot.commands;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team178.robot.*;
-import org.usfirst.frc.team178.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team178.robot.subsystems.*;
 
-public class JoystickDrive extends CommandBase{
-
+public class JoystickDrive extends Command {
+	
+	Encoders encoders;
+	OI oi;
+	DriveTrain drivetrain;
 	double yVal,twistVal;
 	
 	public JoystickDrive()
 	{
 		requires(Robot.drivetrain);
+		requires(Robot.encoders);
 	}
+	
+    protected void initialize() {
+    	oi = Robot.oi;
+    	encoders = Robot.encoders;
+    	drivetrain = Robot.drivetrain;
+    }
 	
 	protected void execute() {
 		//Joystick returns from -1 to 1, motor takes values from -1 to 1.
