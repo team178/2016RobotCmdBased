@@ -15,6 +15,8 @@ public class CommandBase extends Command {
 <<<<<<< HEAD
 	DriveTrain drivetrain = new DriveTrain();
 	Encoders encoder = new Encoders();
+	RelaybecauseAndrew relay = new RelaybecauseAndrew();
+	Intake intake = new Intake();
 =======
 	DriveTrain drivetrain;
 >>>>>>> 51f432dd03f4f093d8a0b1be0a517346e06e801a

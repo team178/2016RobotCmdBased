@@ -26,6 +26,7 @@ public class Robot extends IterativeRobot {
 
     Command autonomousCommand;
     Command Teleop;
+    Command anotherRelay;
     SendableChooser chooser;
 
     /**
@@ -35,7 +36,8 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
 		oi = new OI();
         chooser = new SendableChooser();
-
+        anotherRelay = new AlwaysOn();
+        
 
 //        chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
@@ -86,6 +88,7 @@ public class Robot extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        anotherRelay.start();
     }
 
     public void teleopInit() {
@@ -103,7 +106,7 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
         Teleop.start();
-        
+        anotherRelay.start();
     }
     
     /**
@@ -111,5 +114,6 @@ public class Robot extends IterativeRobot {
      */
     public void testPeriodic() {
         LiveWindow.run();
+        anotherRelay.start();
     }
 }
