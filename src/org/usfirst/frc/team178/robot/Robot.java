@@ -5,15 +5,11 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-<<<<<<< HEAD
-
-=======
->>>>>>> 51f432dd03f4f093d8a0b1be0a517346e06e801a
-import org.usfirst.frc.team178.robot.commands.TeleOp;
-import org.usfirst.frc.team178.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team178.robot.subsystems.Kicker;
+
+import org.usfirst.frc.team178.robot.commands.*;
+import org.usfirst.frc.team178.robot.subsystems.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
