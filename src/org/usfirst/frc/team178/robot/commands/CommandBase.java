@@ -3,7 +3,6 @@ package org.usfirst.frc.team178.robot.commands;
 import org.usfirst.frc.team178.robot.OI;
 import org.usfirst.frc.team178.robot.Robot;
 import org.usfirst.frc.team178.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team178.robot.subsystems.Encoders;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -12,18 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class CommandBase extends Command {
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-	DriveTrain drivetrain = new DriveTrain();
-	Encoders encoder = new Encoders();
-	RelaybecauseAndrew relay = new RelaybecauseAndrew();
-	Intake intake = new Intake();
-=======
-=======
-
->>>>>>> 27c480b787417e899922e97ede1e3788b91b99fe
 	DriveTrain drivetrain;
-	Encoders encoders;
 	
 	public static OI oi;
 
@@ -39,7 +27,6 @@ public class CommandBase extends Command {
     protected void initialize() {
     	oi = Robot.oi;
     	drivetrain = Robot.drivetrain;
-    	encoders = Robot.encoders;
     }
 
     // Called repeatedly when this Command is scheduled to run
