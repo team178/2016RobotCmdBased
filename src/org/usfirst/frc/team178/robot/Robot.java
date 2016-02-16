@@ -20,24 +20,37 @@ import org.usfirst.frc.team178.robot.subsystems.*;
  */
 public class Robot extends IterativeRobot {
 
-	public static final DriveTrain drivetrain = new DriveTrain();
+	public static DriveTrain drivetrain;
 	public static OI oi;
-	public static final Kicker kicker = new Kicker();
+	public static Kicker kicker;
+	public static Encoders encoders;
 
+<<<<<<< HEAD
     Command autonomousCommand;
     Command Teleop;
     Command anotherRelay;
     SendableChooser chooser;
+=======
+    public static Command autonomousCommand;
+    public static Command Teleop;
+    public static SendableChooser chooser;
+>>>>>>> 27c480b787417e899922e97ede1e3788b91b99fe
 
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
-		oi = new OI();
+    	oi = new OI();
         chooser = new SendableChooser();
+<<<<<<< HEAD
         anotherRelay = new AlwaysOn();
         
+=======
+        drivetrain = new DriveTrain();
+        kicker = new Kicker();
+        encoders = new Encoders();
+>>>>>>> 27c480b787417e899922e97ede1e3788b91b99fe
 
 //        chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
