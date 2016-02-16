@@ -12,12 +12,11 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class CommandBase extends Command {
 
-<<<<<<< HEAD
+
 	DriveTrain drivetrain = new DriveTrain();
 	Encoders encoder = new Encoders();
-=======
+
 	DriveTrain drivetrain;
->>>>>>> 51f432dd03f4f093d8a0b1be0a517346e06e801a
 	
 	public static OI oi;
 
