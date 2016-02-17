@@ -5,6 +5,9 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+
+import java.beans.Encoder;
+
 import org.usfirst.frc.team178.robot.commands.TeleOp;
 import org.usfirst.frc.team178.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -21,13 +24,13 @@ import org.usfirst.frc.team178.robot.subsystems.*;
  */
 public class Robot extends IterativeRobot {
 
-	public static final DriveTrain drivetrain = new DriveTrain();
+	public static DriveTrain drivetrain;
 	public static OI oi;
-	public static final Kicker kicker = new Kicker();
-	public static final Encoders encoders = new Encoders();
-	public static final Intake intake = new Intake();
-	public static final PhotoelectricSensor sensor = new PhotoelectricSensor();
-	public static final RelaybecauseAndrew relay = new RelaybecauseAndrew();
+	public static Kicker kicker;
+	public static Encoders encoders;
+	public static Intake intake;
+	public static PhotoelectricSensor sensor;
+	public static RelaybecauseAndrew relay;
 
     Command autonomousCommand;
     Command Teleop;
@@ -38,6 +41,12 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
+    	drivetrain  = new DriveTrain();
+    	kicker = new Kicker();
+    	encoders = new Encoders();
+    	intake = new Intake();
+    	sensor = new PhotoelectricSensor();
+    	relay = new RelaybecauseAndrew();
 		oi = new OI();
         chooser = new SendableChooser();
 //        chooser.addObject("My Auto", new MyAutoCommand());
