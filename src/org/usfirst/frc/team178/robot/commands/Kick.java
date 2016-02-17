@@ -2,19 +2,25 @@ package org.usfirst.frc.team178.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team178.robot.Robot;
+import org.usfirst.frc.team178.robot.subsystems.Encoders;
 import org.usfirst.frc.team178.robot.subsystems.Kicker;
 
 /**
  *
  */
+
+
 public class Kick extends Command {
 	Kicker kicker;
+	Encoders encoders;
 	
     public Kick() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.kicker);
     	kicker = Robot.kicker;
+    	encoders = Robot.encoders;
+    	requires(Robot.encoders);
     	
     }
 
@@ -29,8 +35,9 @@ public class Kick extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	double passedTime = timeSinceInitialized();
-    	if (passedTime >= 2) {
+    	//double passedTime = timeSinceInitialized();
+    	int revolutions = encoders.getRevolutions(3);
+    	if (revolutions >= 2) {
     		return true;
     	}
     	else {
