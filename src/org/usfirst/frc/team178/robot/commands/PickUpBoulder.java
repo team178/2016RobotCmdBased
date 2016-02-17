@@ -8,7 +8,8 @@ import org.usfirst.frc.team178.robot.Robot;
  */
 public class PickUpBoulder extends Command {
 	
-
+	Intake intake;
+	
     public PickUpBoulder() {
     	requires (Robot.encoders);
     	requires (Robot.intake);
@@ -18,20 +19,28 @@ public class PickUpBoulder extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	intake = Robot.intake;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
+    	intake.lift();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+    	if(Robot.sensor.boulderIn()){
+    		return true;
+    	}
+    	else{
+    		return false;
+    	}
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	intake.stop();
+    	intake.reverse();
     }
 
     // Called when another command which requires one or more of the same
