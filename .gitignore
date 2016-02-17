@@ -6,3 +6,4 @@ dist/
 .project
 build.properties
 .settings/*
+/bin/

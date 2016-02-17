@@ -42,7 +42,35 @@ public class Encoders extends Subsystem {
 		//SmartDashboard.putNumber("distance Kicker", value2);
 		//SmartDashboard.putNumber("distance Intake", value3);
 	}
-	
+	public int getDistance(int encoderId){
+		int pulses;	
+		int ppr = 1440;
+		int distance;
+		
+		switch(encoderId){
+			case 1:
+				pulses = leftMotors.getRaw();
+				break;
+			case 2:
+				pulses = rightMotors.getRaw();
+				break;
+			case 3:
+				pulses = kicker.getRaw();
+				break;
+			case 4:
+				pulses = intake.getRaw();
+				break;
+			default:
+				pulses = -99;
+				break;
+		}
+		
+		distance = pulses;
+		
+		return distance;
+			
+		
+	}	
 	public int getRevolutions(int encoderId){
 		int pulses;	
 		int ppr = 1440;
