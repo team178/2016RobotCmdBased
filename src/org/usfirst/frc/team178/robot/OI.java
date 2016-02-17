@@ -14,7 +14,9 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class OI {
 	
 	Joystick TriggerHappy = new Joystick(RobotMap.JoystickPort);
-	Button button = new JoystickButton (TriggerHappy, 7);
+	Button button7 = new JoystickButton (TriggerHappy, 7);
+	Button button8 = new JoystickButton (TriggerHappy, 8);
+	Button button9 = new JoystickButton (TriggerHappy, 9);
 
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
@@ -25,7 +27,8 @@ public class OI {
 	
 	
     public OI (){
-        button.whenPressed(new Kick());
+        button7.whenPressed(new Kick());
+        button8.whenPressed(new PickUpBoulderWithJoystick());
     }
     
     // There are a few additional built in buttons you can use. Additionally,

@@ -6,41 +6,47 @@ import org.usfirst.frc.team178.robot.Robot;
 /**
  *
  */
-public class PickUpBoulder extends Command {
-	
+public class PickUpBoulderWithJoystick extends Command {
 	Intake intake;
-	
-    public PickUpBoulder() {
+	PhotoelectricSensor sensor;
+	Encoders encoders;
+
+    public PickUpBoulderWithJoystick() {
     	requires (Robot.encoders);
     	requires (Robot.intake);
+    	requires (Robot.sensor);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    
+    	encoders = Robot.encoders;
+    	intake = Robot.intake;
+    	sensor = Robot.sensor;
+    	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	intake = Robot.intake;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	intake.lift();
+    	if (Robot.oi.isPressed(8) && encoders.getDistance(4) < 10) {
+    		intake.lift();
+    	}else if(Robot.oi.isPressed(9) && encoders.getDistance(4) > 0) {
+    		intake.reverse();
+    	}
+    	else {
+    		intake.stop();
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(Robot.sensor.getstuff()){
-    		return true;
-    	}
-    	else{
-    		return false;
-    	}
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	intake.stop();
-    	intake.reverse();
     }
 
     // Called when another command which requires one or more of the same
