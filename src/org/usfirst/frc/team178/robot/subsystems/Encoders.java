@@ -21,7 +21,7 @@ public class Encoders extends Subsystem {
 	
 	public Encoders(){
 		leftMotors = new Encoder(RobotMap.leftmotorEncoderin,RobotMap.leftmotorEncoderout);
-		rightMotors = new Encoder(RobotMap.intakeEncoderin,RobotMap.intakeEncoderout);
+		rightMotors = new Encoder(RobotMap.rightmotorEncoderin,RobotMap.rightmotorEncoderout);
 		kicker = new Encoder(RobotMap.kickerEncoderin,RobotMap.kickerEncoderout);
 		intake = new Encoder(RobotMap.intakeEncoderin,RobotMap.intakeEncoderout);
 	}

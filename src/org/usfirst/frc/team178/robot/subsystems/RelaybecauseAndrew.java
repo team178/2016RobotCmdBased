@@ -9,11 +9,11 @@ import edu.wpi.first.wpilibj.Relay;
 public class RelaybecauseAndrew extends Subsystem {
 	Relay icecreamsandwich; 
     public RelaybecauseAndrew (){
-    	icecreamsandwich = new Relay (1); 	
+    	icecreamsandwich = new Relay (0); 	
     }
     public void setvalue (boolean isOn){
     	if (isOn){
-    		icecreamsandwich.set(Relay.Value.kOn);	
+    		icecreamsandwich.set(Relay.Value.kForward);	
     	}
     	else {
     		icecreamsandwich.set(Relay.Value.kOff);
