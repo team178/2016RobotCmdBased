@@ -27,6 +27,7 @@ public class Robot extends IterativeRobot {
 	public static final Encoders encoders = new Encoders();
 	public static final Intake intake = new Intake();
 	public static final PhotoelectricSensor sensor = new PhotoelectricSensor();
+	public static final RelaybecauseAndrew relay = new RelaybecauseAndrew();
 
     Command autonomousCommand;
     Command Teleop;
