@@ -8,6 +8,12 @@ package org.usfirst.frc.team178.robot;
 public class RobotMap {
 	
 	public static int JoystickPort = 0;
+	
+	public static int SwitchPort1 = 1;
+	public static int SwitchPort2 = 2;
+	public static int SwitchPort3 = 3;
+	public static int SwitchPort4 = 4;
+	
     // For example to map the left and right motors, you could define the
     // following variables to use with your drivetrain subsystem.
     // public static int leftMotor = 1;
