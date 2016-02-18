@@ -7,30 +7,30 @@ import edu.wpi.first.wpilibj.CANTalon;
  *
  */
 public class Intake extends Subsystem {
-	CANTalon spin;
-	CANTalon rotate;
+	CANTalon inOut;//Turns pulleys on intake.
+	CANTalon upDown;//Lifts intake up and down.
 	
 	public Intake(){
-		spin = new CANTalon(18);
-		rotate = new CANTalon(19);
+		inOut = new CANTalon(18);
+		upDown = new CANTalon(19);
 	}
     
 	public void lift()
 	{
-		spin.set(1);
-		rotate.set(0.25);
+		inOut.set(1);
+		upDown.set(0.25);
 	}
 	
 	public void stop()
 	{
-		spin.set(0);
-		rotate.set(0);
+		inOut.set(0);
+		upDown.set(0);
 	}
 	
 	public void reverse()
 	{
-		spin.set(-1);
-		rotate.set(0);
+		inOut.set(-1);
+		upDown.set(0);
 	}
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
