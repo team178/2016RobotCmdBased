@@ -24,7 +24,7 @@ public class PickUpBoulder extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	intake.lift();//This will not do what you want it to do. Replace with methods do the right things.
+    	intake.lift();//This will not do what you want it to do. Replace with methods that do the right things.
     }
 
     // Make this return true when this Command no longer needs to run execute()
