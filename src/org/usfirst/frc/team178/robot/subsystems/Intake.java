@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.CANTalon;
 
 /**
- *
+ *!!!!!! ATTANTION !!!!!! The lift and reverse methods need to be fixed, probably removed. The cammands that use them need to be fixed.
  */
 public class Intake extends Subsystem {
 	CANTalon inOut;//Turns pulleys on intake.
@@ -45,7 +45,7 @@ public class Intake extends Subsystem {
 		upDown.set(0);
 	}
     
-	public void lift()
+	public void lift//This spins a ball out of the robot and at the same time raises the robot at .25 power.
 	{
 		inOut.set(1);
 		upDown.set(0.25);
@@ -58,7 +58,7 @@ public class Intake extends Subsystem {
 		upDown.set(0);
 	}
 	
-	public void reverse()
+	public void reverse()//This spins a ball into the robot and leaves the intake where it is.
 	{
 		inOut.set(-1);
 		upDown.set(0);
