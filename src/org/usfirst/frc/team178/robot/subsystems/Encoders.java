@@ -7,7 +7,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
- *
+ * You ladies need to read this:
+ * https://wpilib.screenstepslive.com/s/4485/m/13810/l/241875-encoders-measuring-rotation-of-a-wheel-or-other-shaft
+ * It will clear a lot of stuff up! If it is too much text, just look at the example code and what it means.
+ * Good Luck!
  */
 public class Encoders extends Subsystem {
     
