@@ -31,12 +31,12 @@ public class PickUpBoulderWithJoystick extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if (Robot.oi.isPressed(8) && encoders.getDistance(4) < 10) {
-    		intake.lift();
+    		intake.lift();//Needs to be replaced with code that will actually work.
     	}else if(Robot.oi.isPressed(9) && encoders.getDistance(4) > 0) {
-    		intake.reverse();
+    		intake.reverse();//Needs to be replaced with code that will actually work.
     	}
     	else {
-    		intake.stop();
+    		intake.stop();//Not sure if you want this.
     	}
     }
 
