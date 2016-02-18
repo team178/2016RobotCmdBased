@@ -21,89 +21,58 @@ public class Encoders extends Subsystem {
 	public static Encoder rightMotors;
 	public static Encoder kicker;
 	public static Encoder intake;
+	public static final double circumference=2*Math.PI*73;
 	
 	public Encoders(){
-		leftMotors = new Encoder(RobotMap.leftmotorEncoderin,RobotMap.leftmotorEncoderout);
-		rightMotors = new Encoder(RobotMap.rightmotorEncoderin,RobotMap.rightmotorEncoderout);
-		kicker = new Encoder(RobotMap.kickerEncoderin,RobotMap.kickerEncoderout);
-		intake = new Encoder(RobotMap.intakeEncoderin,RobotMap.intakeEncoderout);
+		leftMotors = new Encoder(RobotMap.leftmotorEncoderin,RobotMap.leftmotorEncoderout, true, Encoder.EncodingType.k4X);
+		rightMotors = new Encoder(RobotMap.rightmotorEncoderin,RobotMap.rightmotorEncoderout, false, Encoder.EncodingType.k4X);
+		kicker = new Encoder(RobotMap.kickerEncoderin,RobotMap.kickerEncoderout, false, Encoder.EncodingType.k4X);
+		intake = new Encoder(RobotMap.intakeEncoderin,RobotMap.intakeEncoderout, false, Encoder.EncodingType.k4X);
+		leftMotors.setDistancePerPulse(1/1440.0*circumference);
+		rightMotors.setDistancePerPulse(1/1440.0*circumference);
+		kicker.setDistancePerPulse(360/1440.0);
+		intake.setDistancePerPulse(1/1440.0);
 	}
 	
 	public void testDistance (){
 		
-			int value0 = leftMotors.getRaw();
+			double value0 = leftMotors.getDistance();
 			
-			int value1 = rightMotors.getRaw();
+			double value1 = rightMotors.getDistance();
 			
-			int value2 = kicker.getRaw();
+			double value2 = kicker.getDistance();
 			
-		
-			int value3 = intake.getRaw();
+			double value3 = intake.getDistance();
 			
 		SmartDashboard.putNumber("distance Left", value0);
 		SmartDashboard.putNumber("distance Right", value1);
 		//SmartDashboard.putNumber("distance Kicker", value2);
 		//SmartDashboard.putNumber("distance Intake", value3);
 	}
-	public int getDistance(int encoderId){
-		int pulses;	
-		int ppr = 1440;
-		int distance;
+	public double getDistance(int encoderId){
+		double distance;
 		
 		switch(encoderId){
 			case 1:
-				pulses = leftMotors.getRaw();
+				distance = leftMotors.getDistance();
 				break;
 			case 2:
-				pulses = rightMotors.getRaw();
+				distance = rightMotors.getDistance();
 				break;
 			case 3:
-				pulses = kicker.getRaw();
+				distance = kicker.getDistance();
 				break;
 			case 4:
-				pulses = intake.getRaw();
+				distance = intake.getDistance();
 				break;
 			default:
-				pulses = -99;
+				distance = -99;
 				break;
 		}
-		
-		distance = pulses;
 		
 		return distance;
 			
-		
 	}	
-	public int getRevolutions(int encoderId){
-		int pulses;	
-		int ppr = 1440;
-		int revolutions;
-		
-		switch(encoderId){
-			case 1:
-				pulses = leftMotors.getRaw();
-				break;
-			case 2:
-				pulses = rightMotors.getRaw();
-				break;
-			case 3:
-				pulses = kicker.getRaw();
-				break;
-			case 4:
-				pulses = intake.getRaw();
-				break;
-			default:
-				pulses = -99;
-				break;
-		}
-		
-		revolutions = pulses/ppr;
-		System.out.println("Revolutions: " + revolutions);
-		System.out.println("Pulses:" + pulses);
-		return revolutions;
-			
-		
-	}
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
