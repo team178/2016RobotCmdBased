@@ -11,8 +11,8 @@ public class Intake extends Subsystem {
 	CANTalon rotate;
 	
 	public Intake(){
-		spin = new CANTalon(14);
-		rotate = new CANTalon(15);
+		spin = new CANTalon(18);
+		rotate = new CANTalon(19);
 	}
     
 	public void lift()

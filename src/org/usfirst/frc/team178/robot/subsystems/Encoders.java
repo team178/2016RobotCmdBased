@@ -95,7 +95,8 @@ public class Encoders extends Subsystem {
 		}
 		
 		revolutions = pulses/ppr;
-		
+		System.out.println("Revolutions: " + revolutions);
+		System.out.println("Pulses:" + pulses);
 		return revolutions;
 			
 		
