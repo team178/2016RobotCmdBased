@@ -9,31 +9,29 @@ public class LiftIntake extends Command {
 	public LiftIntake() {
 		// TODO Auto-generated constructor stub
 		requires(Robot.intake);
-		
 	}
 
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	protected void execute() {
 		// TODO Auto-generated method stub
-
+		Robot.intake.setUpDown(1);
 	}
 
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return false;
+		return Robot.intake.isLimitSwitchTripped();
 	}
 
 	@Override
 	protected void end() {
 		// TODO Auto-generated method stub
-
+		Robot.intake.setUpDown(0);
 	}
 
 	@Override
