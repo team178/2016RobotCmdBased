@@ -28,7 +28,6 @@ public class OI {
 	
     public OI (){
         button7.whenPressed(new Kick());
-        button8.whenPressed(new PickUpBoulderWithJoystick());
     }
     
     // There are a few additional built in buttons you can use. Additionally,
