@@ -24,7 +24,7 @@ public class PickUpBoulder extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	intake.lift();//This will not do what you want it to do. Replace with methods that do the right things.
+    	//intake.lift();//This will not do what you want it to do. Replace with methods that do the right things.
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -39,8 +39,8 @@ public class PickUpBoulder extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	intake.stop();//Don't think you want this.
-    	intake.reverse();//Don't think you want this.
+    	//intake.stop();//Don't think you want this.
+    	//intake.reverse();//Don't think you want this.
     }
 
     // Called when another command which requires one or more of the same
