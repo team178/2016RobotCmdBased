@@ -29,6 +29,7 @@ public class OI {
     public OI (){
         button7.whenPressed(new Kick());
         button9.whileHeld(new LiftIntake());
+        button8.whileHeld(new DropIntake());
     }
     
     // There are a few additional built in buttons you can use. Additionally,
