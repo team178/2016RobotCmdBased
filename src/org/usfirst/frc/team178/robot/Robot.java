@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import java.beans.Encoder;
 
 import org.usfirst.frc.team178.robot.commands.TeleOp;
+import org.usfirst.frc.team178.robot.commands.TurnOnRelay;
 import org.usfirst.frc.team178.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -123,6 +124,7 @@ public class Robot extends IterativeRobot {
      */
     public void testPeriodic() {
         LiveWindow.run();
-        
+        TurnOnRelay relayOn = new TurnOnRelay();
+        relayOn.start();
     }
 }
