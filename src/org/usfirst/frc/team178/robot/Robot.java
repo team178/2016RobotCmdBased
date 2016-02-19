@@ -48,8 +48,8 @@ public class Robot extends IterativeRobot {
     	sensor = new PhotoelectricSensor();
     	relay = new RelaybecauseAndrew();
 		oi = new OI();
-        chooser = new SendableChooser();
-//        chooser.addObject("My Auto", new MyAutoCommand());
+        //chooser = new SendableChooser();
+        //chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
     }
 	
@@ -123,5 +123,6 @@ public class Robot extends IterativeRobot {
      */
     public void testPeriodic() {
         LiveWindow.run();
+        
     }
 }
