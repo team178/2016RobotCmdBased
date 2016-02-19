@@ -27,8 +27,8 @@ public class JoystickDrive extends Command {
 	protected void execute() {
 		//Joystick returns from -1 to 1, motor takes values from -1 to 1.
 		//TODO clean up this section. The negatives are quite ghetto. It's hard to understand.
-		yVal = -oi.getY();
-		twistVal = oi.getTwist();
+		yVal = -1*oi.getY();
+		twistVal = -1*oi.getTwist();
 		System.out.println("Y Val: " + yVal);
 		System.out.println("Twist Val: " + twistVal);
 		System.out.println("X Val: " + oi.getX());
@@ -40,8 +40,8 @@ public class JoystickDrive extends Command {
 		//Without this, the motor speed is never upset. 
 		//The robot would continue moving at its last speed. This makes it stop.
 		
-		if(Math.abs(yVal)>0.1 || Math.abs(twistVal)>0.1){
-			drivetrain.drive(twistVal+yVal, twistVal-yVal);
+		if(Math.abs(yVal)>0.5 || Math.abs(twistVal)>0.5){
+			drivetrain.drive(-twistVal+yVal, -twistVal-yVal);
 		}
 		else {
 			drivetrain.drive(0,0);
