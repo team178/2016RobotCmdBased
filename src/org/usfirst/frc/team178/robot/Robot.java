@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
 import java.beans.Encoder;
 
@@ -35,6 +36,7 @@ public class Robot extends IterativeRobot {
 
     Command autonomousCommand;
     Command Teleop;
+    Command RelayOn;
     SendableChooser chooser;
     
     /**
@@ -51,7 +53,8 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
         //chooser = new SendableChooser();
         //chooser.addObject("My Auto", new MyAutoCommand());
-        SmartDashboard.putData("Auto mode", chooser);
+        //SmartDashboard.putData("Auto mode", chooser);
+        NetworkTable.getTable("VisionVars");
     }
 	
 	/**
@@ -119,12 +122,18 @@ public class Robot extends IterativeRobot {
         
     }
     
+    @Override
+    public void testInit(){
+    	RelayOn = new TurnOnRelay();
+    }
+    
     /**
      * This function is called periodically during test mode
      */
+    @Override
     public void testPeriodic() {
         LiveWindow.run();
-        TurnOnRelay relayOn = new TurnOnRelay();
-        relayOn.start();
+        RelayOn.start();
+        //System.out.println(NetworkTable.getTable("VisionVars").getNumber("COG_X", 240));
     }
 }
