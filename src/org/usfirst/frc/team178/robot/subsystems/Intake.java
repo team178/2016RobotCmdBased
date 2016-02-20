@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
 
 /**
- *!!!!!! ATTANTION !!!!!! The lift and reverse methods need to be fixed, probably removed. The commands that use them need to be fixed.
+ *!!!!!! ATTENTION !!!!!! The lift and reverse methods need to be fixed, probably removed. The commands that use them need to be fixed.
  */
 public class Intake extends Subsystem {
 	CANTalon inOut;//Turns pulleys on intake.
@@ -24,7 +24,7 @@ public class Intake extends Subsystem {
 	}
 	
 	public boolean isLimitSwitchTripped(){
-		if(limitSwitchBottom.get()||limitSwitchTop.get()){
+		if(limitSwitchBottom.get()||!limitSwitchTop.get()){
 			return true;
 		}
 		else {
