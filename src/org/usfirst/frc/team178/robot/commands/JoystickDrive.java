@@ -29,9 +29,9 @@ public class JoystickDrive extends Command {
 		//TODO clean up this section. The negatives are quite ghetto. It's hard to understand.
 		yVal = -1*oi.getY();
 		twistVal = -1*oi.getTwist();
-		System.out.println("Y Val: " + yVal);
-		System.out.println("Twist Val: " + twistVal);
-		System.out.println("X Val: " + oi.getX());
+		//System.out.println("Y Val: " + yVal);
+		//System.out.println("Twist Val: " + twistVal);
+		//System.out.println("X Val: " + oi.getX());
 
 		// 6wl tank drive has two motors on one gearbox that drive in the same direction.
 		//TODO Debug and optimize this code. It does things weirdly. It's more logical to turn based on twist.
