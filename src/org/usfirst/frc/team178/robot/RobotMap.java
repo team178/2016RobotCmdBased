@@ -24,6 +24,8 @@ public class RobotMap {
 	public static int leftmotorEncoderout = 6;
 	public static int rightmotorEncoderin = 7;
 	public static int rightmotorEncoderout = 8;
+	public static int topintakelimitswitch = 10;
+	public static int bottomintakelimitswitch = 9;
 	
 
     // For example to map the left and right motors, you could define the

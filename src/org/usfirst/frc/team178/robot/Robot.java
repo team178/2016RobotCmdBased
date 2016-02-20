@@ -5,10 +5,12 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
 import java.beans.Encoder;
 
 import org.usfirst.frc.team178.robot.commands.TeleOp;
+import org.usfirst.frc.team178.robot.commands.TurnOnRelay;
 import org.usfirst.frc.team178.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -48,9 +50,10 @@ public class Robot extends IterativeRobot {
     	sensor = new PhotoelectricSensor();
     	relay = new RelaybecauseAndrew();
 		oi = new OI();
-        chooser = new SendableChooser();
-//        chooser.addObject("My Auto", new MyAutoCommand());
-        SmartDashboard.putData("Auto mode", chooser);
+        //chooser = new SendableChooser();
+        //chooser.addObject("My Auto", new MyAutoCommand());
+        //SmartDashboard.putData("Auto mode", chooser);
+        NetworkTable.getTable("VisionVars");
     }
 	
 	/**
@@ -119,10 +122,18 @@ public class Robot extends IterativeRobot {
         
     }
     
+    @Override
+    public void testInit(){
+    	relay.setvalue(true);
+    }
+    
     /**
      * This function is called periodically during test mode
      */
+    @Override
     public void testPeriodic() {
         LiveWindow.run();
+        relay.setvalue(true);
+        //System.out.println(NetworkTable.getTable("VisionVars").getNumber("COG_X", 240));
     }
 }

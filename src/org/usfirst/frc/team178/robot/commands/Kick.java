@@ -19,8 +19,8 @@ public class Kick extends Command {
         // eg. requires(chassis);
     	requires(Robot.kicker);
     	kicker = Robot.kicker;
-    	encoders = Robot.encoders;
     	requires(Robot.encoders);
+    	encoders = Robot.encoders;
     	
     }
 
