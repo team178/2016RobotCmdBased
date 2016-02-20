@@ -30,7 +30,7 @@ public class Kick extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	kicker.kick(-.1);
+    	kicker.kick(-.5);
     	System.out.println(encoders.getDistance(3));
     }
 
@@ -38,10 +38,12 @@ public class Kick extends Command {
     protected boolean isFinished() {
     	//double passedTime = timeSinceInitialized();
     	double revolutions = encoders.getDistance(3);
-    	if (revolutions >= .5) {
+    	if (revolutions >= 360) {
+    		System.out.println("true");
     		return true;
     	}
     	else {
+    		System.out.println("false");
     		return false;
     	}
     }
@@ -49,10 +51,12 @@ public class Kick extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	kicker.kick(0);
+    	encoders.reset(3);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	System.out.println("inttttt");
     }
 }

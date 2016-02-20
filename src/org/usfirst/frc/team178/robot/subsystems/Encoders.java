@@ -26,7 +26,7 @@ public class Encoders extends Subsystem {
 	public Encoders(){
 		leftMotors = new Encoder(RobotMap.leftmotorEncoderin,RobotMap.leftmotorEncoderout, true, Encoder.EncodingType.k4X);
 		rightMotors = new Encoder(RobotMap.rightmotorEncoderin,RobotMap.rightmotorEncoderout, false, Encoder.EncodingType.k4X);
-		kicker = new Encoder(7,8, false, Encoder.EncodingType.k4X);//(RobotMap.kickerEncoderin,RobotMap.kickerEncoderout, false, Encoder.EncodingType.k4X);
+		kicker = new Encoder(RobotMap.kickerEncoderin,RobotMap.kickerEncoderout, false, Encoder.EncodingType.k4X);
 		intake = new Encoder(RobotMap.intakeEncoderin,RobotMap.intakeEncoderout, false, Encoder.EncodingType.k4X);
 		leftMotors.setDistancePerPulse(1/1440.0*circumference);
 		rightMotors.setDistancePerPulse(1/1440.0*circumference);
@@ -72,7 +72,12 @@ public class Encoders extends Subsystem {
 		
 		return distance;
 			
-	}	
+	}
+	
+	public void reset(int encoderId){
+		kicker.reset();
+	}
+	
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
