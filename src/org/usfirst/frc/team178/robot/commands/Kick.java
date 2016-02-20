@@ -38,8 +38,8 @@ public class Kick extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	//double passedTime = timeSinceInitialized();
-    	double revolutions = encoders.getDistance(3);
-    	if (revolutions >= 360) {
+    	double degrees = encoders.getDistance(3);
+    	if (degrees >= 360) {
     		System.out.println("true");
     		return true;
     	}
@@ -51,6 +51,11 @@ public class Kick extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	kicker.kick(0);
+    	double lastPosition = encoders.getDistance(3);
+    	while(lastPosition > 360) {
+    		kicker.kick(.05);
+    	}
     	kicker.kick(0);
     }
 
