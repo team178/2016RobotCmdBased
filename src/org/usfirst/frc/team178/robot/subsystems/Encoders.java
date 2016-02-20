@@ -26,11 +26,11 @@ public class Encoders extends Subsystem {
 	public Encoders(){
 		leftMotors = new Encoder(RobotMap.leftmotorEncoderin,RobotMap.leftmotorEncoderout, true, Encoder.EncodingType.k4X);
 		rightMotors = new Encoder(RobotMap.rightmotorEncoderin,RobotMap.rightmotorEncoderout, false, Encoder.EncodingType.k4X);
-		kicker = new Encoder(RobotMap.kickerEncoderin,RobotMap.kickerEncoderout, false, Encoder.EncodingType.k4X);
+		kicker = new Encoder(RobotMap.kickerEncoderin,RobotMap.kickerEncoderout, false, Encoder.EncodingType.k2X);
 		intake = new Encoder(RobotMap.intakeEncoderin,RobotMap.intakeEncoderout, false, Encoder.EncodingType.k4X);
 		leftMotors.setDistancePerPulse(1/1440.0*circumference);
 		rightMotors.setDistancePerPulse(1/1440.0*circumference);
-		kicker.setDistancePerPulse(360/1440.0*3);
+		kicker.setDistancePerPulse(360/1440.0);
 		intake.setDistancePerPulse(1/1440.0);
 	}
 	

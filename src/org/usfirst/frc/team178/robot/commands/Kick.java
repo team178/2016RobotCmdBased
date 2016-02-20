@@ -53,8 +53,10 @@ public class Kick extends Command {
     protected void end() {
     	kicker.kick(0);
     	double lastPosition = encoders.getDistance(3);
-    	while(lastPosition > 360) {
-    		kicker.kick(.05);
+    	while(encoders.getDistance(3) > 360) {
+    		kicker.kick(.1);
+    		System.out.println(encoders.getDistance(3));
+    		
     	}
     	kicker.kick(0);
     }
