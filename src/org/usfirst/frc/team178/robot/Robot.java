@@ -53,7 +53,9 @@ public class Robot extends IterativeRobot {
         //chooser = new SendableChooser();
         //chooser.addObject("My Auto", new MyAutoCommand());
         //SmartDashboard.putData("Auto mode", chooser);
+
         NetworkTable.getTable("VisionVars");
+
     }
 	
 	/**
@@ -110,6 +112,7 @@ public class Robot extends IterativeRobot {
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
         Teleop = new TeleOp();
+        Teleop.start();
     }
 
     /**
@@ -117,7 +120,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        Teleop.start();
+        
         
     }
     

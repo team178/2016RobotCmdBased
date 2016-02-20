@@ -29,9 +29,9 @@ public class JoystickDrive extends Command {
 		//TODO clean up this section. The negatives are quite ghetto. It's hard to understand.
 		yVal = -1*oi.getY();
 		twistVal = -1*oi.getTwist();
-		System.out.println("Y Val: " + yVal);
-		System.out.println("Twist Val: " + twistVal);
-		System.out.println("X Val: " + oi.getX());
+		//System.out.println("Y Val: " + yVal);
+		//System.out.println("Twist Val: " + twistVal);
+		//System.out.println("X Val: " + oi.getX());
 
 		// 6wl tank drive has two motors on one gearbox that drive in the same direction.
 		//TODO Debug and optimize this code. It does things weirdly. It's more logical to turn based on twist.
@@ -40,9 +40,11 @@ public class JoystickDrive extends Command {
 		//Without this, the motor speed is never upset. 
 		//The robot would continue moving at its last speed. This makes it stop.
 		
-		if(Math.abs(yVal)>0.5 || Math.abs(twistVal)>0.5){
+		if(Math.abs(yVal)>0.4 || Math.abs(twistVal)>0.4){
 			drivetrain.drive(-twistVal+yVal, -twistVal-yVal);
+			
 		}
+		
 		else {
 			drivetrain.drive(0,0);
 		}
