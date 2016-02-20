@@ -17,6 +17,9 @@ public class OI {
 	Button button7 = new JoystickButton (TriggerHappy, 7);
 	Button button8 = new JoystickButton (TriggerHappy, 8);
 	Button button9 = new JoystickButton (TriggerHappy, 9);
+	Button button10 = new JoystickButton(TriggerHappy, 10);
+	Button button11 = new JoystickButton(TriggerHappy, 11);
+	Button button12 = new JoystickButton(TriggerHappy, 12);
 
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
@@ -29,7 +32,9 @@ public class OI {
     public OI (){
         button7.whenPressed(new Kick());
         button9.whileHeld(new LiftIntake());
-        button8.whileHeld(new DropIntake());
+        button10.whileHeld(new DropIntake());
+        button11.whileHeld(new SpinIntakeIn());
+        button12.whileHeld(new SpinIntakeOut());
     }
     
     // There are a few additional built in buttons you can use. Additionally,

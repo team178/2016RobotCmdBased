@@ -24,7 +24,7 @@ public class Intake extends Subsystem {
 	}
 	
 	public boolean isLimitSwitchTripped(){
-		if(limitSwitchBottom.get()||limitSwitchTop.get()){
+		if(limitSwitchBottom.get()||!limitSwitchTop.get()){
 			return true;
 		}
 		else {
