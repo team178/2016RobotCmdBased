@@ -13,7 +13,7 @@ public class RelaybecauseAndrew extends Subsystem {
     }
     public void setvalue (boolean isOn){
     	if (isOn){
-    		icecreamsandwich.set(Relay.Value.kOn);	
+    		icecreamsandwich.set(Relay.Value.kForward);	
     	}
     	else {
     		icecreamsandwich.set(Relay.Value.kOff);

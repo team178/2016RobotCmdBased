@@ -36,7 +36,6 @@ public class Robot extends IterativeRobot {
 
     Command autonomousCommand;
     Command Teleop;
-    Command RelayOn;
     SendableChooser chooser;
     
     /**
@@ -124,7 +123,7 @@ public class Robot extends IterativeRobot {
     
     @Override
     public void testInit(){
-    	RelayOn = new TurnOnRelay();
+    	relay.setvalue(true);
     }
     
     /**
@@ -133,7 +132,7 @@ public class Robot extends IterativeRobot {
     @Override
     public void testPeriodic() {
         LiveWindow.run();
-        RelayOn.start();
+        relay.setvalue(true);
         //System.out.println(NetworkTable.getTable("VisionVars").getNumber("COG_X", 240));
     }
 }
