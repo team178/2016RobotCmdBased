@@ -23,9 +23,9 @@ public class RobotMap {
 	public static int intakeEncoderout = 4;
 	public static int leftmotorEncoderin = 5;
 	public static int leftmotorEncoderout = 6;
-	public static int rightmotorEncoderin = 7;
+	public static int rightmotorEncoderin = 10; //7
 	public static int rightmotorEncoderout = 8;
-	public static int topintakelimitswitch = 10;
+	public static int topintakelimitswitch = 7;
 	public static int bottomintakelimitswitch = 9;
 	
 

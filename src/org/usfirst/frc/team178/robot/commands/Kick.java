@@ -31,8 +31,11 @@ public class Kick extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	kicker.kick(-.3);
-    	System.out.println(encoders.getDistance(3));
+    	if(Robot.intake.isBottomLimitSwitchTripped()||!Robot.intake.isTopLimitSwitchTripped())
+    	{
+    		kicker.kick(-1);
+    		System.out.println(encoders.getDistance(3));
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

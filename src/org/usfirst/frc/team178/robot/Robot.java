@@ -119,14 +119,13 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-        Scheduler.getInstance().run();
-        
-        
+        Scheduler.getInstance().run();      
     }
     
     @Override
     public void testInit(){
     	relay.setvalue(true);
+    	
     }
     
     /**
@@ -134,6 +133,8 @@ public class Robot extends IterativeRobot {
      */
     @Override
     public void testPeriodic() {
+    	System.out.println("Top: " + intake.isTopLimitSwitchTripped());
+    	System.out.println("Bottom: " + intake.isBottomLimitSwitchTripped());
         LiveWindow.run();
         relay.setvalue(true);
         //System.out.println(NetworkTable.getTable("VisionVars").getNumber("COG_X", 240));

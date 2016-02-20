@@ -26,7 +26,14 @@ public class SpinIntakeIn extends Command {
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return false;
+		if(Robot.oi.isTSPressed(6))
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
 	}
 
 	@Override

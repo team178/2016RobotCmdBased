@@ -26,8 +26,8 @@ public class OI {
 	Button buttonA = new JoystickButton(TriggerSappy, 1);
 	Button buttonX = new JoystickButton(TriggerSappy, 3);
 	Button buttonY = new JoystickButton(TriggerSappy, 4);
-	Button lBumper = new JoystickButton(TriggerSappy, 5);
-	Button rBumper = new JoystickButton(TriggerSappy, 6);
+	Button lBumper = new JoystickButton(TriggerSappy, 6);
+	Button rBumper = new JoystickButton(TriggerSappy, 5);
 
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
@@ -38,16 +38,16 @@ public class OI {
 	
 	
     public OI (){
-        button7.whenPressed(new Kick());
+        // button7.whenPressed(new Kick());
         button9.whileHeld(new LiftIntake());
         button10.whileHeld(new DropIntake());
         button11.whileHeld(new SpinIntakeIn());
         button12.whileHeld(new SpinIntakeOut());
         buttonA.whenPressed(new Kick());
-        buttonX.whenPressed(new DropIntake());
-        buttonY.whenPressed(new LiftIntake());
-        lBumper.whileHeld(new SpinIntakeOut());
-        rBumper.whileHeld(new SpinIntakeIn());
+        buttonX.whenPressed(new LiftIntake());
+        buttonY.whenPressed(new DropIntake());
+        lBumper.whenPressed(new SpinIntakeIn());
+        rBumper.whenPressed(new SpinIntakeOut());
     }
     
     // There are a few additional built in buttons you can use. Additionally,
@@ -67,6 +67,10 @@ public class OI {
     
     public boolean isPressed (int ButtonNumber){
     	return TriggerHappy.getRawButton(ButtonNumber);
+    }
+    
+    public boolean isTSPressed (int ButtonNumber){
+    	return TriggerSappy.getRawButton(ButtonNumber);    	
     }
 
     //// TRIGGERING COMMANDS WITH BUTTONS

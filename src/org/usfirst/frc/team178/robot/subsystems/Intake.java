@@ -19,24 +19,27 @@ public class Intake extends Subsystem {
 	public Intake(){
 		inOut = new CANTalon(19);
 		upDown = new CANTalon(18);
-		limitSwitchTop = new DigitalInput(RobotMap.topintakelimitswitch);
+		
 		limitSwitchBottom = new DigitalInput(RobotMap.bottomintakelimitswitch);	
+		limitSwitchTop = new DigitalInput(RobotMap.topintakelimitswitch);
 	}
 	
 	public boolean isBottomLimitSwitchTripped(){
+		//System.out.println("Bottom: " + limitSwitchBottom.get());
 		return limitSwitchBottom.get();
 	}
 	
 	public boolean isTopLimitSwitchTripped(){
+		//System.out.println("Top: " + limitSwitchTop.get());
 		return limitSwitchTop.get();
 	}
 		
-	public void setInOut(int value)
+	public void setInOut(double value)
 	{
 		inOut.set(value);
 	}
 	
-	public void setUpDown(int value)
+	public void setUpDown(double value)
 	{
 		upDown.set(value);
 	}
