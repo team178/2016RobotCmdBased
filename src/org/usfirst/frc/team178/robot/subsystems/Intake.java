@@ -23,15 +23,14 @@ public class Intake extends Subsystem {
 		limitSwitchBottom = new DigitalInput(RobotMap.bottomintakelimitswitch);	
 	}
 	
-	public boolean isLimitSwitchTripped(){
-		if(limitSwitchBottom.get()||!limitSwitchTop.get()){
-			return true;
-		}
-		else {
-			return false;
-		}
+	public boolean isBottomLimitSwitchTripped(){
+		return limitSwitchBottom.get();
 	}
 	
+	public boolean isTopLimitSwitchTripped(){
+		return limitSwitchTop.get();
+	}
+		
 	public void setInOut(int value)
 	{
 		inOut.set(value);

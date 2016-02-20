@@ -22,7 +22,7 @@ public class OI {
 	Button button10 = new JoystickButton(TriggerHappy, 10);
 	Button button11 = new JoystickButton(TriggerHappy, 11);
 	Button button12 = new JoystickButton(TriggerHappy, 12);
-	Joystick TriggerSappy = new Joystick(RobotMap.JoystickPortB);
+	Joystick TriggerSappy = new Joystick(RobotMap.JoystickPortXbox);
 	Button buttonA = new JoystickButton(TriggerSappy, 1);
 	Button buttonX = new JoystickButton(TriggerSappy, 3);
 	Button buttonY = new JoystickButton(TriggerSappy, 4);
@@ -44,8 +44,8 @@ public class OI {
         button11.whileHeld(new SpinIntakeIn());
         button12.whileHeld(new SpinIntakeOut());
         buttonA.whenPressed(new Kick());
-        buttonX.whileHeld(new DropIntake());
-        buttonY.whileHeld(new LiftIntake());
+        buttonX.whenPressed(new DropIntake());
+        buttonY.whenPressed(new LiftIntake());
         lBumper.whileHeld(new SpinIntakeOut());
         rBumper.whileHeld(new SpinIntakeIn());
     }

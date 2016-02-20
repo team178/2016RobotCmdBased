@@ -33,7 +33,7 @@ public class SpinIntakeIn extends Command {
 	protected void end() {
 		// TODO Auto-generated method stub
 		Robot.intake.setInOut(0);
-
+		Robot.intake.allStop();
 	}
 
 	@Override
