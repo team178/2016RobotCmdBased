@@ -17,8 +17,8 @@ public class Intake extends Subsystem {
 	DigitalInput limitSwitchBottom;
 	
 	public Intake(){
-		inOut = new CANTalon(18);
-		upDown = new CANTalon(19);
+		inOut = new CANTalon(19);
+		upDown = new CANTalon(18);
 		limitSwitchTop = new DigitalInput(RobotMap.topintakelimitswitch);
 		limitSwitchBottom = new DigitalInput(RobotMap.bottomintakelimitswitch);	
 	}
