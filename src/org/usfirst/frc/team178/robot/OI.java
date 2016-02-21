@@ -40,10 +40,10 @@ public class OI {
 	
     public OI (){
         // button7.whenPressed(new Kick());
-        button9.whileHeld(new LiftIntake());
+        /*button9.whileHeld(new LiftIntake());
         button10.whileHeld(new DropIntake());
         button11.whileHeld(new SpinIntakeIn());
-        button12.whileHeld(new SpinIntakeOut());
+        button12.whileHeld(new SpinIntakeOut());*/
         buttonA.whenPressed(new Kick());
         buttonX.whenPressed(new ToggleIntakeLocation(1));
         buttonY.whenPressed(new ToggleIntakeLocation(0));
@@ -63,7 +63,7 @@ public class OI {
     }
     
     public double getTwist (){
-    	return TriggerHappy.getTwist();
+    	return TriggerHappy.getRawAxis(3);//
     }
     
     public boolean isPressed (int ButtonNumber){

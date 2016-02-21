@@ -135,6 +135,7 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
+    	System.out.println(oi.getY()+" "+oi.getX()+" "+oi.getTwist());
         Scheduler.getInstance().run();      
     }
     
@@ -151,6 +152,7 @@ public class Robot extends IterativeRobot {
     public void testPeriodic() {
     	//System.out.println("Top: " + intake.isTopLimitSwitchTripped());
     	//System.out.println("Bottom: " + intake.isBottomLimitSwitchTripped());
+
     	try{
     		bw.write("X: " + oi.getX() + " Twist: " + oi.getTwist() );
     		bw.newLine();
