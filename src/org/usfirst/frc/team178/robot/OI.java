@@ -16,12 +16,13 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class OI {
 	
 	Joystick TriggerHappy = new Joystick(RobotMap.JoystickPort);
-	Button button7 = new JoystickButton (TriggerHappy, 7);
-	Button button8 = new JoystickButton (TriggerHappy, 8);
-	Button button9 = new JoystickButton (TriggerHappy, 9);
-	Button button10 = new JoystickButton(TriggerHappy, 10);
-	Button button11 = new JoystickButton(TriggerHappy, 11);
-	Button button12 = new JoystickButton(TriggerHappy, 12);
+	Button button1 = new JoystickButton (TriggerHappy, 1);
+	Button button2 = new JoystickButton (TriggerHappy, 2);
+	Button button3 = new JoystickButton (TriggerHappy, 3);
+	Button button4 = new JoystickButton(TriggerHappy, 4);
+	Button button5 = new JoystickButton(TriggerHappy, 5);
+	Button button6 = new JoystickButton(TriggerHappy, 6);
+	Button button7 = new JoystickButton(TriggerHappy,7);
 	Joystick TriggerSappy = new Joystick(RobotMap.JoystickPortXbox);
 	Button buttonA = new JoystickButton(TriggerSappy, 1);
 	Button buttonX = new JoystickButton(TriggerSappy, 3);
@@ -38,12 +39,7 @@ public class OI {
 	
 	
     public OI (){
-        // button7.whenPressed(new Kick());
-        /*button9.whileHeld(new LiftIntake());
-        button10.whileHeld(new DropIntake());
-        button11.whileHeld(new SpinIntakeIn());
-        button12.whileHeld(new SpinIntakeOut());*/
-        buttonA.whenPressed(new Kick());
+        /*buttonA.whenPressed(new Kick());*/
         buttonX.whenPressed(new LiftIntake());
         buttonY.whenPressed(new DropIntake());
         lBumper.whenPressed(new SpinIntakeIn());

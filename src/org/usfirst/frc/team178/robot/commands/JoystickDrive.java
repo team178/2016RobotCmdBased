@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team178.robot.*;
 import org.usfirst.frc.team178.robot.subsystems.*;
-
+import edu.wpi.first.wpilibj.DriverStation;
 public class JoystickDrive extends Command {
 	
 	Encoders encoders;
@@ -42,6 +42,7 @@ public class JoystickDrive extends Command {
 		
 		if(Math.abs(yVal)>0.05 || Math.abs(twistVal)>0.05){
 			drivetrain.drive(-twistVal+yVal, -twistVal-yVal);
+			
 			
 			
 		}

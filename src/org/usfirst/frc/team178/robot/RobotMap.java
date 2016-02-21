@@ -19,8 +19,8 @@ public class RobotMap {
     public static int PhotoelectricSensor = 0;
     public static int kickerEncoderin = 1;
 	public static int kickerEncoderout = 2;
-	public static int intakeEncoderin = 3;
-	public static int intakeEncoderout = 4;
+	public static int intakeEncoderin = 4;
+	public static int intakeEncoderout = 3;
 	public static int leftmotorEncoderin = 5;
 	public static int leftmotorEncoderout = 6;
 	public static int rightmotorEncoderin = 10; //7
