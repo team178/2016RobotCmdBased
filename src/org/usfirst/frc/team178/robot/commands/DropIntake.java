@@ -2,9 +2,7 @@ package org.usfirst.frc.team178.robot.commands;
 
 import org.usfirst.frc.team178.robot.Robot;
 import org.usfirst.frc.team178.robot.subsystems.Intake;
-
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class DropIntake extends Command {
@@ -31,6 +29,7 @@ public class DropIntake extends Command {
 	protected void execute() {
 		// TODO Auto-generated method stub
 		Robot.intake.setUpDown(0.5);
+		
 	}
 
 	@Override
