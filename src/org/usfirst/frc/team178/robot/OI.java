@@ -1,5 +1,4 @@
 package org.usfirst.frc.team178.robot;
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 
@@ -29,6 +28,8 @@ public class OI {
 	Button buttonY = new JoystickButton(TriggerSappy, 4);
 	Button lBumper = new JoystickButton(TriggerSappy, 6);
 	Button rBumper = new JoystickButton(TriggerSappy, 5);
+	
+	
 
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
@@ -39,6 +40,7 @@ public class OI {
 	
 	
     public OI (){
+
         /*buttonA.whenPressed(new Kick());*/
         buttonX.whenPressed(new LiftIntake());
         buttonY.whenPressed(new DropIntake());
