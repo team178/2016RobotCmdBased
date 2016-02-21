@@ -38,7 +38,8 @@ public class OI {
 	
 	
     public OI (){
-        // button7.whenPressed(new Kick());
+        button7.whenPressed(new ChangeLightColor("rainbow"));
+        button8.whenPressed(new ChangeLightColor("off"));
         button9.whileHeld(new LiftIntake());
         button10.whileHeld(new DropIntake());
         button11.whileHeld(new SpinIntakeIn());

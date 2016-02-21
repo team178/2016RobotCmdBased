@@ -33,6 +33,7 @@ public class Robot extends IterativeRobot {
 	public static Intake intake;
 	public static PhotoelectricSensor sensor;
 	public static RelaybecauseAndrew relay;
+	public static LightController lights;
 
     Command autonomousCommand;
     Command Teleop;
@@ -49,6 +50,7 @@ public class Robot extends IterativeRobot {
     	intake = new Intake();
     	sensor = new PhotoelectricSensor();
     	relay = new RelaybecauseAndrew();
+    	lights = new LightController();
 		oi = new OI();
         //chooser = new SendableChooser();
         //chooser.addObject("My Auto", new MyAutoCommand());
