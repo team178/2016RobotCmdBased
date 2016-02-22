@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team178.robot.Robot;
 import org.usfirst.frc.team178.robot.subsystems.Encoders;
 import org.usfirst.frc.team178.robot.subsystems.Kicker;
+import org.usfirst.frc.team178.robot.subsystems.PhotoelectricSensor;
 
 /**
  *
@@ -13,6 +14,7 @@ import org.usfirst.frc.team178.robot.subsystems.Kicker;
 public class Kick extends Command {
 	Kicker kicker;
 	Encoders encoders;
+	PhotoelectricSensor sensor; 
 	
     public Kick() {
         // Use requires() here to declare subsystem dependencies
@@ -20,24 +22,30 @@ public class Kick extends Command {
     	requires(Robot.kicker);
     	kicker = Robot.kicker;
     	requires(Robot.encoders);
+    	requires(Robot.sensor);
     	encoders = Robot.encoders;
+    	encoders.reset(3);
+    	sensor = Robot.sensor;
     	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	encoders.reset(3);
+    	kicker.kick(0);
+    	double lastPosition = encoders.getDistance(3)%360.0;
+    	while(encoders.getDistance(3)%360.0 > 0) {
+    		kicker.kick(.1);
+    		System.out.println(encoders.getDistance(3));
+    		
+    	}
+    	kicker.kick(0);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if(Robot.intake.isBottomLimitSwitchTripped()||!Robot.intake.isTopLimitSwitchTripped())
     	{
-    		//if(encoders.getDistance(3)<270){
-    			kicker.kick(-1);
-    		//else{
-    			
-    		//}
+    		kicker.kick(-.1);
     		System.out.println(encoders.getDistance(3));
     	}
     }
@@ -45,8 +53,8 @@ public class Kick extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	//double passedTime = timeSinceInitialized();
-    	double degrees = encoders.getDistance(3);
-    	if (degrees >= 360) {
+    	double degrees = encoders.getDistance(3)%360.0;
+    	if (degrees >= 0) {
     		System.out.println("true");
     		return true;
     	}
@@ -58,14 +66,11 @@ public class Kick extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	kicker.kick(0);
-    	double lastPosition = encoders.getDistance(3);
-    	while(encoders.getDistance(3) > 360) {
-    		kicker.kick(.1);
-    		System.out.println(encoders.getDistance(3));
-    		
+    	double degrees = encoders.getDistance(3)%360.0;
+    	while(degrees <= 170  ){
+    		kicker.kick(-0.1);
     	}
-    	kicker.kick(0);
+    	
     }
 
     // Called when another command which requires one or more of the same

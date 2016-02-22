@@ -1,6 +1,8 @@
 
 package org.usfirst.frc.team178.robot;
 import java.io.*;
+
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -40,6 +42,7 @@ public class Robot extends IterativeRobot {
 	public static Intake intake;
 	public static PhotoelectricSensor sensor;
 	public static RelaybecauseAndrew relay;
+	
 
 	BufferedReader br; 
 	BufferedWriter bw; 
@@ -150,20 +153,22 @@ public class Robot extends IterativeRobot {
      */
     @Override
     public void testPeriodic() {
+    	System.out.println((new DigitalInput(0)).get());
     	//System.out.println("Top: " + intake.isTopLimitSwitchTripped());
     	//System.out.println("Bottom: " + intake.isBottomLimitSwitchTripped());
 
-    	try{
-    		bw.write("X: " + oi.getX() + " Twist: " + oi.getTwist() );
-    		bw.newLine();
-    	}catch(Exception e){
+    	//try{
+    		//bw.write("X: " + oi.getX() + " Twist: " + oi.getTwist() );
+    		//bw.newLine();
+    	//}catch(Exception e){
     		
-    	}
+    	//}
     	
     	
     	
         LiveWindow.run();
         relay.setvalue(true);
         //System.out.println(NetworkTable.getTable("VisionVars").getNumber("COG_X", 240));
+    //    System.out.println((new DigitalInput(14)).get());
     }
 }
