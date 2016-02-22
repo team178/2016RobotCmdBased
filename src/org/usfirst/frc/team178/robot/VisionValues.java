@@ -10,18 +10,30 @@ public class VisionValues {
 	public double IMAGE_WIDTH;
 	public double BLOB_COUNT;
 	
+	/*
+	 * This void method will return the number of blobs that RoboRealm has found
+	 */
 	public double getBLOB_COUNT() {
 		return NetworkTable.getTable("VisionVars").getNumber("BLOB_COUNT",0);
 	}
-
+	
+	/*
+	 * This method returns the width of the image being processed
+	 */
 	public double getIMAGE_WIDTH() {
 		return NetworkTable.getTable("VisionVars").getNumber("IMAGE_WIDTH",0);
 	}
-
+	
+	/*
+	 * This method returns the X-coordinate of the Center of Gravity of the target acquired. Be advised that this variable may not exist, and will default to the value 0.
+	 */
 	public double getCOG_X() {
 		return NetworkTable.getTable("VisionVars").getNumber("COG_X",0);
 	}
-
+	
+	/*
+	 * This method returns the calculated distance to the target.
+	 */
 	public double getDISTANCE_TO_TARGET() {
 		return DISTANCE_TO_TARGET;
 	}
