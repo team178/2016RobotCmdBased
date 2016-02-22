@@ -10,7 +10,7 @@ public class LightController extends Subsystem {
     public static I2C arduino;
     
     public LightController(){
-    	arduino = new I2C(I2C.Port.kOnboard, 10);
+    	arduino = new I2C(I2C.Port.kOnboard, 1);
     }
     
     // Put methods for controlling this subsystem
