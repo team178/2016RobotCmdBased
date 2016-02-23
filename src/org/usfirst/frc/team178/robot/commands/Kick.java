@@ -27,18 +27,19 @@ public class Kick extends Command {
     	encoders.reset(3);
     	sensor = Robot.sensor;
     	
+    	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	kicker.kick(0);
-    	double lastPosition = encoders.getDistance(3)%360.0;
-    	while(encoders.getDistance(3)%360.0 > 0) {
-    		kicker.kick(.1);
-    		System.out.println(encoders.getDistance(3));
+    	//kicker.kick(0);
+    	//double lastPosition = encoders.getDistance(3);
+    	//while(encoders.getDistance(3) > 0) {
+    		//kicker.kick(1);
+    		//System.out.println(encoders.getDistance(3));
     		
-    	}
-    	kicker.kick(0);
+    	//}
+    	//kicker.kick(0);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -54,7 +55,7 @@ public class Kick extends Command {
     protected boolean isFinished() {
     	//double passedTime = timeSinceInitialized();
     	double degrees = encoders.getDistance(3)%360.0;
-    	if (degrees >= 0) {
+    	if (degrees >= 355) {
     		System.out.println("true");
     		return true;
     	}
@@ -67,9 +68,12 @@ public class Kick extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	double degrees = encoders.getDistance(3)%360.0;
-    	while(degrees <= 170  ){
-    		kicker.kick(-0.1);
+    	while(degrees >= 170 || degrees <= 20){
+    		degrees = encoders.getDistance(3)%360.0;
+    		kicker.kick(0.1);
     	}
+    	kicker.kick(0);
+    	encoders.reset(3);
     	
     }
 

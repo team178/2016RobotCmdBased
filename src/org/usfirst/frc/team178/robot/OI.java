@@ -42,8 +42,8 @@ public class OI {
     public OI (){
 
         buttonA.whenPressed(new Kick());
-        buttonX.whenPressed(new LiftIntake());
-        buttonY.whenPressed(new DropIntake());
+        buttonX.whenPressed(new ToggleIntakeLocation(1));
+        buttonY.whenPressed(new ToggleIntakeLocation(0));
         lBumper.whenPressed(new SpinIntakeIn());
         rBumper.whenPressed(new SpinIntakeOut());
     }

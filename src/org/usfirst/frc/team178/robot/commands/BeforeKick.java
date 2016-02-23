@@ -37,9 +37,9 @@ public class BeforeKick extends Command {
     protected void execute() {
 	   if (sensor.getstuff()){
 	   		kicker.kick(0);
-	    	double lastPosition = encoders.getDistance(3)%360.0;
-	    	while(encoders.getDistance(3)%360.0 > 0) {
-	    		kicker.kick(.1);
+	    	double lastPosition = encoders.getDistance(3);
+	    	while(encoders.getDistance(3)%360.0 < 355) {
+	    		kicker.kick(-.1);
 	    		System.out.println(encoders.getDistance(3));
 	    		
 	    	}

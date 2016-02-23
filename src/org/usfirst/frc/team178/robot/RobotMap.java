@@ -16,7 +16,7 @@ public class RobotMap {
 	public static int SwitchPort4 = 4;
 	
 	
-    public static int PhotoelectricSensor = 0;
+    public static int PhotoelectricSensor = 8;//0;
     public static int kickerEncoderin = 1;
 	public static int kickerEncoderout = 2;
 	public static int intakeEncoderin = 4;
@@ -24,7 +24,7 @@ public class RobotMap {
 	public static int leftmotorEncoderin = 5;
 	public static int leftmotorEncoderout = 6;
 	public static int rightmotorEncoderin = 10; //7
-	public static int rightmotorEncoderout = 8;
+	public static int rightmotorEncoderout = 15;
 	public static int topintakelimitswitch = 7;
 	public static int bottomintakelimitswitch = 9;
 	

@@ -2,6 +2,7 @@
 package org.usfirst.frc.team178.robot;
 import java.io.*;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -42,6 +43,7 @@ public class Robot extends IterativeRobot {
 	public static Intake intake;
 	public static PhotoelectricSensor sensor;
 	public static RelaybecauseAndrew relay;
+	public static VisionValues vision;
 	
 
 	BufferedReader br; 
@@ -63,15 +65,11 @@ public class Robot extends IterativeRobot {
     	sensor = new PhotoelectricSensor();
     	relay = new RelaybecauseAndrew();
 		oi = new OI();
+		vision = new VisionValues();
         //chooser = new SendableChooser();
         //chooser.addObject("My Auto", new MyAutoCommand());
         //SmartDashboard.putData("Auto mode", chooser);
-		try{
-			br = new BufferedReader(new InputStreamReader(new FileInputStream("apples.txt")));
-			bw =  new BufferedWriter(new OutputStreamWriter(new FileOutputStream("apples.txt")));
-		}catch(Exception e){
-			
-		}
+		
 
         NetworkTable.getTable("VisionVars");
 
@@ -153,7 +151,9 @@ public class Robot extends IterativeRobot {
      */
     @Override
     public void testPeriodic() {
-    	System.out.println((new DigitalInput(0)).get());
+    	  System.out.println("PHOTOELECTRIC IS :" + sensor.getstuff());        // PhotoElectric Sensor
+    	//  System.out.println("VOLTAGE IS:" + (new AnalogInput(0)).getVoltage());  // Encoders
+    	
     	//System.out.println("Top: " + intake.isTopLimitSwitchTripped());
     	//System.out.println("Bottom: " + intake.isBottomLimitSwitchTripped());
 

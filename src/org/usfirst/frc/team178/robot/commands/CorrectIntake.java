@@ -24,11 +24,11 @@ public class CorrectIntake extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(intake.getIntakeLocation()!=intake.isTopLimitSwitchTripped()&& !intake.getIntakeLocation())
+    	if(intake.getIntakeLocation()!=intake.isTopLimitSwitchTripped()&& intake.getIntakeLocation())
     	{
     		Robot.intake.liftIntake();
     	}
-    	else if(intake.getIntakeLocation()!=intake.isBottomLimitSwitchTripped()&& intake.getIntakeLocation())
+    	else if(intake.getIntakeLocation()!=intake.isBottomLimitSwitchTripped()&& !intake.getIntakeLocation())
     	{
     		Robot.intake.dropIntake();
     	}
