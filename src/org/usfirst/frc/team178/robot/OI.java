@@ -16,8 +16,8 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class OI {
 	
 	Joystick TriggerHappy = new Joystick(RobotMap.JoystickPort);
-	Button button7 = new JoystickButton (TriggerHappy, 7);
-	Button button8 = new JoystickButton (TriggerHappy, 8);
+	Button button3 = new JoystickButton (TriggerHappy, 3);
+	Button button4 = new JoystickButton (TriggerHappy, 4);
 	Button button9 = new JoystickButton (TriggerHappy, 9);
 	Button button10 = new JoystickButton(TriggerHappy, 10);
 	Button button11 = new JoystickButton(TriggerHappy, 11);
@@ -38,8 +38,8 @@ public class OI {
 	
 	
     public OI (){
-        button7.whenPressed(new ChangeLightColor("rainbow"));
-        button8.whenPressed(new ChangeLightColor("off"));
+        button3.whenPressed(new ChangeLightColor("enforcers"));
+        button4.whenPressed(new ChangeLightColor("off"));
         button9.whileHeld(new LiftIntake());
         button10.whileHeld(new DropIntake());
         button11.whileHeld(new SpinIntakeIn());
