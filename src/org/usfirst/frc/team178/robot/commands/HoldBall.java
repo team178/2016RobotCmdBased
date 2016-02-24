@@ -10,13 +10,13 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class BeforeKick extends Command {
+public class HoldBall extends Command {
     Kicker kicker;
     Encoders encoders;
     PhotoelectricSensor sensor;
-   
+    double lastPosition; 
     
-    public BeforeKick() {
+    public HoldBall() {
         requires(Robot.encoders);
         requires(Robot.kicker);
         requires(Robot.sensor);
@@ -30,29 +30,40 @@ public class BeforeKick extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-  
+      if (sensor.getstuff()){
+    	  kicker.kick(0);
+    	  lastPosition = encoders.getDistance(3);
+      }
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-	   if (sensor.getstuff()){
-	   		kicker.kick(0);
-	    	double lastPosition = encoders.getDistance(3);
-	    	while(encoders.getDistance(3)%360.0 < 355) {
-	    		kicker.kick(-.1);
-	    		System.out.println(encoders.getDistance(3));
-	    		
-	    	}
-	    	kicker.kick(0);}
-    }
+    protected void execute() 
+    {
+    	if (sensor.getstuff()){
+    		
+    			kicker.kick(.1);
+    			System.out.println(encoders.getDistance(3));
+    		}
+    	}
+    
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+    	double currentPosition = encoders.getDistance(3);
+    	if (currentPosition-lastPosition > 5) {
+    		return false;
+    	}
+    	else {
+    		currentPosition = lastPosition;
+    		return true;
+    	}
+       
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	kicker.kick(0);
+    	
     }
 
     // Called when another command which requires one or more of the same
