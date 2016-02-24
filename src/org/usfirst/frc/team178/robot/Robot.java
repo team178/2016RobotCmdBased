@@ -19,8 +19,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 import org.usfirst.frc.team178.robot.commands.Autonomous;
+import org.usfirst.frc.team178.robot.commands.ChevalDeFrise;
 import org.usfirst.frc.team178.robot.commands.TeleOp;
-import org.usfirst.frc.team178.robot.commands.TestAutonomous2;
 import org.usfirst.frc.team178.robot.commands.TurnOnRelay;
 import org.usfirst.frc.team178.robot.subsystems.DriveTrain;
 
