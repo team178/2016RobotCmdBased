@@ -4,11 +4,13 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
 public class VisionValues {
 
+	/*
 	public double COG_X;
 	public double DISTANCE_TO_TARGET;
 	public double PROCESS_TIME;
 	public double IMAGE_WIDTH;
 	public double BLOB_COUNT;
+	*/
 	
 	/*
 	 * This void method will return the number of blobs that RoboRealm has found
@@ -35,11 +37,14 @@ public class VisionValues {
 	 * This method returns the calculated distance to the target.
 	 */
 	public double getDISTANCE_TO_TARGET() {
-		return DISTANCE_TO_TARGET;
+		return NetworkTable.getTable("VisionVars").getNumber("DISTANCE_TO_TARGET",0);
 	}
-
+	
+	/*
+	 * This method returns the time taken by RoboRealm to process the image.
+	 */
 	public double getPROCESS_TIME() {
-		return PROCESS_TIME;
+		return NetworkTable.getTable("VisionVars").getNumber("PROCESS_TIME",0);
 	}
 
 	public VisionValues() {

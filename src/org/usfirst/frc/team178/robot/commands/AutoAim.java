@@ -23,7 +23,7 @@ public class AutoAim extends Command {
 	private PIDSource angleFixer = new PIDSource() {
 		@Override
 		public double pidGet() {
-			return vision.COG_X-(vision.IMAGE_WIDTH/2.0);
+			return vision.getCOG_X()-(vision.getIMAGE_WIDTH()/2.0);
 		}
 
 		@Override
@@ -67,7 +67,7 @@ public class AutoAim extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return vision.COG_X-(vision.IMAGE_WIDTH/2.0) < 0.00001;
+        return vision.getCOG_X()-(vision.getIMAGE_WIDTH()/2.0) < 0.00001;
     }
 
     // Called once after isFinished returns true
