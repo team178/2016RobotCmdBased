@@ -18,10 +18,7 @@ import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-import org.usfirst.frc.team178.robot.commands.Autonomous;
-import org.usfirst.frc.team178.robot.commands.TeleOp;
-import org.usfirst.frc.team178.robot.commands.TestAutonomous2;
-import org.usfirst.frc.team178.robot.commands.TurnOnRelay;
+import org.usfirst.frc.team178.robot.commands.*;
 import org.usfirst.frc.team178.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;

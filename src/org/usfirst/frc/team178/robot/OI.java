@@ -22,6 +22,7 @@ public class OI {
 	Button button5 = new JoystickButton(TriggerHappy, 5);
 	Button button6 = new JoystickButton(TriggerHappy, 6);
 	Button button7 = new JoystickButton(TriggerHappy,7);
+	Button button8 = new JoystickButton(TriggerHappy, 8);
 	Joystick TriggerSappy = new Joystick(RobotMap.JoystickPortXbox);
 	Button buttonA = new JoystickButton(TriggerSappy, 1);
 	Button buttonX = new JoystickButton(TriggerSappy, 3);
@@ -47,6 +48,7 @@ public class OI {
         buttonY.whenPressed(new ToggleIntakeLocation(0));
         lBumper.whenPressed(new SpinIntakeIn());
         rBumper.whenPressed(new SpinIntakeOut());
+        button2.whenPressed(new AutoAim());
     }
     
     // There are a few additional built in buttons you can use. Additionally,
