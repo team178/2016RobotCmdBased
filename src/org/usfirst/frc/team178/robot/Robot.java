@@ -20,6 +20,10 @@ import java.io.OutputStreamWriter;
 
 import org.usfirst.frc.team178.robot.commands.Autonomous;
 import org.usfirst.frc.team178.robot.commands.ChevalDeFrise;
+import org.usfirst.frc.team178.robot.commands.Moat;
+import org.usfirst.frc.team178.robot.commands.Ramparts;
+import org.usfirst.frc.team178.robot.commands.RockWall;
+import org.usfirst.frc.team178.robot.commands.RoughTerrain;
 import org.usfirst.frc.team178.robot.commands.TeleOp;
 import org.usfirst.frc.team178.robot.commands.TurnOnRelay;
 import org.usfirst.frc.team178.robot.subsystems.DriveTrain;
