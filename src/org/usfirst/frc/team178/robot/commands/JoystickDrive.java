@@ -26,7 +26,7 @@ public class JoystickDrive extends Command {
 	
 	protected void execute() {
 		//Joystick returns from -1 to 1, motor takes values from -1 to 1.
-		//TODO clean up this section. The negatives are quite ghetto. It's hard to understand.
+		//Motors are attached backwards, hence the negatives
 		yVal = -1*oi.getY();
 		twistVal = -1*oi.getTwist();
 		//System.out.println("Y Val: " + yVal);
@@ -34,7 +34,6 @@ public class JoystickDrive extends Command {
 		//System.out.println("X Val: " + oi.getX());
 
 		// 6wl tank drive has two motors on one gearbox that drive in the same direction.
-		//TODO Debug and optimize this code. It does things weirdly. It's more logical to turn based on twist.
 		//The if condition implements what's called a dead zone. The controllers have some variances to them, 
 		//and this makes sure that the robot doesn't do anything we don't want it to.
 		//Without this, the motor speed is never upset. 
@@ -42,9 +41,6 @@ public class JoystickDrive extends Command {
 		
 		if(Math.abs(yVal)>0.05 || Math.abs(twistVal)>0.05){
 			drivetrain.drive(-twistVal+yVal, -twistVal-yVal);
-			
-			
-			
 		}
 		
 		else {
