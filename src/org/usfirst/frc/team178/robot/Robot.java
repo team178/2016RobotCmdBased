@@ -18,7 +18,9 @@ import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
+import org.usfirst.frc.team178.robot.commands.Autonomous;
 import org.usfirst.frc.team178.robot.commands.TeleOp;
+import org.usfirst.frc.team178.robot.commands.TestAutonomous2;
 import org.usfirst.frc.team178.robot.commands.TurnOnRelay;
 import org.usfirst.frc.team178.robot.subsystems.DriveTrain;
 
@@ -66,9 +68,15 @@ public class Robot extends IterativeRobot {
     	relay = new RelaybecauseAndrew();
 		oi = new OI();
 		vision = new VisionValues();
-        //chooser = new SendableChooser();
-        //chooser.addObject("My Auto", new MyAutoCommand());
-        //SmartDashboard.putData("Auto mode", chooser);
+        chooser = new SendableChooser();
+        chooser.addObject("Rough Terrain", new RoughTerrain());
+        chooser.addObject("Do Nothing", null);
+        chooser.addObject("Ramparts", new Ramparts());
+        chooser.addObject("Moat", new Moat());
+        chooser.addObject("Rock Wall", new RockWall());
+        chooser.addObject("Cheval de Frise", new ChevalDeFrise());
+        
+        SmartDashboard.putData("Auto mode", chooser);
 		
 
         NetworkTable.getTable("VisionVars");
@@ -100,14 +108,14 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
         autonomousCommand = (Command) chooser.getSelected();
         
-		/* String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
+		/*String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
 		switch(autoSelected) {
-		case "My Auto":
-			autonomousCommand = new MyAutoCommand();
+		case "Rough Terrain":
+			autonomousCommand = new Autonomous();
 			break;
 		case "Default Auto":
 		default:
-			autonomousCommand = new ExampleCommand();
+			autonomousCommand = null;
 			break;
 		} */
     	

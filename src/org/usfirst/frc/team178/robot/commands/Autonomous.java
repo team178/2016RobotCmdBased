@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class Autonomous extends CommandGroup {
     
     public  Autonomous() {
-    	
+
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -39,4 +39,9 @@ public class Autonomous extends CommandGroup {
     	
     	
     }
+    
+    protected void execute() {
+    	System.out.println("Just do that");
+    }
+
 }

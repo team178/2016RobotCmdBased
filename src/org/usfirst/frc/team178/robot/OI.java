@@ -28,6 +28,7 @@ public class OI {
 	Button buttonY = new JoystickButton(TriggerSappy, 4);
 	Button lBumper = new JoystickButton(TriggerSappy, 6);
 	Button rBumper = new JoystickButton(TriggerSappy, 5);
+	Button buttonB = new JoystickButton(TriggerSappy, 2);
 	
 	
 
