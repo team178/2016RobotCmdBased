@@ -1,15 +1,15 @@
 package org.usfirst.frc.team178.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.Joystick;
 
 /**
  *
  */
-public class XBoxDrive extends Command {
+public class TestAutonomous2 extends Command {
 
-    public XBoxDrive() {
-        
+    public TestAutonomous2() {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
@@ -18,6 +18,7 @@ public class XBoxDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	System.out.println("Also do this");
     }
 
     // Make this return true when this Command no longer needs to run execute()
