@@ -1,7 +1,6 @@
 
 package org.usfirst.frc.team178.robot;
 import java.io.*;
-
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -9,14 +8,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
-
-import java.beans.Encoder;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import org.usfirst.frc.team178.robot.commands.*;
 import org.usfirst.frc.team178.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
