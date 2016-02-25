@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class OI {
 	
 	Joystick TriggerHappy = new Joystick(RobotMap.JoystickPort);
+
 	Button button1 = new JoystickButton (TriggerHappy, 1);
 	Button button2 = new JoystickButton (TriggerHappy, 2);
 	Button button3 = new JoystickButton (TriggerHappy, 3);
@@ -23,6 +24,7 @@ public class OI {
 	Button button6 = new JoystickButton(TriggerHappy, 6);
 	Button button7 = new JoystickButton(TriggerHappy,7);
 	Button button8 = new JoystickButton(TriggerHappy, 8);
+
 	Joystick TriggerSappy = new Joystick(RobotMap.JoystickPortXbox);
 	Button buttonA = new JoystickButton(TriggerSappy, 1);
 	Button buttonX = new JoystickButton(TriggerSappy, 3);
@@ -43,6 +45,8 @@ public class OI {
 	
     public OI (){
 
+        button3.whenPressed(new ChangeLightColor("enforcers"));
+        button4.whenPressed(new ChangeLightColor("off"));
         buttonA.whenPressed(new Kick());
         buttonB.whenPressed(new HoldBall());
         buttonX.whenPressed(new ToggleIntakeLocation(1));

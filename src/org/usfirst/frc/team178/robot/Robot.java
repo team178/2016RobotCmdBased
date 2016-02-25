@@ -39,8 +39,12 @@ public class Robot extends IterativeRobot {
 	public static Intake intake;
 	public static PhotoelectricSensor sensor;
 	public static RelaybecauseAndrew relay;
+
 	public static VisionValues vision;
 	
+
+	public static LightController lights;
+
 
 	BufferedReader br; 
 	BufferedWriter bw; 
@@ -60,15 +64,16 @@ public class Robot extends IterativeRobot {
     	intake = new Intake();
     	sensor = new PhotoelectricSensor();
     	relay = new RelaybecauseAndrew();
+    	lights = new LightController();
 		oi = new OI();
 		vision = new VisionValues();
         chooser = new SendableChooser();
-        chooser.addObject("Rough Terrain", new RoughTerrain());
+       /* chooser.addObject("Rough Terrain", new RoughTerrain());
         chooser.addObject("Do Nothing", null);
         chooser.addObject("Ramparts", new Ramparts());
         chooser.addObject("Moat", new Moat());
         chooser.addObject("Rock Wall", new RockWall());
-        chooser.addObject("Cheval de Frise", new ChevalDeFrise());
+        chooser.addObject("Cheval de Frise", new ChevalDeFrise()); */
         
         SmartDashboard.putData("Auto mode", chooser);
 		
