@@ -68,12 +68,12 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		vision = new VisionValues();
         chooser = new SendableChooser();
-       /* chooser.addObject("Rough Terrain", new RoughTerrain());
+        chooser.addObject("Rough Terrain", new RoughTerrain());
         chooser.addObject("Do Nothing", null);
         chooser.addObject("Ramparts", new Ramparts());
         chooser.addObject("Moat", new Moat());
         chooser.addObject("Rock Wall", new RockWall());
-        chooser.addObject("Cheval de Frise", new ChevalDeFrise()); */
+        chooser.addObject("Cheval de Frise", new ChevalDeFrise());
         
         SmartDashboard.putData("Auto mode", chooser);
 		
