@@ -31,7 +31,7 @@ public class RockWall extends Command {
     	timer.start();
     	while(timer.get() < 5)
     	{
-    		drivetrain.drive(1, 1);
+    		drivetrain.drive(1, -1);
     	}
     }
 
