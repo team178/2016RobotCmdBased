@@ -51,7 +51,7 @@ public class Robot extends IterativeRobot {
 	
     Command autonomousCommand;
     Command Teleop;
-    SendableChooser chooser;
+    public static SendableChooser chooser;
     
     /**
      * This function is run when the robot is first started up and should be
