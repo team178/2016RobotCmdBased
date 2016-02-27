@@ -37,7 +37,7 @@ public class AutoAim extends Command {
 		VisionValues vision = Robot.vision;
 		visionPIDInput = new VisionPIDInterface();
 		pidOutput = new AutoAimPIDOutput(Robot.drivetrain);
-		pid = new PIDController(3.1, 1, 0, visionPIDInput, pidOutput);
+		pid = new PIDController(3.1, 5, 0, visionPIDInput, pidOutput);
 		pid.setAbsoluteTolerance(.1);
     }
 
@@ -82,6 +82,7 @@ class VisionPIDInterface implements PIDSource{
 		//0 = IMAGE_WIDTH/2
 		//0 = -1
 		//IMAGE_WIDTH = 1
+		System.out.println("This is the scaled deviation"+(((Robot.vision.getCOG_X()/Robot.vision.getIMAGE_WIDTH())*2)-1));
 		return (((Robot.vision.getCOG_X()/Robot.vision.getIMAGE_WIDTH())*2)-1);
 	}
 
@@ -104,6 +105,7 @@ class AutoAimPIDOutput implements PIDOutput{
 	public void pidWrite(double output) {
 		// TODO Auto-generated method stub
 		driveTrain.drive(-output,output);
+		System.out.println("This is the pidOutput: "+output);
 	}
 
 	public void pidAbort(){

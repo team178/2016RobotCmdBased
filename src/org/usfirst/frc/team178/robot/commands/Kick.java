@@ -39,7 +39,7 @@ public class Kick extends Command {
     protected void execute() {
     	if(Robot.intake.isBottomLimitSwitchTripped()||!Robot.intake.isTopLimitSwitchTripped())
     	{
-    		kicker.kick(-.2);
+    		kicker.kick(-1);
     		System.out.println(encoders.getDistance(3));
     	}
     }
