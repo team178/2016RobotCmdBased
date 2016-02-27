@@ -30,16 +30,16 @@ public class ChevalDeFrise extends Command {
         timer.start();
         while(timer.get() <= 1.5)
         {
-            drivetrain.drive(0.8, 0.8);
+            drivetrain.drive(0.8, -0.8);
         }
         intake.dropIntake();
-        while(timer.get() <= 5)
+        while(timer.get() <= 5)//I think 3.5 seconds is too long to go at 100% power... timer should be reduced by about a 1.5, maybe even 2.
         {
-            drivetrain.drive(1, 1);
+            drivetrain.drive(1, -1);
         }
     }
 
-    protected boolean isFinished() {
+    protected boolean isFinished() {//W leave our selves with at least 10 seconds, we can stick in some auto aim code here to try to shoot.
         return (timer.get() > 5);        
     }
 

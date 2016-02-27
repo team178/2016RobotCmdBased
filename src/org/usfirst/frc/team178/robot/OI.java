@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 public class OI {
 	
 	Joystick TriggerHappy = new Joystick(RobotMap.JoystickPort);
+
 	Button button1 = new JoystickButton (TriggerHappy, 1);
 	Button button2 = new JoystickButton (TriggerHappy, 2);
 	Button button3 = new JoystickButton (TriggerHappy, 3);
@@ -23,6 +24,7 @@ public class OI {
 	Button button6 = new JoystickButton(TriggerHappy, 6);
 	Button button7 = new JoystickButton(TriggerHappy,7);
 	Button button8 = new JoystickButton(TriggerHappy, 8);
+
 	Joystick TriggerSappy = new Joystick(RobotMap.JoystickPortXbox);
 	Button buttonA = new JoystickButton(TriggerSappy, 1);
 	Button buttonX = new JoystickButton(TriggerSappy, 3);
@@ -30,6 +32,11 @@ public class OI {
 	Button lBumper = new JoystickButton(TriggerSappy, 6);
 	Button rBumper = new JoystickButton(TriggerSappy, 5);
 	Button buttonB = new JoystickButton(TriggerSappy, 2);
+	Button lTrigger = new JoystickButton(TriggerSappy, 7);
+	Button rTrigger = new JoystickButton(TriggerSappy, 8);
+	Button buttonT = new JoystickButton(TriggerSappy, 9);
+	Button buttonU = new JoystickButton(TriggerSappy, 10);
+	//switch out triggers as necessary (depending on what we're using) ports 7 8 with 9 10
 	
 	
 
@@ -43,6 +50,8 @@ public class OI {
 	
     public OI (){
 
+        button3.whenPressed(new ChangeLightColor("enforcers"));
+        button4.whenPressed(new ChangeLightColor("off"));
         buttonA.whenPressed(new Kick());
         buttonB.whenPressed(new HoldBall());
         buttonX.whenPressed(new ToggleIntakeLocation(1));
@@ -50,6 +59,10 @@ public class OI {
         lBumper.whenPressed(new SpinIntakeIn());
         rBumper.whenPressed(new SpinIntakeOut());
         button2.whenPressed(new AutoAim());
+        lTrigger.whenPressed(new TMScale());
+        rTrigger.whenPressed(new TMScale());
+        buttonT.whenPressed(new AScale());
+        buttonU.whenPressed(new AScale());
     }
     
     // There are a few additional built in buttons you can use. Additionally,

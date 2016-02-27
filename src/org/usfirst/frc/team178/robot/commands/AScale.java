@@ -1,57 +1,54 @@
 package org.usfirst.frc.team178.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.Timer;
-
 import org.usfirst.frc.team178.robot.Robot;
-import org.usfirst.frc.team178.robot.subsystems.*;
+import org.usfirst.frc.team178.robot.subsystems.AntennaScalar;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class Moat extends Command {
+public class AScale extends Command {
+	AntennaScalar antennascalar;
 	
-	DriveTrain drivetrain;
-	Timer timer;
-
-    public Moat() {
-        requires(Robot.drivetrain);
-        drivetrain = Robot.drivetrain;
-        timer = new Timer();
-        timer.stop();
-        timer.reset();
+    public AScale() {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
+    	requires (Robot.antennascalar);
+    	antennascalar = Robot.antennascalar;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	timer.start();
-    	while(timer.get() < 5)
-    	{
-    		drivetrain.drive(1,-1);
-    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return (timer.get() < 5);
+    	if (Robot.oi.isPressed(9)) {
+    		antennascalar.Up();
+    		System.out.println("Scaled");
+    		return true;
+    	}
+    	else if (Robot.oi.isPressed(10)) {
+    		antennascalar.Down();
+    		System.out.println("done scaling");
+    		return true;
+    	}
+    	else {
+    		return false;
+    	}
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	drivetrain.drive(0, 0);
-    	timer.stop();
-    	timer.reset();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	drivetrain.drive(0, 0);
-    	timer.stop();
     }
 }

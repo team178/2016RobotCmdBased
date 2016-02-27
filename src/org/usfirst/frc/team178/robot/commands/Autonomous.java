@@ -1,7 +1,10 @@
 package org.usfirst.frc.team178.robot.commands;
 
 import org.usfirst.frc.team178.robot.Robot;
+
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import org.usfirst.frc.team178.robot.commands.*;
 
 /**
  *
@@ -41,7 +44,13 @@ public class Autonomous extends CommandGroup {
     }
     
     protected void execute() {
-    	System.out.println("Just do that");
+    	try{
+    		addSequential((Command) Robot.chooser.getSelected());
+    	}
+    	catch(Exception e){
+    		//Should run exception code, but won't
+    	}
+    	
     }
 
 }
