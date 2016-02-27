@@ -37,8 +37,11 @@ public class Robot extends IterativeRobot {
 	public static Kicker kicker;
 	public static Encoders encoders;
 	public static Intake intake;
+	public static TapeMeasureScalar tapemeasurescalar;
+	public static AntennaScalar antennascalar;
 	public static PhotoelectricSensor sensor;
 	public static RelaybecauseAndrew relay;
+	public static Scalar scalar;
 
 	public static VisionValues vision;
 	
@@ -51,7 +54,7 @@ public class Robot extends IterativeRobot {
 	
     Command autonomousCommand;
     Command Teleop;
-    SendableChooser chooser;
+    public static SendableChooser chooser;
     
     /**
      * This function is run when the robot is first started up and should be
@@ -62,11 +65,14 @@ public class Robot extends IterativeRobot {
     	kicker = new Kicker();
     	encoders = new Encoders();
     	intake = new Intake();
+    	tapemeasurescalar = new TapeMeasureScalar();
+    	antennascalar = new AntennaScalar();
     	sensor = new PhotoelectricSensor();
     	relay = new RelaybecauseAndrew();
     	lights = new LightController();
 		oi = new OI();
 		vision = new VisionValues();
+		scalar = new Scalar();
         chooser = new SendableChooser();
         chooser.addObject("Rough Terrain", new RoughTerrain());
         chooser.addObject("Do Nothing", null);

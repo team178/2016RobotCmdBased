@@ -32,6 +32,11 @@ public class OI {
 	Button lBumper = new JoystickButton(TriggerSappy, 6);
 	Button rBumper = new JoystickButton(TriggerSappy, 5);
 	Button buttonB = new JoystickButton(TriggerSappy, 2);
+	Button lTrigger = new JoystickButton(TriggerSappy, 7);
+	Button rTrigger = new JoystickButton(TriggerSappy, 8);
+	Button buttonT = new JoystickButton(TriggerSappy, 9);
+	Button buttonU = new JoystickButton(TriggerSappy, 10);
+	//switch out triggers as necessary (depending on what we're using) ports 7 8 with 9 10
 	
 	
 
@@ -54,6 +59,10 @@ public class OI {
         lBumper.whenPressed(new SpinIntakeIn());
         rBumper.whenPressed(new SpinIntakeOut());
         button2.whenPressed(new AutoAim());
+        lTrigger.whenPressed(new TMScale());
+        rTrigger.whenPressed(new TMScale());
+        buttonT.whenPressed(new AScale());
+        buttonU.whenPressed(new AScale());
     }
     
     // There are a few additional built in buttons you can use. Additionally,

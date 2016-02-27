@@ -14,7 +14,8 @@ public class HoldBall extends Command {
     Kicker kicker;
     Encoders encoders;
     PhotoelectricSensor sensor;
-    double lastPosition; 
+    
+    boolean shouldRun  = false;
     
     public HoldBall() {
         requires(Robot.encoders);
@@ -32,29 +33,33 @@ public class HoldBall extends Command {
     protected void initialize() {
       if (sensor.getstuff()){
     	  kicker.kick(0);
-    	  lastPosition = encoders.getDistance(3);
+    	  shouldRun = true;
+      }  
+      else{
+    	  shouldRun = false;
       }
+     
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() 
     {
-    	if (sensor.getstuff()){
+    	//if (sensor.getstuff()){
     		
     			kicker.kick(.1);
     			System.out.println(encoders.getDistance(3));
-    		}
-    	}
+    	//	}
+	}
     
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	double currentPosition = encoders.getDistance(3);
-    	if (currentPosition-lastPosition > 5) {
+    	double currentPosition = encoders.getDistance(3)-((int)(encoders.getDistance(3)/360)*360.0);
+    	if (currentPosition > 5 && shouldRun) {
     		return false;
     	}
     	else {
-    		currentPosition = lastPosition;
+    	
     		return true;
     	}
        
