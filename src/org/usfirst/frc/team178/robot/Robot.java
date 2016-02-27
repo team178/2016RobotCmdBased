@@ -74,13 +74,7 @@ public class Robot extends IterativeRobot {
 		vision = new VisionValues();
 		scalar = new Scalar();
         chooser = new SendableChooser();
-        chooser.addObject("Rough Terrain", new RoughTerrain());
-        chooser.addObject("Do Nothing", null);
-        chooser.addObject("Ramparts", new Ramparts());
-        chooser.addObject("Moat", new Moat());
-        chooser.addObject("Rock Wall", new RockWall());
-        chooser.addObject("Cheval de Frise", new ChevalDeFrise());
-        
+                
         SmartDashboard.putData("Auto mode", chooser);
 		
 
@@ -111,7 +105,13 @@ public class Robot extends IterativeRobot {
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
     public void autonomousInit() {
-        autonomousCommand = (Command) chooser.getSelected();
+    	chooser.addObject("Rough Terrain", new RoughTerrain());
+        chooser.addObject("Do Nothing", null);
+        chooser.addObject("Ramparts", new Ramparts());
+        chooser.addObject("Moat", new Moat());
+        chooser.addObject("Rock Wall", new RockWall());
+        chooser.addObject("Cheval de Frise", new ChevalDeFrise());
+    	autonomousCommand = (Command) chooser.getSelected();
         
 		/*String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
 		switch(autoSelected) {
