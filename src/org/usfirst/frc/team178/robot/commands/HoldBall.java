@@ -14,7 +14,6 @@ public class HoldBall extends Command {
     Kicker kicker;
     Encoders encoders;
     PhotoelectricSensor sensor;
-    double lastPosition; 
     
     public HoldBall() {
         requires(Robot.encoders);
