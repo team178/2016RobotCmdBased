@@ -32,6 +32,11 @@ public class OI {
 	Button lBumper = new JoystickButton(TriggerSappy, 6);
 	Button rBumper = new JoystickButton(TriggerSappy, 5);
 	Button buttonB = new JoystickButton(TriggerSappy, 2);
+	Button buttonR = new JoystickButton(TriggerSappy, 7);
+	Button buttonS = new JoystickButton(TriggerSappy, 8);
+	Button buttonT = new JoystickButton(TriggerSappy, 9);
+	Button buttonU = new JoystickButton(TriggerSappy, 10);
+	//fix buttonR and buttonS (etc.) when we get the actual button value
 	
 	
 
@@ -54,6 +59,10 @@ public class OI {
         lBumper.whenPressed(new SpinIntakeIn());
         rBumper.whenPressed(new SpinIntakeOut());
         button2.whenPressed(new AutoAim());
+        buttonR.whenPressed(new TMScale());
+        buttonS.whenPressed(new TMScale());
+        buttonT.whenPressed(new AScale());
+        buttonU.whenPressed(new AScale());
     }
     
     // There are a few additional built in buttons you can use. Additionally,

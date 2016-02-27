@@ -37,6 +37,8 @@ public class Robot extends IterativeRobot {
 	public static Kicker kicker;
 	public static Encoders encoders;
 	public static Intake intake;
+	public static TapeMeasureScalar tapemeasurescalar;
+	public static AntennaScalar antennascalar;
 	public static PhotoelectricSensor sensor;
 	public static RelaybecauseAndrew relay;
 
@@ -62,6 +64,8 @@ public class Robot extends IterativeRobot {
     	kicker = new Kicker();
     	encoders = new Encoders();
     	intake = new Intake();
+    	tapemeasurescalar = new TapeMeasureScalar();
+    	antennascalar = new AntennaScalar();
     	sensor = new PhotoelectricSensor();
     	relay = new RelaybecauseAndrew();
     	lights = new LightController();
