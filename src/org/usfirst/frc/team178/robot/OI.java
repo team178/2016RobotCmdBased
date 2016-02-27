@@ -37,7 +37,7 @@ public class OI {
 	Button buttonT = new JoystickButton(TriggerSappy, 9);
 	Button buttonU = new JoystickButton(TriggerSappy, 10);
 	//switch out triggers as necessary (depending on what we're using) ports 7 8 with 9 10
-	
+
 	
 
     //// CREATING BUTTONS
@@ -53,16 +53,16 @@ public class OI {
         button3.whenPressed(new ChangeLightColor("enforcers"));
         button4.whenPressed(new ChangeLightColor("off"));
         buttonA.whenPressed(new Kick());
-        buttonB.whenPressed(new HoldBall());
+        buttonB.whileHeld(new HoldBall());
         buttonX.whenPressed(new ToggleIntakeLocation(1));
         buttonY.whenPressed(new ToggleIntakeLocation(0));
         lBumper.whenPressed(new SpinIntakeIn());
         rBumper.whenPressed(new SpinIntakeOut());
-        button2.whenPressed(new AutoAim());
         lTrigger.whenPressed(new TMScale());
         rTrigger.whenPressed(new TMScale());
         buttonT.whenPressed(new AScale());
         buttonU.whenPressed(new AScale());
+        button2.whileHeld(new AutoAim());
     }
     
     // There are a few additional built in buttons you can use. Additionally,
