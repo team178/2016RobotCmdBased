@@ -54,7 +54,7 @@ public class Kick extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	//double passedTime = timeSinceInitialized();
-    	double degrees = encoders.getDistance(3)%360.0;
+    	double degrees = encoders.getDistance(3)-((int)(encoders.getDistance(3)/360)*360.0);
     	if (degrees >= 355) {
     		System.out.println("true");
     		return true;
@@ -67,9 +67,9 @@ public class Kick extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	double degrees = encoders.getDistance(3)%360.0;
+    	double degrees = encoders.getDistance(3)-((int)(encoders.getDistance(3)/360)*360.0);
     	while(degrees >= 170 || degrees <= 20){
-    		degrees = encoders.getDistance(3)%360.0;
+    		degrees = encoders.getDistance(3)-((int)(encoders.getDistance(3)/360)*360.0);
     		kicker.kick(0.1);
     	}
     	kicker.kick(0);
