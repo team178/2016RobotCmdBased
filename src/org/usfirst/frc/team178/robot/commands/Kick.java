@@ -20,26 +20,19 @@ public class Kick extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.kicker);
-    	kicker = Robot.kicker;
     	requires(Robot.encoders);
     	requires(Robot.sensor);
-    	encoders = Robot.encoders;
-    	encoders.reset(3);
-    	sensor = Robot.sensor;
     	
     	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	//kicker.kick(0);
-    	//double lastPosition = encoders.getDistance(3);
-    	//while(encoders.getDistance(3) > 0) {
-    		//kicker.kick(1);
-    		//System.out.println(encoders.getDistance(3));
-    		
-    	//}
-    	//kicker.kick(0);
+
+    	kicker = Robot.kicker;
+    	encoders = Robot.encoders;
+    	encoders.reset(3);
+    	sensor = Robot.sensor;
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -54,8 +47,8 @@ public class Kick extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	//double passedTime = timeSinceInitialized();
-    	double degrees = encoders.getDistance(3)%360.0;
-    	if (degrees >= 355) {
+    	double degrees = encoders.getDistance(3)%360;
+    	if (degrees >= 355) {//It may never stop becuase it only gives you a 4 degree window to return true. 
     		System.out.println("true");
     		return true;
     	}
