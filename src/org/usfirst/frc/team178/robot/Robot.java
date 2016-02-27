@@ -41,6 +41,7 @@ public class Robot extends IterativeRobot {
 	public static AntennaScalar antennascalar;
 	public static PhotoelectricSensor sensor;
 	public static RelaybecauseAndrew relay;
+	public static Scalar scalar;
 
 	public static VisionValues vision;
 	
@@ -71,6 +72,7 @@ public class Robot extends IterativeRobot {
     	lights = new LightController();
 		oi = new OI();
 		vision = new VisionValues();
+		scalar = new Scalar();
         chooser = new SendableChooser();
         chooser.addObject("Rough Terrain", new RoughTerrain());
         chooser.addObject("Do Nothing", null);
