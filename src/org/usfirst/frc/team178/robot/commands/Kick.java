@@ -49,7 +49,7 @@ public class Kick extends Command {
     	//double passedTime = timeSinceInitialized();
 
     	double degrees = encoders.getDistance(3)%360;
-    	if (degrees >= 355) {//It may never stop becuase it only gives you a 4 degree window to return true. 
+    	if (degrees >= 355 || degrees <= 5) {//It may never stop because it only gives you a 4 degree window to return true. 
 
 
     		System.out.println("true");
@@ -75,6 +75,6 @@ public class Kick extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	System.out.println("inttttt");
+    	System.out.println("rick");
     }
 }

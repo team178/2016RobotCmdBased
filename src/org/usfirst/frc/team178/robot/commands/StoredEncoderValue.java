@@ -19,6 +19,7 @@ public class StoredEncoderValue extends Command {
         // eg. requires(chassis);
     }
 
+    
     // Called just before this Command runs the first time
     protected void initialize() {
     }

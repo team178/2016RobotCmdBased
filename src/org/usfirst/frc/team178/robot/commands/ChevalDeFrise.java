@@ -37,10 +37,11 @@ public class ChevalDeFrise extends Command {
         {
             drivetrain.drive(1, -1);
         }
+        //Add auto-aim stuff?
     }
 
     protected boolean isFinished() {//W leave our selves with at least 10 seconds, we can stick in some auto aim code here to try to shoot.
-        return (timer.get() > 5);        
+        return (timer.get() > 10);        
     }
 
     protected void end() {
