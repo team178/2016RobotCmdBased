@@ -9,11 +9,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class TapeMeasureScalar extends Subsystem {
-    public static Relay Freddie;
+    public static Relay Rick;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     public TapeMeasureScalar() {
-    	Freddie = new Relay(RobotMap.scalarMotor, Relay.Direction.kForward);
+    	Rick = new Relay(RobotMap.scalarMotor, Relay.Direction.kForward);
     }
 
     public void initDefaultCommand() {
@@ -23,10 +23,10 @@ public class TapeMeasureScalar extends Subsystem {
     }
     
     public void Up() {
-    	Freddie.set(Relay.Value.kOn);
+    	Rick.set(Relay.Value.kOn);
     }
     public void Down() {
-    	Freddie.set(Relay.Value.kOff);
+    	Rick.set(Relay.Value.kOff);
     }
     
     

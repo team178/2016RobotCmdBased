@@ -1,7 +1,10 @@
 package org.usfirst.frc.team178.robot.subsystems;
 
+import org.usfirst.frc.team178.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.command.Subsystem;
+
 
 /**
  *
@@ -10,7 +13,8 @@ public class LightController extends Subsystem {
     public static I2C arduino;
     
     public LightController(){
-    	arduino = new I2C(I2C.Port.kOnboard, 1);
+    	arduino = new I2C(I2C.Port.kOnboard, RobotMap.arduino);
+    	
     }
     
     // Put methods for controlling this subsystem
