@@ -14,6 +14,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team178.robot.subsystems.*;
 
+import java.util.logging.FileHandler;
+import java.util.logging.Handler;
+import java.util.logging.Logger;
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -23,6 +27,7 @@ import org.usfirst.frc.team178.robot.subsystems.*;
  */
 public class Robot extends IterativeRobot {
 
+    public static Logger logger;
 	public static DriveTrain drivetrain;
 	public static OI oi;
 	public static Kicker kicker;
@@ -46,24 +51,24 @@ public class Robot extends IterativeRobot {
     Command autonomousCommand;
     Command Teleop;
     public static SendableChooser chooser;
-    
+
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
-    	drivetrain  = new DriveTrain();
-    	kicker = new Kicker();
-    	encoders = new Encoders();
-    	intake = new Intake();
-    	tapemeasurescalar = new TapeMeasureScalar();
-    	antennascalar = new AntennaScalar();
-    	sensor = new PhotoelectricSensor();
-    	relay = new RelaybecauseAndrew();
-    	lights = new LightController();
+    	//drivetrain  = new DriveTrain();
+    	//kicker = new Kicker();
+    	//encoders = new Encoders();
+    	//intake = new Intake();
+    	//tapemeasurescalar = new TapeMeasureScalar();
+    	//antennascalar = new AntennaScalar();
+    	//sensor = new PhotoelectricSensor();
+    	//relay = new RelaybecauseAndrew();
+    	//lights = new LightController();
 		oi = new OI();
 		vision = new VisionValues();
-		scalar = new Scalar();
+		//scalar = new Scalar();
         chooser = new SendableChooser();
         chooser.addObject("Rough Terrain", new RoughTerrain());
         chooser.addObject("Do Nothing", null);
@@ -71,6 +76,13 @@ public class Robot extends IterativeRobot {
         chooser.addObject("Moat", new Moat());
         chooser.addObject("Rock Wall", new RockWall());
         chooser.addObject("Cheval de Frise", new ChevalDeFrise());
+        try {
+            Handler fh = new FileHandler("/logs/logfile.log");
+            logger.addHandler(fh);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        logger = Logger.getLogger("org.usfirst.frc.team178");
         
         SmartDashboard.putData("Auto mode", chooser);
 		
@@ -102,8 +114,9 @@ public class Robot extends IterativeRobot {
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
     public void autonomousInit() {
-        autonomousCommand = (Command) chooser.getSelected();
-        
+        //autonomousCommand = (Command) chooser.getSelected();
+        AutoAim autoAim = new AutoAim();
+        autoAim.start();
 		/*String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
 		switch(autoSelected) {
 		case "Rough Terrain":
@@ -116,7 +129,7 @@ public class Robot extends IterativeRobot {
 		} */
     	
     	// schedule the autonomous command (example)
-        if (autonomousCommand != null) autonomousCommand.start();
+        //if (autonomousCommand != null) autonomousCommand.start();
     }
 
     /**
