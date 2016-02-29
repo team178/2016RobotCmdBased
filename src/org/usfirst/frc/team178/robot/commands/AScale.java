@@ -24,27 +24,24 @@ public class AScale extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	antennascalar.Up();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (Robot.oi.isPressed(9)) {
-    		antennascalar.Up();
-    		System.out.println("Scaled");
-    		return true;
-    	}
-    	else if (Robot.oi.isPressed(10)) {
-    		antennascalar.Down();
-    		System.out.println("done scaling");
-    		return true;
-    	}
-    	else {
+    	if (Robot.oi.isTSPressed(8)) 
+    	{
     		return false;
+    	}
+    	else 
+    	{
+    		return true;
     	}
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	antennascalar.Down();
     }
 
     // Called when another command which requires one or more of the same
