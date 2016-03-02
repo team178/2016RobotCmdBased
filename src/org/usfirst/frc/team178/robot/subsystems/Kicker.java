@@ -12,8 +12,8 @@ public class Kicker extends Subsystem {
 	public static CANTalon motor2;
 
 	public Kicker() {
-		motor1 = new CANTalon(12);
-		motor2 = new CANTalon(13);
+		motor1 = new CANTalon(0);
+		motor2 = new CANTalon(3);
 	}
     
     // Put methods for controlling this subsystem
