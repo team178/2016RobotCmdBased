@@ -30,7 +30,7 @@ public class Encoders extends Subsystem {
 		intake = new Encoder(RobotMap.intakeEncoderin,RobotMap.intakeEncoderout, false, Encoder.EncodingType.k4X);
 		leftMotors.setDistancePerPulse(1/1440.0*circumference);
 		rightMotors.setDistancePerPulse(1/1440.0*circumference);
-		kicker.setDistancePerPulse(360/1440.0);
+		kicker.setDistancePerPulse(360/1024.0);
 		intake.setDistancePerPulse(1/1440.0);
 	}
 

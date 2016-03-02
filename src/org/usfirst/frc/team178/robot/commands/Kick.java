@@ -2,7 +2,6 @@ package org.usfirst.frc.team178.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team178.robot.Robot;
-import org.usfirst.frc.team178.robot.subsystems.Encoders;
 import org.usfirst.frc.team178.robot.subsystems.Kicker;
 import org.usfirst.frc.team178.robot.subsystems.PhotoelectricSensor;
 
@@ -13,14 +12,12 @@ import org.usfirst.frc.team178.robot.subsystems.PhotoelectricSensor;
 
 public class Kick extends Command {
 	Kicker kicker;
-	Encoders encoders;
 	PhotoelectricSensor sensor; 
 	
     public Kick() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.kicker);
-    	requires(Robot.encoders);
     	requires(Robot.sensor);
     	
     	
@@ -30,8 +27,7 @@ public class Kick extends Command {
     protected void initialize() {
 
     	kicker = Robot.kicker;
-    	encoders = Robot.encoders;
-    	encoders.reset(3);
+    	Kicker.encoder.reset();
     	sensor = Robot.sensor;
     }
 
@@ -40,7 +36,7 @@ public class Kick extends Command {
     	if(Robot.intake.isBottomLimitSwitchTripped()||!Robot.intake.isTopLimitSwitchTripped())
     	{
     		kicker.kick(-1);
-    		System.out.println(encoders.getDistance(3));
+    		System.out.println(Kicker.encoder.getDistance());
     	}
     }
 
@@ -48,7 +44,7 @@ public class Kick extends Command {
     protected boolean isFinished() {
     	//double passedTime = timeSinceInitialized();
 
-    	double revolutions = encoders.getDistance(3);
+    	double revolutions = Kicker.encoder.getDistance();
     	if (revolutions >= 360) {//It may never stop because it only gives you a 4 degree window to return true. 
 
 
