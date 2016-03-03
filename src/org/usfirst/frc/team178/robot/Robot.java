@@ -1,22 +1,17 @@
 
 package org.usfirst.frc.team178.robot;
-import java.io.*;
-import edu.wpi.first.wpilibj.AnalogInput;
-import edu.wpi.first.wpilibj.DigitalInput;
+
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.networktables.NetworkTable;
-import org.usfirst.frc.team178.robot.commands.*;
-import org.usfirst.frc.team178.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team178.robot.*;
+import org.usfirst.frc.team178.robot.commands.AutoAim;
+import org.usfirst.frc.team178.robot.subsystems.CameraRelay;
+
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team178.robot.subsystems.*;
-
-import java.util.logging.FileHandler;
-import java.util.logging.Handler;
-import java.util.logging.Logger;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -27,68 +22,33 @@ import java.util.logging.Logger;
  */
 public class Robot extends IterativeRobot {
 
-    public static Logger logger;
-	public static DriveTrain drivetrain;
+	//public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
-	public static Kicker kicker;
-	public static Encoders encoders;
-	public static Intake intake;
-	public static TapeMeasureScalar tapemeasurescalar;
-	public static AntennaScalar antennascalar;
-	public static PhotoelectricSensor sensor;
-	public static RelaybecauseAndrew relay;
-	public static Scalar scalar;
-
 	public static VisionValues vision;
-	
 
-	public static LightController lights;
-
-
-	BufferedReader br; 
-	BufferedWriter bw; 
-	
+	CameraServer cameraServer;
     Command autonomousCommand;
-    Command Teleop;
-    public static SendableChooser chooser;
+    AutoAim autoAim;
+    SendableChooser chooser;
+    CameraRelay cameraRelay;
 
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
-    	//drivetrain  = new DriveTrain();
-    	//kicker = new Kicker();
-    	//encoders = new Encoders();
-    	//intake = new Intake();
-    	//tapemeasurescalar = new TapeMeasureScalar();
-    	//antennascalar = new AntennaScalar();
-    	//sensor = new PhotoelectricSensor();
-    	//relay = new RelaybecauseAndrew();
-    	//lights = new LightController();
 		oi = new OI();
 		vision = new VisionValues();
-		//scalar = new Scalar();
-        chooser = new SendableChooser();
-        chooser.addObject("Rough Terrain", new RoughTerrain());
-        chooser.addObject("Do Nothing", null);
-        chooser.addObject("Ramparts", new Ramparts());
-        chooser.addObject("Moat", new Moat());
-        chooser.addObject("Rock Wall", new RockWall());
-        chooser.addObject("Cheval de Frise", new ChevalDeFrise());
-        try {
-            Handler fh = new FileHandler("/logs/logfile.log");
-            logger.addHandler(fh);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        logger = Logger.getLogger("org.usfirst.frc.team178");
-        
-        SmartDashboard.putData("Auto mode", chooser);
-		
-
-        NetworkTable.getTable("VisionVars");
-
+		autoAim = new AutoAim();
+		cameraRelay = new CameraRelay();
+		cameraServer = CameraServer.getInstance();
+		cameraServer.setSize(0);
+		cameraServer.setQuality(50);
+		cameraServer.startAutomaticCapture("cam1");
+        //chooser = new SendableChooser();
+        //chooser.addDefault("Default Auto", new ExampleCommand());
+        //chooser.addObject("My Auto", new MyAutoCommand());
+        //SmartDashboard.putData("Auto mode", chooser);
     }
 	
 	/**
@@ -115,16 +75,15 @@ public class Robot extends IterativeRobot {
 	 */
     public void autonomousInit() {
         //autonomousCommand = (Command) chooser.getSelected();
-        AutoAim autoAim = new AutoAim();
-        autoAim.start();
-		/*String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
+        
+		/* String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
 		switch(autoSelected) {
-		case "Rough Terrain":
-			autonomousCommand = new Autonomous();
+		case "My Auto":
+			autonomousCommand = new MyAutoCommand();
 			break;
 		case "Default Auto":
 		default:
-			autonomousCommand = null;
+			autonomousCommand = new ExampleCommand();
 			break;
 		} */
     	
@@ -144,48 +103,23 @@ public class Robot extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        if (autonomousCommand != null) autonomousCommand.cancel();
-        Teleop = new TeleOp();
-        Teleop.start();
+        //if (autonomousCommand != null) autonomousCommand.cancel();
     }
 
     /**
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-    	//System.out.println(oi.getY()+" "+oi.getX()+" "+oi.getTwist());
-        Scheduler.getInstance().run();      
-    }
-    
-    @Override
-    public void testInit(){
-    	relay.setvalue(true);
-    	
+        Scheduler.getInstance().run();
     }
     
     /**
      * This function is called periodically during test mode
      */
-    @Override
     public void testPeriodic() {
-    	  System.out.println("PHOTOELECTRIC IS :" + sensor.getstuff());        // PhotoElectric Sensor
-    	//  System.out.println("VOLTAGE IS:" + (new AnalogInput(0)).getVoltage());  // Encoders
-    	
-    	//System.out.println("Top: " + intake.isTopLimitSwitchTripped());
-    	//System.out.println("Bottom: " + intake.isBottomLimitSwitchTripped());
-
-    	//try{
-    		//bw.write("X: " + oi.getX() + " Twist: " + oi.getTwist() );
-    		//bw.newLine();
-    	//}catch(Exception e){
-    		
-    	//}
-    	
-    	
-    	
         LiveWindow.run();
-        relay.setvalue(true);
-        //System.out.println(NetworkTable.getTable("VisionVars").getNumber("COG_X", 240));
-    //    System.out.println((new DigitalInput(14)).get());
+        autoAim.start();
+        cameraRelay.turnOnRelay();
+        Scheduler.getInstance().run();
     }
 }
