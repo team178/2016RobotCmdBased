@@ -19,18 +19,18 @@ public class Encoders extends Subsystem {
 	
 	public static Encoder leftMotors;
 	public static Encoder rightMotors;
-	public static Encoder kicker;
+	//public static Encoder kicker;
 	public static Encoder intake;
 	public static final double circumference=2*Math.PI*73;
 	
 	public Encoders(){
 		leftMotors = new Encoder(RobotMap.leftmotorEncoderin,RobotMap.leftmotorEncoderout, true, Encoder.EncodingType.k4X);
 		rightMotors = new Encoder(RobotMap.rightmotorEncoderin,RobotMap.rightmotorEncoderout, false, Encoder.EncodingType.k4X);
-		kicker = new Encoder(RobotMap.kickerEncoderin,RobotMap.kickerEncoderout, false, Encoder.EncodingType.k2X);
+		//kicker = new Encoder(RobotMap.kickerEncoderin,RobotMap.kickerEncoderout, false, Encoder.EncodingType.k2X);
 		intake = new Encoder(RobotMap.intakeEncoderin,RobotMap.intakeEncoderout, false, Encoder.EncodingType.k4X);
 		leftMotors.setDistancePerPulse(1/1440.0*circumference);
 		rightMotors.setDistancePerPulse(1/1440.0*circumference);
-		kicker.setDistancePerPulse(360/1024.0);
+		//kicker.setDistancePerPulse(360/1440.0);
 		intake.setDistancePerPulse(1/1440.0);
 	}
 
@@ -40,13 +40,13 @@ public class Encoders extends Subsystem {
 			
 			double value1 = rightMotors.getDistance();
 			
-			double value2 = kicker.getDistance();
+			//double value2 = kicker.getDistance();
 			
 			double value3 = intake.getDistance();
 			
 		SmartDashboard.putNumber("distance Left", value0);
 		SmartDashboard.putNumber("distance Right", value1);
-		SmartDashboard.putNumber("distance Kicker", value2);
+	//	SmartDashboard.putNumber("distance Kicker", value2);
 		SmartDashboard.putNumber("distance Intake", value3);
 	}
 	public double getDistance(int encoderId){
@@ -59,9 +59,9 @@ public class Encoders extends Subsystem {
 			case 2:
 				distance = rightMotors.getDistance();
 				break;
-			case 3:
-				distance = -kicker.getDistance();
-				break;
+			//case 3:
+			//	distance = -kicker.getDistance();
+			//	break;
 			case 4:
 				distance = intake.getDistance();
 				break;
@@ -75,7 +75,7 @@ public class Encoders extends Subsystem {
 	}
 	
 	public void reset(int encoderId){
-		kicker.reset();
+	//	kicker.reset();
 	}
 	
 
