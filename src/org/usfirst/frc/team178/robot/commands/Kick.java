@@ -13,7 +13,7 @@ import org.usfirst.frc.team178.robot.subsystems.PhotoelectricSensor;
 
 public class Kick extends Command {
 	Kicker kicker;
-	Encoders encoders;
+	//Encoders encoders;
 	PhotoelectricSensor sensor; 
 	
     public Kick() {
@@ -21,13 +21,11 @@ public class Kick extends Command {
         // eg. requires(chassis);
     	requires(Robot.kicker);
     	kicker = Robot.kicker;
-    	requires(Robot.encoders);
+    	//requires(Robot.encoders);
     	requires(Robot.sensor);
-    	encoders = Robot.encoders;
-    	encoders.reset(3);
-    	sensor = Robot.sensor;
-    	
-    	
+    	//encoders = Robot.encoders;
+    	//encoders.reset(3);
+    	sensor = Robot.sensor;	
     }
 
     // Called just before this Command runs the first time
@@ -46,15 +44,21 @@ public class Kick extends Command {
     protected void execute() {
     	if(Robot.intake.isBottomLimitSwitchTripped()||!Robot.intake.isTopLimitSwitchTripped())
     	{
-    		kicker.kick(-.2);
-    		System.out.println(encoders.getDistance(3));
+    		kicker.kick(-1);
+    		;
     	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	//double passedTime = timeSinceInitialized();
-    	double degrees = encoders.getDistance(3)%360.0;
+    	double passedTime = timeSinceInitialized();
+    	if (passedTime >= 0.5) {
+    		return true;
+    	}
+    	else {
+    		return false;
+    	}
+    	/*double degrees = encoders.getDistance(3)%360.0;
     	if (degrees >= 355) {
     		System.out.println("true");
     		return true;
@@ -62,18 +66,17 @@ public class Kick extends Command {
     	else {
     		System.out.println("false");
     		return false;
-    	}
+    	}*/
     }
 
     // Called once after isFinished returns true
-    protected void end() {
-    	double degrees = encoders.getDistance(3)%360.0;
+    protected void end() {	
+    	/*double degrees = encoders.getDistance(3)%360.0;
     	while(degrees >= 170 || degrees <= 20){
     		degrees = encoders.getDistance(3)%360.0;
     		kicker.kick(0.1);
-    	}
+    	}*/
     	kicker.kick(0);
-    	
     }
 
     // Called when another command which requires one or more of the same

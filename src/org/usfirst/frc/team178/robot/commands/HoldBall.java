@@ -12,17 +12,17 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class HoldBall extends Command {
     Kicker kicker;
-    Encoders encoders;
+    //Encoders encoders;
     PhotoelectricSensor sensor;
-    double lastPosition; 
+    //double lastPosition; 
     
     public HoldBall() {
-        requires(Robot.encoders);
+        //requires(Robot.encoders);
         requires(Robot.kicker);
         requires(Robot.sensor);
         kicker = Robot.kicker;
         sensor = Robot.sensor;
-        encoders = Robot.encoders;
+        //encoders = Robot.encoders;
         
     	// Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -32,7 +32,7 @@ public class HoldBall extends Command {
     protected void initialize() {
       if (sensor.getstuff()){
     	  kicker.kick(0);
-    	  lastPosition = encoders.getDistance(3);
+    	  //lastPosition = encoders.getDistance(3);
       }
     }
 
@@ -42,21 +42,28 @@ public class HoldBall extends Command {
     	if (sensor.getstuff()){
     		
     			kicker.kick(.1);
-    			System.out.println(encoders.getDistance(3));
+    			//System.out.println(encoders.getDistance(3));
     		}
     	}
     
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	double currentPosition = encoders.getDistance(3);
+    	double passedTime = timeSinceInitialized();
+    	if (passedTime >= 0.3) {
+    		return true;
+    	}
+    	else {
+    		return false;
+    	}
+    	/*double currentPosition = encoders.getDistance(3);
     	if (currentPosition-lastPosition > 5) {
     		return false;
     	}
     	else {
     		currentPosition = lastPosition;
     		return true;
-    	}
+    	}*/
        
     }
 

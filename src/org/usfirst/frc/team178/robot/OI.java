@@ -45,8 +45,8 @@ public class OI {
 	
     public OI (){
 
-        button3.whenPressed(new ChangeLightColor("enforcers"));
-        button4.whenPressed(new ChangeLightColor("off"));
+        /*button3.whenPressed(new ChangeLightColor("enforcers"));
+        button4.whenPressed(new ChangeLightColor("off"));*/
         buttonA.whenPressed(new Kick());
         buttonB.whenPressed(new HoldBall());
         buttonX.whenPressed(new ToggleIntakeLocation(1));

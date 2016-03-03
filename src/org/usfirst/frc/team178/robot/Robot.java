@@ -43,7 +43,7 @@ public class Robot extends IterativeRobot {
 	public static VisionValues vision;
 	
 
-	public static LightController lights;
+	//public static LightController lights;
 
 
 	BufferedReader br; 
@@ -64,7 +64,7 @@ public class Robot extends IterativeRobot {
     	intake = new Intake();
     	sensor = new PhotoelectricSensor();
     	relay = new RelaybecauseAndrew();
-    	lights = new LightController();
+    	//lights = new LightController();
 		oi = new OI();
 		vision = new VisionValues();
         chooser = new SendableChooser();
