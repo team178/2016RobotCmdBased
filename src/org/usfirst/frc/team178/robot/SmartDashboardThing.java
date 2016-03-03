@@ -30,8 +30,7 @@ public class SmartDashboardThing extends Command {
     	smartdash.putBoolean("Top LS flipped", intake.isTopLimitSwitchTripped());
     	smartdash.putBoolean("Bottom LS flipped", intake.isBottomLimitSwitchTripped());
     	smartdash.putBoolean("Ball in holding area", sensor.getstuff()); //Add other condition or add method in Kicker or something like that
-    	smartdash.putBoolean("Ready to kick", false);
-    	
+    	smartdash.putBoolean("Ready to kick", false); //Add info about whether or not it's ready to kick
 
     }
 

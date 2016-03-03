@@ -1,5 +1,7 @@
 package org.usfirst.frc.team178.robot.commands;
 
+import org.usfirst.frc.team178.robot.SmartDashboardThing;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -12,6 +14,7 @@ public class TeleOp extends CommandGroup {
     	addParallel(new TurnOnRelay());
     	addParallel(new CorrectIntake());
     	addParallel(new Kick());
+    	addParallel(new SmartDashboardThing());
     	
         // Add Commands here:
         // e.g. addSequential(new Command1());
