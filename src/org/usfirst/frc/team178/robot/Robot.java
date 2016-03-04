@@ -47,6 +47,8 @@ public class Robot extends IterativeRobot {
     Command autonomousCommand;
     Command Teleop;
     public static SendableChooser chooser;
+    public static USBCam usbCamera = new USBCam();
+    public static CameraServer cameraServer;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -73,6 +75,11 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData("Auto mode", chooser);
         NetworkTable.getTable("VisionVars");
 
+        cameraServer = CameraServer.getInstance();
+		cameraServer.setSize(0);
+		cameraServer.setQuality(50);
+		cameraServer.startAutomaticCapture(usbCamera.getCamera());
+		SmartDashboard.putData("SwitchCams", new CameraSwitch());
     }
 	
 	/**
