@@ -8,10 +8,13 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team178.robot.*;
 import org.usfirst.frc.team178.robot.commands.AutoAim;
+import org.usfirst.frc.team178.robot.commands.CameraSwitch;
 import org.usfirst.frc.team178.robot.subsystems.CameraRelay;
+import org.usfirst.frc.team178.robot.subsystems.USBCam;
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.vision.USBCamera;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -26,11 +29,12 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static VisionValues vision;
 
-	CameraServer cameraServer;
+	public static CameraServer cameraServer;
     Command autonomousCommand;
     AutoAim autoAim;
     SendableChooser chooser;
     CameraRelay cameraRelay;
+    public static USBCam usbCamera = new USBCam();
 
     /**
      * This function is run when the robot is first started up and should be
@@ -44,7 +48,8 @@ public class Robot extends IterativeRobot {
 		cameraServer = CameraServer.getInstance();
 		cameraServer.setSize(0);
 		cameraServer.setQuality(50);
-		cameraServer.startAutomaticCapture("cam1");
+		cameraServer.startAutomaticCapture(usbCamera.getCamera());
+		SmartDashboard.putData("SwitchCams", new CameraSwitch());
         //chooser = new SendableChooser();
         //chooser.addDefault("Default Auto", new ExampleCommand());
         //chooser.addObject("My Auto", new MyAutoCommand());
