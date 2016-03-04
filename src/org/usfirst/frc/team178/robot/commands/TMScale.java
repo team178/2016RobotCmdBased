@@ -14,8 +14,8 @@ public class TMScale extends Command {
     public TMScale() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires (Robot.tapemeasurescalar);
-    	tapemeasurescalar = Robot.tapemeasurescalar;
+    	//requires (Robot.tapemeasurescalar);
+    	//tapemeasurescalar = Robot.tapemeasurescalar;
     }
 
     // Called just before this Command runs the first time

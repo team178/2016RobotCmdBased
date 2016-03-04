@@ -51,8 +51,8 @@ public class OI {
         button4.whenPressed(new ChangeLightColor("off"));
         buttonA.whenPressed(new Kick());
         buttonB.whileHeld(new HoldBall());
-        buttonX.whenPressed(new ToggleIntakeLocation(1));
-        buttonY.whenPressed(new ToggleIntakeLocation(0));
+        buttonX.whenPressed(new LiftIntake());
+        buttonY.whenPressed(new DropIntake());
         lBumper.whenPressed(new SpinIntakeIn());
         rBumper.whenPressed(new SpinIntakeOut());
         lTrigger.whenPressed(new TMScale());

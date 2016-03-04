@@ -12,9 +12,7 @@ public class TeleOp extends CommandGroup {
     public  TeleOp() {
     	addParallel(new JoystickDrive());
     	addParallel(new TurnOnRelay());
-    	addParallel(new CorrectIntake());
-    	addParallel(new Kick());
-    	addParallel(new SmartDashboardThing());
+    	//addParallel(new SmartDashboardThing());
     	
         // Add Commands here:
         // e.g. addSequential(new Command1());

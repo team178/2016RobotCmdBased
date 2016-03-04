@@ -2,6 +2,7 @@
 package org.usfirst.frc.team178.robot;
 import java.io.*;
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -28,8 +29,8 @@ public class Robot extends IterativeRobot {
 	public static Kicker kicker;
 	public static Encoders encoders;
 	public static Intake intake;
-	public static TapeMeasureScalar tapemeasurescalar;
-	public static AntennaScalar antennascalar;
+	//public static TapeMeasureScalar tapemeasurescalar;
+	//public static AntennaScalar antennascalar;
 	public static PhotoelectricSensor sensor;
 	public static RelaybecauseAndrew relay;
 	public static Scalar scalar;
@@ -46,6 +47,7 @@ public class Robot extends IterativeRobot {
     Command autonomousCommand;
     Command Teleop;
     public static SendableChooser chooser;
+    CameraServer camServer;
     
     /**
      * This function is run when the robot is first started up and should be
@@ -56,8 +58,8 @@ public class Robot extends IterativeRobot {
     	kicker = new Kicker();
     	encoders = new Encoders();
     	intake = new Intake();
-    	tapemeasurescalar = new TapeMeasureScalar();
-    	antennascalar = new AntennaScalar();
+    	//tapemeasurescalar = new TapeMeasureScalar();
+    	//antennascalar = new AntennaScalar();
     	sensor = new PhotoelectricSensor();
     	relay = new RelaybecauseAndrew();
     	lights = new LightController();
@@ -65,6 +67,8 @@ public class Robot extends IterativeRobot {
 		vision = new VisionValues();
 		scalar = new Scalar();
         chooser = new SendableChooser();
+        camServer = CameraServer.getInstance();
+        camServer.startAutomaticCapture("cam3");
                 
         SmartDashboard.putData("Auto mode", chooser);
 		
@@ -141,7 +145,9 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
     	//System.out.println(oi.getY()+" "+oi.getX()+" "+oi.getTwist());
-        Scheduler.getInstance().run();      
+        Scheduler.getInstance().run();
+        System.out.println("Top: " + intake.isTopLimitSwitchTripped());
+        System.out.println("Bottom: " + intake.isBottomLimitSwitchTripped());
     }
     
     @Override

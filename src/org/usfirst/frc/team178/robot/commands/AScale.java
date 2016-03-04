@@ -14,8 +14,8 @@ public class AScale extends Command {
     public AScale() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires (Robot.antennascalar);
-    	antennascalar = Robot.antennascalar;
+    //	requires (Robot.antennascalar);
+    //	antennascalar = Robot.antennascalar;
     }
 
     // Called just before this Command runs the first time
