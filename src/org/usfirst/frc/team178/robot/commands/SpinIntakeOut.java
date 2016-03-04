@@ -1,48 +1,53 @@
 package org.usfirst.frc.team178.robot.commands;
 
 import org.usfirst.frc.team178.robot.Robot;
-import org.usfirst.frc.team178.robot.subsystems.USBCam;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class CameraSwitch extends Command {
+public class SpinIntakeOut extends Command {
 
-	private boolean isDone=false;
-	
-	public CameraSwitch() {
+	public SpinIntakeOut() {
 		// TODO Auto-generated constructor stub
-		requires(Robot.usbCamera);
+		requires(Robot.intake);
 	}
 
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
-		//Intentionally blank
+
 	}
 
 	@Override
 	protected void execute() {
 		// TODO Auto-generated method stub
-		Robot.usbCamera.cameraSwitch();
-		isDone = true;
+		Robot.intake.setInOut(-1);
 	}
 
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return isDone;
+		if(Robot.oi.isTSPressed(5))
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
 	}
 
 	@Override
 	protected void end() {
 		// TODO Auto-generated method stub
-		isDone = false;
+		Robot.intake.setInOut(0);
+		Robot.intake.allStop();
 	}
 
 	@Override
 	protected void interrupted() {
 		// TODO Auto-generated method stub
-
+		
 	}
+
 
 }

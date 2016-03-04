@@ -28,7 +28,7 @@ public class AutoAim extends Command {
     	// System.out.println("Isaac is a door.");
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	//requires(Robot.drivetrain);
+    	requires(Robot.drivetrain);
     }
 
     // Called just before this Command runs the first time
@@ -36,7 +36,7 @@ public class AutoAim extends Command {
     protected void initialize() {
 		VisionValues vision = Robot.vision;
 		visionPIDInput = new VisionPIDInterface();
-		pidOutput = new AutoAimPIDOutput();
+		pidOutput = new AutoAimPIDOutput(Robot.drivetrain);
 		pid = new PIDController(3.1, 5, 0, visionPIDInput, pidOutput);
 		pid.setAbsoluteTolerance(.1);
     }
@@ -69,7 +69,6 @@ class VisionPIDInterface implements PIDSource{
 
 	public VisionPIDInterface() {
 		setPIDSourceType(PIDSourceType.kDisplacement);
-		
 	}
 	
 	@Override
@@ -96,18 +95,21 @@ class VisionPIDInterface implements PIDSource{
 
 class AutoAimPIDOutput implements PIDOutput{
 
-	AutoAimPIDOutput(){
-		//
+	private DriveTrain driveTrain;
+
+	AutoAimPIDOutput(DriveTrain driveTrain){
+		this.driveTrain = driveTrain;
 	}
 
 	@Override
 	public void pidWrite(double output) {
 		// TODO Auto-generated method stub
-		//driveTrain.drive(-output,output);
-		System.out.println("This is the pidOutput: "+output);
+		driveTrain.drive(-output,output);
+		//System.out.println("This is the pidOutput: "+output);
+		Robot.logger.fine("pidOutput is: ("+(-output)+","+(output));
 	}
 
 	public void pidAbort(){
-		//driveTrain.drive(0,0);
+		driveTrain.drive(0,0);
 	}
 }
