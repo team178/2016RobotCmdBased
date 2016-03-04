@@ -57,7 +57,5 @@ public class JoystickDrive extends Command {
 	}
 
 	protected void interrupted() {
-		drivetrain.drive(0,0);
-
 	}
 }
