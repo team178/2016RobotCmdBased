@@ -44,7 +44,7 @@ public class Kick extends Command {
     protected void execute() {
     	if(Robot.intake.isBottomLimitSwitchTripped()||!Robot.intake.isTopLimitSwitchTripped())
     	{
-    		kicker.kick(-1);
+    		kicker.kick(-0.5);
     		;
     	}
     }
