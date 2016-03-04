@@ -1,7 +1,10 @@
 
 package org.usfirst.frc.team178.robot;
 
+import java.io.*;
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -11,7 +14,10 @@ import org.usfirst.frc.team178.robot.commands.AutoAim;
 import org.usfirst.frc.team178.robot.commands.CameraSwitch;
 import org.usfirst.frc.team178.robot.subsystems.CameraRelay;
 import org.usfirst.frc.team178.robot.subsystems.USBCam;
-
+import edu.wpi.first.wpilibj.networktables.NetworkTable;
+import org.usfirst.frc.team178.robot.*;
+import org.usfirst.frc.team178.robot.commands.*;
+import org.usfirst.frc.team178.robot.subsystems.*;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.vision.USBCamera;
@@ -28,8 +34,13 @@ public class Robot extends IterativeRobot {
 	//public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
 	public static VisionValues vision;
-
-	public static CameraServer cameraServer;
+	public static Kicker kicker;
+	public static Encoders encoders;
+	public static Intake intake;
+	public static PhotoelectricSensor sensor;
+	public static RelaybecauseAndrew relay;
+	public static Scalar scalar;
+	public static LightController lights;
     Command autonomousCommand;
     AutoAim autoAim;
     SendableChooser chooser;
@@ -50,10 +61,27 @@ public class Robot extends IterativeRobot {
 		cameraServer.setQuality(50);
 		cameraServer.startAutomaticCapture(usbCamera.getCamera());
 		SmartDashboard.putData("SwitchCams", new CameraSwitch());
-        //chooser = new SendableChooser();
-        //chooser.addDefault("Default Auto", new ExampleCommand());
-        //chooser.addObject("My Auto", new MyAutoCommand());
-        //SmartDashboard.putData("Auto mode", chooser);
+
+    	drivetrain  = new DriveTrain();
+    	kicker = new Kicker();
+    	encoders = new Encoders();
+    	intake = new Intake();
+    	sensor = new PhotoelectricSensor();
+    	relay = new RelaybecauseAndrew();
+    	lights = new LightController();
+		oi = new OI();
+		vision = new VisionValues();
+		//scalar = new Scalar();
+        chooser = new SendableChooser();
+        chooser.addObject("Rough Terrain", new RoughTerrain());
+        chooser.addObject("Do Nothing", null);
+        chooser.addObject("Ramparts", new Ramparts());
+        chooser.addObject("Moat", new Moat());
+        chooser.addObject("Rock Wall", new RockWall());
+        chooser.addObject("Cheval de Frise", new ChevalDeFrise());
+        SmartDashboard.putData("Auto mode", chooser);
+        NetworkTable.getTable("VisionVars");
+
     }
 	
 	/**
@@ -79,21 +107,15 @@ public class Robot extends IterativeRobot {
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
     public void autonomousInit() {
-        //autonomousCommand = (Command) chooser.getSelected();
-        
-		/* String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
-		switch(autoSelected) {
-		case "My Auto":
-			autonomousCommand = new MyAutoCommand();
-			break;
-		case "Default Auto":
-		default:
-			autonomousCommand = new ExampleCommand();
-			break;
-		} */
-    	
-    	// schedule the autonomous command (example)
-        //if (autonomousCommand != null) autonomousCommand.start();
+
+    	chooser.addObject("Rough Terrain", new RoughTerrain());
+        chooser.addObject("Do Nothing", null);
+        chooser.addObject("Ramparts", new Ramparts());
+        chooser.addObject("Moat", new Moat());
+        chooser.addObject("Rock Wall", new RockWall());
+        chooser.addObject("Cheval de Frise", new ChevalDeFrise());
+    	autonomousCommand = (Command) chooser.getSelected();
+
     }
 
     /**
@@ -115,7 +137,20 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
+<<<<<<< HEAD
         Scheduler.getInstance().run();
+=======
+    	//System.out.println(oi.getY()+" "+oi.getX()+" "+oi.getTwist());
+        Scheduler.getInstance().run();
+        System.out.println("Top: " + intake.isTopLimitSwitchTripped());
+        System.out.println("Bottom: " + intake.isBottomLimitSwitchTripped());
+    }
+    
+    @Override
+    public void testInit(){
+    	relay.setvalue(true);
+    	
+>>>>>>> master
     }
     
     /**
