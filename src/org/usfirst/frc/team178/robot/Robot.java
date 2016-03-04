@@ -1,5 +1,6 @@
 
 package org.usfirst.frc.team178.robot;
+
 import java.io.*;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.CameraServer;
@@ -8,17 +9,18 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import org.usfirst.frc.team178.robot.*;
+import org.usfirst.frc.team178.robot.commands.AutoAim;
+import org.usfirst.frc.team178.robot.commands.CameraSwitch;
+import org.usfirst.frc.team178.robot.subsystems.CameraRelay;
+import org.usfirst.frc.team178.robot.subsystems.USBCam;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import org.usfirst.frc.team178.robot.*;
 import org.usfirst.frc.team178.robot.commands.*;
 import org.usfirst.frc.team178.robot.subsystems.*;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team178.robot.subsystems.*;
-
-import java.util.logging.FileHandler;
-import java.util.logging.Handler;
-import java.util.logging.Logger;
+import edu.wpi.first.wpilibj.vision.USBCamera;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -29,30 +31,37 @@ import java.util.logging.Logger;
  */
 public class Robot extends IterativeRobot {
 
-    public static Logger logger;
-	public static DriveTrain drivetrain;
+	//public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
+	public static VisionValues vision;
 	public static Kicker kicker;
 	public static Encoders encoders;
 	public static Intake intake;
-	//public static TapeMeasureScalar tapemeasurescalar;
-	//public static AntennaScalar antennascalar;
 	public static PhotoelectricSensor sensor;
 	public static RelaybecauseAndrew relay;
 	public static Scalar scalar;
-	public static VisionValues vision;
 	public static LightController lights;
-	BufferedReader br; 
-	BufferedWriter bw; 
     Command autonomousCommand;
-    Command Teleop;
-    public static SendableChooser chooser;
+    AutoAim autoAim;
+    SendableChooser chooser;
+    CameraRelay cameraRelay;
+    public static USBCam usbCamera = new USBCam();
 
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
+		oi = new OI();
+		vision = new VisionValues();
+		autoAim = new AutoAim();
+		cameraRelay = new CameraRelay();
+		cameraServer = CameraServer.getInstance();
+		cameraServer.setSize(0);
+		cameraServer.setQuality(50);
+		cameraServer.startAutomaticCapture(usbCamera.getCamera());
+		SmartDashboard.putData("SwitchCams", new CameraSwitch());
+
     	drivetrain  = new DriveTrain();
     	kicker = new Kicker();
     	encoders = new Encoders();
@@ -106,7 +115,7 @@ public class Robot extends IterativeRobot {
         chooser.addObject("Rock Wall", new RockWall());
         chooser.addObject("Cheval de Frise", new ChevalDeFrise());
     	autonomousCommand = (Command) chooser.getSelected();
-        
+
     }
 
     /**
@@ -121,15 +130,16 @@ public class Robot extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        if (autonomousCommand != null) autonomousCommand.cancel();
-        Teleop = new TeleOp();
-        Teleop.start();
+        //if (autonomousCommand != null) autonomousCommand.cancel();
     }
 
     /**
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
+<<<<<<< HEAD
+        Scheduler.getInstance().run();
+=======
     	//System.out.println(oi.getY()+" "+oi.getX()+" "+oi.getTwist());
         Scheduler.getInstance().run();
         System.out.println("Top: " + intake.isTopLimitSwitchTripped());
@@ -140,31 +150,16 @@ public class Robot extends IterativeRobot {
     public void testInit(){
     	relay.setvalue(true);
     	
+>>>>>>> master
     }
     
     /**
      * This function is called periodically during test mode
      */
-    @Override
     public void testPeriodic() {
-    	  System.out.println("PHOTOELECTRIC IS :" + sensor.getstuff());        // PhotoElectric Sensor
-    	//  System.out.println("VOLTAGE IS:" + (new AnalogInput(0)).getVoltage());  // Encoders
-    	
-    	//System.out.println("Top: " + intake.isTopLimitSwitchTripped());
-    	//System.out.println("Bottom: " + intake.isBottomLimitSwitchTripped());
-
-    	//try{
-    		//bw.write("X: " + oi.getX() + " Twist: " + oi.getTwist() );
-    		//bw.newLine();
-    	//}catch(Exception e){
-    		
-    	//}
-    	
-    	
-    	
         LiveWindow.run();
-        relay.setvalue(true);
-        //System.out.println(NetworkTable.getTable("VisionVars").getNumber("COG_X", 240));
-    //    System.out.println((new DigitalInput(14)).get());
+        autoAim.start();
+        cameraRelay.turnOnRelay();
+        Scheduler.getInstance().run();
     }
 }
