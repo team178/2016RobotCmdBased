@@ -16,6 +16,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team178.robot.subsystems.*;
 
+import java.util.logging.FileHandler;
+import java.util.logging.Handler;
+import java.util.logging.Logger;
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -25,6 +29,7 @@ import org.usfirst.frc.team178.robot.subsystems.*;
  */
 public class Robot extends IterativeRobot {
 
+    public static Logger logger;
 	public static DriveTrain drivetrain;
 	public static OI oi;
 	public static Kicker kicker;
@@ -42,8 +47,7 @@ public class Robot extends IterativeRobot {
     Command autonomousCommand;
     Command Teleop;
     public static SendableChooser chooser;
-    CameraServer camServer;
-    
+
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -53,18 +57,19 @@ public class Robot extends IterativeRobot {
     	kicker = new Kicker();
     	encoders = new Encoders();
     	intake = new Intake();
-    	//tapemeasurescalar = new TapeMeasureScalar();
-    	//antennascalar = new AntennaScalar();
     	sensor = new PhotoelectricSensor();
     	relay = new RelaybecauseAndrew();
     	lights = new LightController();
 		oi = new OI();
 		vision = new VisionValues();
-		scalar = new Scalar();
+		//scalar = new Scalar();
         chooser = new SendableChooser();
-        camServer = CameraServer.getInstance();
-        camServer.startAutomaticCapture("cam3");
-    
+        chooser.addObject("Rough Terrain", new RoughTerrain());
+        chooser.addObject("Do Nothing", null);
+        chooser.addObject("Ramparts", new Ramparts());
+        chooser.addObject("Moat", new Moat());
+        chooser.addObject("Rock Wall", new RockWall());
+        chooser.addObject("Cheval de Frise", new ChevalDeFrise());
         SmartDashboard.putData("Auto mode", chooser);
         NetworkTable.getTable("VisionVars");
 
@@ -93,6 +98,7 @@ public class Robot extends IterativeRobot {
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
     public void autonomousInit() {
+
     	chooser.addObject("Rough Terrain", new RoughTerrain());
         chooser.addObject("Do Nothing", null);
         chooser.addObject("Ramparts", new Ramparts());
@@ -101,19 +107,6 @@ public class Robot extends IterativeRobot {
         chooser.addObject("Cheval de Frise", new ChevalDeFrise());
     	autonomousCommand = (Command) chooser.getSelected();
         
-		/*String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
-		switch(autoSelected) {
-		case "Rough Terrain":
-			autonomousCommand = new Autonomous();
-			break;
-		case "Default Auto":
-		default:
-			autonomousCommand = null;
-			break;
-		} */
-    	
-    	// schedule the autonomous command (example)
-        if (autonomousCommand != null) autonomousCommand.start();
     }
 
     /**

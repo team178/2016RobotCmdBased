@@ -105,7 +105,8 @@ class AutoAimPIDOutput implements PIDOutput{
 	public void pidWrite(double output) {
 		// TODO Auto-generated method stub
 		driveTrain.drive(-output,output);
-		System.out.println("This is the pidOutput: "+output);
+		//System.out.println("This is the pidOutput: "+output);
+		Robot.logger.fine("pidOutput is: ("+(-output)+","+(output));
 	}
 
 	public void pidAbort(){
