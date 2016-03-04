@@ -9,8 +9,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
+import org.usfirst.frc.team178.robot.*;
 import org.usfirst.frc.team178.robot.commands.*;
-import org.usfirst.frc.team178.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team178.robot.subsystems.*;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team178.robot.subsystems.*;
@@ -34,16 +35,10 @@ public class Robot extends IterativeRobot {
 	public static PhotoelectricSensor sensor;
 	public static RelaybecauseAndrew relay;
 	public static Scalar scalar;
-
 	public static VisionValues vision;
-	
-
 	public static LightController lights;
-
-
 	BufferedReader br; 
 	BufferedWriter bw; 
-	
     Command autonomousCommand;
     Command Teleop;
     public static SendableChooser chooser;
@@ -69,10 +64,8 @@ public class Robot extends IterativeRobot {
         chooser = new SendableChooser();
         camServer = CameraServer.getInstance();
         camServer.startAutomaticCapture("cam3");
-                
+    
         SmartDashboard.putData("Auto mode", chooser);
-		
-
         NetworkTable.getTable("VisionVars");
 
     }
