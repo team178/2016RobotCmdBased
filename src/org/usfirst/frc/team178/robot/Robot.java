@@ -50,7 +50,6 @@ public class Robot extends IterativeRobot {
 	BufferedWriter bw; 
 	
     Command autonomousCommand;
-    Command Teleop;
     SendableChooser chooser;
     
     /**
@@ -135,8 +134,6 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
-        Teleop = new TeleOp();
-        Teleop.start();
     }
 
     /**

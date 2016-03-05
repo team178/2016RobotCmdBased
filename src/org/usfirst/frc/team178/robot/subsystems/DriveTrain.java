@@ -2,6 +2,9 @@ package org.usfirst.frc.team178.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Ultrasonic;
+
+import org.usfirst.frc.team178.robot.commands.JoystickDrive;
+
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -35,7 +38,7 @@ public class DriveTrain extends Subsystem
 	@Override
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
-		
+		setDefaultCommand(new JoystickDrive());
 	}
 }
 
