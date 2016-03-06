@@ -5,15 +5,23 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team178.robot.*;
 import org.usfirst.frc.team178.robot.subsystems.DriveTrain;
 
-public class Drive extends CommandBase{
+public class Drive extends Command{
 
 	double yVal,twistVal;
+	OI oi;
+	DriveTrain drivetrain;
 	
 	public Drive()
 	{
-		requires(Robot.drivetrain);
+		requires(Robot.drivetrain);    			
 	}
 	
+	@Override
+	protected void initialize() {
+		oi = Robot.oi;
+    	drivetrain = Robot.drivetrain;
+	}
+
 	protected void execute() {
 		//Joystick returns from -1 to 1, motor takes values from -1 to 1.
 		//TODO clean up this section. The negatives are quite ghetto. It's hard to understand.

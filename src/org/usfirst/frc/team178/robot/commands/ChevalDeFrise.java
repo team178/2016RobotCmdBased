@@ -35,7 +35,7 @@ public class ChevalDeFrise extends Command {
         intake.dropIntake();
         while(timer.get() <= 5)
         {
-            drivetrain.drive(1, 1);
+            drivetrain.drive(1, -1);
         }
     }
 

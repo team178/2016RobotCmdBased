@@ -47,9 +47,10 @@ public class OI {
 
         /*button3.whenPressed(new ChangeLightColor("enforcers"));
         button4.whenPressed(new ChangeLightColor("off"));*/
-        buttonA.whenPressed(new KickandReset());
-        buttonX.whenPressed(new LiftIntake());
-        buttonY.whenPressed(new DropIntake());
+        buttonA.whenPressed(new Kick());
+        buttonB.whenPressed(new HoldBall());
+        buttonY.whenPressed(new LiftIntake());
+        buttonX.whenPressed(new DropIntake());
         lBumper.whenPressed(new SpinIntakeIn());
         rBumper.whenPressed(new SpinIntakeOut());
         button2.whenPressed(new AutoAim());

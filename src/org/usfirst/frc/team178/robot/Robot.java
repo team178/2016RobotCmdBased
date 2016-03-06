@@ -3,6 +3,7 @@ package org.usfirst.frc.team178.robot;
 import java.io.*;
 
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -18,9 +19,11 @@ import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import org.usfirst.frc.team178.robot.commands.*;
-import org.usfirst.frc.team178.robot.subsystems.DriveTrain;
+
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.vision.USBCamera;
+
 import org.usfirst.frc.team178.robot.subsystems.*;
 
 /**
@@ -39,7 +42,6 @@ public class Robot extends IterativeRobot {
 	public static Intake intake;
 	public static PhotoelectricSensor sensor;
 	public static RelaybecauseAndrew relay;
-
 	public static VisionValues vision;
 	
 
@@ -51,6 +53,9 @@ public class Robot extends IterativeRobot {
 	
     Command autonomousCommand;
     SendableChooser chooser;
+    public static USBCam usbcamera;
+	public static CameraServer cameraServer;
+	
     
     /**
      * This function is run when the robot is first started up and should be
@@ -66,21 +71,46 @@ public class Robot extends IterativeRobot {
     	//lights = new LightController();
 		oi = new OI();
 		vision = new VisionValues();
-        chooser = new SendableChooser();
-       /* chooser.addObject("Rough Terrain", new RoughTerrain());
+        
+		/*chooser = new SendableChooser();
+        chooser.addDefault("Do Nothing", new AutoDoNothing());
+        chooser.addObject("Rough Terrain", new RoughTerrain());
         chooser.addObject("Do Nothing", null);
         chooser.addObject("Ramparts", new Ramparts());
         chooser.addObject("Moat", new Moat());
         chooser.addObject("Rock Wall", new RockWall());
-        chooser.addObject("Cheval de Frise", new ChevalDeFrise()); */
+        chooser.addObject("Cheval de Frise", new ChevalDeFrise());
+        */
+        //SmartDashboard.putData("Auto mode", chooser);
         
-        SmartDashboard.putData("Auto mode", chooser);
+		//SmartDashboard.putData("UltrasonicData", new Ultrasonic() );
+		//SmartDashboard.putData("Photoelectric Sensor", new PhotoelectricSensor());
 		
+        usbcamera = new USBCam();
+        cameraServer = CameraServer.getInstance();
+        cameraServer.setSize(0);
+        cameraServer.setQuality(50);
+        cameraServer.startAutomaticCapture(usbcamera.getCamera());
 
         NetworkTable.getTable("VisionVars");
 
     }
 	
+	@Override
+	public void teleopInit() {
+		// TODO Auto-generated method stub
+		TeleOp teleOp = new TeleOp();
+		teleOp.start();
+		super.teleopInit();
+	}
+
+	@Override
+	public void teleopPeriodic() {
+		// TODO Auto-generated method stub
+		Scheduler.getInstance().run();
+		super.teleopPeriodic();
+	}
+
 	/**
      * This function is called once each time the robot enters Disabled mode.
      * You can use it to reset any subsystem information you want to clear when
@@ -104,58 +134,36 @@ public class Robot extends IterativeRobot {
 	 * or additional comparisons to the switch structure below with additional strings & commands.
 	 */
     public void autonomousInit() {
-        autonomousCommand = (Command) chooser.getSelected();
         
 		/*String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
 		switch(autoSelected) {
 		case "Rough Terrain":
-			autonomousCommand = new Autonomous();
+			autonomousCommand = new RoughTerrain();
 			break;
-		case "Default Auto":
+		case "Do Nothing":
 		default:
 			autonomousCommand = null;
 			break;
-		} */
-    	
-    	// schedule the autonomous command (example)
-        if (autonomousCommand != null) autonomousCommand.start();
+		case "Ramparts":
+			autonomousCommand = new Ramparts();
+			break;
+		case "Moat":
+			autonomousCommand = new Moat();
+			break;
+		case "Rock Wall":
+			autonomousCommand = new RockWall();
+			break;
+		case "Cheval de Frise":
+			autonomousCommand = new ChevalDeFrise();
+			break;
+			
+		}*/
+		//autonomousCommand = ((Command) chooser.getSelected());
+		//if(autonomousCommand!=null){autonomousCommand.start();}
     }
-
-    /**
-     * This function is called periodically during autonomous
-     */
-    public void autonomousPeriodic() {
-        Scheduler.getInstance().run();
-    }
-
-    public void teleopInit() {
-		// This makes sure that the autonomous stops running when
-        // teleop starts running. If you want the autonomous to 
-        // continue until interrupted by another command, remove
-        // this line or comment it out.
-        if (autonomousCommand != null) autonomousCommand.cancel();
-    }
-
-    /**
-     * This function is called periodically during operator control
-     */
-    public void teleopPeriodic() {
-    	//System.out.println(oi.getY()+" "+oi.getX()+" "+oi.getTwist());
-        Scheduler.getInstance().run();      
-    }
-    
-    @Override
-    public void testInit(){
-    	relay.setvalue(true);
-    	
-    }
-    
-    /**
-     * This function is called periodically during test mode
-     */
     @Override
     public void testPeriodic() {
-    	  System.out.println("PHOTOELECTRIC IS :" + sensor.getstuff());        // PhotoElectric Sensor
+    	  System.out.println("PHOTOELECTRIC IS :" + sensor.isActivated());        // PhotoElectric Sensor
     	//  System.out.println("VOLTAGE IS:" + (new AnalogInput(0)).getVoltage());  // Encoders
     	
     	//System.out.println("Top: " + intake.isTopLimitSwitchTripped());

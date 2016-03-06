@@ -29,7 +29,7 @@ public class PickUpBoulder extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(Robot.sensor.getstuff()){
+    	if(Robot.sensor.isActivated()){
     		return true;
     	}
     	else{

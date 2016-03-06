@@ -16,7 +16,7 @@ public class RobotMap {
 	public static int SwitchPort4 = 4;
 	
 	
-    public static int PhotoelectricSensor = 8;//0;
+    public static int PhotoelectricSensor = 0;//0;
     public static int kickerEncoderin = 1;
 	public static int kickerEncoderout = 2;
 	public static int intakeEncoderin = 4;

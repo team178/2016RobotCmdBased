@@ -29,7 +29,7 @@ public class RoughTerrain extends Command {
     	timer.start();
     	while(timer.get() < 5)
     	{
-    		drivetrain.drive(1, 1);
+    		drivetrain.drive(1, -1);
     	}
     }
 
@@ -42,7 +42,6 @@ public class RoughTerrain extends Command {
     protected void end() {
     	drivetrain.drive(0, 0);
     	timer.stop();
-    	timer.reset();
     }
 
     // Called when another command which requires one or more of the same
