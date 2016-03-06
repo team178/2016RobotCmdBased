@@ -18,6 +18,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+
+import org.usfirst.frc.team178.robot.autocommands.ChevalDeFrise;
 import org.usfirst.frc.team178.robot.commands.*;
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -44,9 +46,7 @@ public class Robot extends IterativeRobot {
 	public static RelaybecauseAndrew relay;
 	public static VisionValues vision;
 	
-
 	//public static LightController lights;
-
 
 	BufferedReader br; 
 	BufferedWriter bw; 
@@ -73,35 +73,74 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		vision = new VisionValues();
         
-		/*chooser = new SendableChooser();
+		chooser = new SendableChooser();
         chooser.addDefault("Do Nothing", new AutoDoNothing());
-        chooser.addObject("Rough Terrain", new RoughTerrain());
-        chooser.addObject("Do Nothing", null);
-        chooser.addObject("Ramparts", new Ramparts());
-        chooser.addObject("Moat", new Moat());
-        chooser.addObject("Rock Wall", new RockWall());
+        chooser.addObject("Rough Terrain", new AutoDrive(5, 0.7));
+        chooser.addObject("Ramparts", new AutoDrive(5, 0.7));
+        chooser.addObject("Moat", new AutoDrive(5, 0.7));
+        chooser.addObject("Rock Wall", new AutoDrive(5, 0.7));
         chooser.addObject("Cheval de Frise", new ChevalDeFrise());
-        */
-        //SmartDashboard.putData("Auto mode", chooser);
+        
+        SmartDashboard.putData("Auto mode", chooser);
         
 		
 		//SmartDashboard.putData("Photoelectric Sensor", new PhotoelectricSensor());
-		
+	/*	
         usbcamera = new USBCam();
         cameraServer = CameraServer.getInstance();
         cameraServer.setSize(0);
         cameraServer.setQuality(50);
         cameraServer.startAutomaticCapture(usbcamera.getCamera());
-
+*/
         NetworkTable.getTable("VisionVars");
 
     }
-	
+    
+	/**
+	 * This autonomous (along with the chooser code above) shows how to select between different autonomous modes
+	 * using the dashboard. The sendable chooser code works with the Java SmartDashboard. If you prefer the LabVIEW
+	 * Dashboard, remove all of the chooser code and uncomment the getString code to get the auto name from the text box
+	 * below the Gyro
+	 *
+	 * You can add additional auto modes by adding additional commands to the chooser code above (like the commented example)
+	 * or additional comparisons to the switch structure below with additional strings & commands.
+	 */
+    public void autonomousInit() {
+        
+		String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
+		switch(autoSelected) {
+		case "Rough Terrain":
+			autonomousCommand = new AutoDrive();
+			break;
+		case "Do Nothing":
+		default:
+			autonomousCommand = new AutoDoNothing();
+			break;
+		case "Ramparts":
+			autonomousCommand = new AutoDrive();
+			break;
+		case "Moat":
+			autonomousCommand = new AutoDrive();
+			break;
+		case "Rock Wall":
+			autonomousCommand = new AutoDrive();
+			break;
+		case "Cheval de Frise":
+			autonomousCommand = new ChevalDeFrise();
+			break;
+		}
+		autonomousCommand = ((Command) chooser.getSelected());
+    	if(autonomousCommand!=null){
+    		autonomousCommand.start();
+    	}
+    }
+    
+    public void autonomousPeriodic(){
+    	Scheduler.getInstance().run();
+    }
 	@Override
 	public void teleopInit() {
-		// TODO Auto-generated method stub
-		TeleOp teleOp = new TeleOp();
-		teleOp.start();
+		// TODO Auto-generated method stuff
 		super.teleopInit();
 	}
 
@@ -127,43 +166,12 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("UltrasonicData", (uSonic.getVoltage()));
 	}
 
-	/**
-	 * This autonomous (along with the chooser code above) shows how to select between different autonomous modes
-	 * using the dashboard. The sendable chooser code works with the Java SmartDashboard. If you prefer the LabVIEW
-	 * Dashboard, remove all of the chooser code and uncomment the getString code to get the auto name from the text box
-	 * below the Gyro
-	 *
-	 * You can add additional auto modes by adding additional commands to the chooser code above (like the commented example)
-	 * or additional comparisons to the switch structure below with additional strings & commands.
-	 */
-    public void autonomousInit() {
-        
-		String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
-		switch(autoSelected) {
-		case "Rough Terrain":
-			autonomousCommand = new RoughTerrain();
-			break;
-		case "Do Nothing":
-		default:
-			autonomousCommand = null;
-			break;
-		case "Ramparts":
-			autonomousCommand = new Ramparts();
-			break;
-		case "Moat":
-			autonomousCommand = new Moat();
-			break;
-		case "Rock Wall":
-			autonomousCommand = new RockWall();
-			break;
-		case "Cheval de Frise":
-			autonomousCommand = new ChevalDeFrise();
-			break;
-			
-		}
-		//autonomousCommand = ((Command) chooser.getSelected());
-		//if(autonomousCommand!=null){autonomousCommand.start();}
+
+    
+    public void testInit(){
+    	
     }
+    
     @Override
     public void testPeriodic() {
     	  System.out.println("PHOTOELECTRIC IS :" + sensor.isActivated());        // PhotoElectric Sensor
@@ -178,8 +186,6 @@ public class Robot extends IterativeRobot {
     	//}catch(Exception e){
     		
     	//}
-    	
-    	
     	
         LiveWindow.run();
         relay.setvalue(true);

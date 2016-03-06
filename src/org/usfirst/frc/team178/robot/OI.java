@@ -49,10 +49,10 @@ public class OI {
         button4.whenPressed(new ChangeLightColor("off"));*/
         buttonA.whenPressed(new Kick());
         buttonB.whenPressed(new HoldBall());
-        buttonY.whenPressed(new LiftIntake());
-        buttonX.whenPressed(new DropIntake());
-        lBumper.whenPressed(new SpinIntakeIn());
-        rBumper.whenPressed(new SpinIntakeOut());
+        buttonY.whenPressed(new ToggleIntakeLocation(4,-0.5));
+        buttonX.whenPressed(new ToggleIntakeLocation(3,0.5));
+        lBumper.whenPressed(new SpinIntake(6, 1));
+        rBumper.whenPressed(new SpinIntake(5, -1));
         button2.whenPressed(new AutoAim());
     }
     

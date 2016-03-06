@@ -1,15 +1,20 @@
-package org.usfirst.frc.team178.robot.commands;
+package org.usfirst.frc.team178.robot.autocommands;
+
+import org.usfirst.frc.team178.robot.commands.AutoDrive;
+import org.usfirst.frc.team178.robot.commands.ToggleIntakeLocation;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class TeleOp extends CommandGroup {
+public class ChevalDeFrise extends CommandGroup {
     
-    public  TeleOp() {
-    	addParallel(new JoystickDrive());
-    	addParallel(new TurnOnRelay());
+    public  ChevalDeFrise() {
+    	addSequential(new AutoDrive(1.5,0.8));
+    	//addSequential(new ToggleIntakeLocation(1));
+    	addSequential(new AutoDrive(5.0,1.0));
+    	
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
