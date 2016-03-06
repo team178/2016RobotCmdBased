@@ -24,7 +24,7 @@ public class CorrectIntake extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(intake.getIntakeLocation()!=intake.isTopLimitSwitchTripped()&& intake.getIntakeLocation())
+    	/*if(intake.getIntakeLocation()!=intake.isTopLimitSwitchTripped()&& intake.getIntakeLocation())
     	{
     		Robot.intake.liftIntake();
     	}
@@ -35,7 +35,7 @@ public class CorrectIntake extends Command {
     	else
     	{
     		Robot.intake.setUpDown(0);
-    	}
+    	}*/
     }
 
     // Make this return true when this Command no longer needs to run execute()

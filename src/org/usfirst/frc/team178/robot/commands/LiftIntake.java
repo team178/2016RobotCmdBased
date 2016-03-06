@@ -22,6 +22,7 @@ public class LiftIntake extends Command {
 		timer = new Timer();
 		timer.start();
 		timer.reset();
+		this.setTimeout(0.5);
 		// TODO Auto-generated method stub
 	}
 
@@ -34,14 +35,15 @@ public class LiftIntake extends Command {
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		if(Robot.intake.isTopLimitSwitchTripped()||timer.get()>=2)
+		/*if(Robot.intake.isTopLimitSwitchTripped()||timer.get()>=2)
 		{
 			return true;
 		}
 		else
 		{
 			return false;
-		}
+		}*/
+		return(this.isTimedOut());
 	}
 
 	@Override

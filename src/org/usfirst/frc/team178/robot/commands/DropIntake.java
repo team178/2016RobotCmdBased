@@ -22,6 +22,7 @@ public class DropIntake extends Command {
 		timer = new Timer();
 		timer.stop();
 		timer.reset();
+		this.setTimeout(1);
 		// TODO Auto-generated method stub
 	}
 
@@ -35,14 +36,15 @@ public class DropIntake extends Command {
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		if(Robot.intake.isBottomLimitSwitchTripped()||timer.get()>=2)
+		/*if(timer.get()>=2)
 		{
 			return true;
 		}
 		else
 		{
 			return false;
-		}
+		}*/
+		return (this.isTimedOut());
 	}
 
 	@Override

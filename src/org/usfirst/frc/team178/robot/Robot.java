@@ -55,6 +55,7 @@ public class Robot extends IterativeRobot {
     SendableChooser chooser;
     public static USBCam usbcamera;
 	public static CameraServer cameraServer;
+	public static Ultrasonic uSonic = new Ultrasonic();
 	
     
     /**
@@ -83,7 +84,7 @@ public class Robot extends IterativeRobot {
         */
         //SmartDashboard.putData("Auto mode", chooser);
         
-		//SmartDashboard.putData("UltrasonicData", new Ultrasonic() );
+		
 		//SmartDashboard.putData("Photoelectric Sensor", new PhotoelectricSensor());
 		
         usbcamera = new USBCam();
@@ -109,6 +110,7 @@ public class Robot extends IterativeRobot {
 		// TODO Auto-generated method stub
 		Scheduler.getInstance().run();
 		super.teleopPeriodic();
+		SmartDashboard.putNumber("UltrasonicData", (uSonic.getDistance()));
 	}
 
 	/**
@@ -122,6 +124,7 @@ public class Robot extends IterativeRobot {
 	
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+		SmartDashboard.putNumber("UltrasonicData", (uSonic.getVoltage()));
 	}
 
 	/**
@@ -135,7 +138,7 @@ public class Robot extends IterativeRobot {
 	 */
     public void autonomousInit() {
         
-		/*String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
+		String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
 		switch(autoSelected) {
 		case "Rough Terrain":
 			autonomousCommand = new RoughTerrain();
@@ -157,7 +160,7 @@ public class Robot extends IterativeRobot {
 			autonomousCommand = new ChevalDeFrise();
 			break;
 			
-		}*/
+		}
 		//autonomousCommand = ((Command) chooser.getSelected());
 		//if(autonomousCommand!=null){autonomousCommand.start();}
     }

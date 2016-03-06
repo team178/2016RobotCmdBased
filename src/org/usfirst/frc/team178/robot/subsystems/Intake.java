@@ -16,7 +16,7 @@ public class Intake extends Subsystem {
 	CANTalon inOut;//Turns pulleys on intake.
 	CANTalon upDown;//Lifts intake up and down.
 	DigitalInput limitSwitchTop;
-	DigitalInput limitSwitchBottom;
+	//DigitalInput limitSwitchBottom;
 	boolean isSupposedToBeUp;
 	Timer timer;
 	
@@ -27,14 +27,14 @@ public class Intake extends Subsystem {
 		timer = new Timer();
 		timer.stop();
 		timer.reset();
-		limitSwitchBottom = new DigitalInput(RobotMap.bottomintakelimitswitch);	
+		//limitSwitchBottom = new DigitalInput(RobotMap.bottomintakelimitswitch);	
 		limitSwitchTop = new DigitalInput(RobotMap.topintakelimitswitch);
 	}
 	
-	public boolean isBottomLimitSwitchTripped(){
+	/*public boolean isBottomLimitSwitchTripped(){
 		//System.out.println("Bottom: " + limitSwitchBottom.get());
 		return limitSwitchBottom.get();
-	}
+	}*/
 	
 	public boolean isTopLimitSwitchTripped(){
 		//System.out.println("Top: " + limitSwitchTop.get());
@@ -76,12 +76,12 @@ public class Intake extends Subsystem {
 	public void dropIntake()
 	{
 		timer.start();
-		if(Robot.intake.isBottomLimitSwitchTripped()||timer.get()>=2)
+		/*if(Robot.intake.isBottomLimitSwitchTripped()||timer.get()>=2)
 		{
 			this.setUpDown(0);
 			this.timerReset();
-		}
-		else
+		}*/
+		while(timer.get() < 2)
 		{
 			this.setUpDown(0.5);
 		}

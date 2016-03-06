@@ -11,8 +11,8 @@ public class Ultrasonic extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	AnalogInput sensor;
-	double coeficent = 1;
-	double yIntercept = 0;
+	double coeficent = 0.327/35;
+	double yIntercept = 0.087714;
 	
 	
 	public Ultrasonic(){
@@ -21,7 +21,11 @@ public class Ultrasonic extends Subsystem {
 	
 	public double getVoltage(){
 		
-		return sensor.getVoltage()*coeficent + yIntercept;
+		return ((sensor.getVoltage()));
+	}
+	
+	public double getDistance(){
+		return ((this.getVoltage() - yIntercept)/coeficent); 
 	}
 	
     public void initDefaultCommand() {
