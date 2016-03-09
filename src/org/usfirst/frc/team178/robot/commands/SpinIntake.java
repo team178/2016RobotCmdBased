@@ -10,12 +10,10 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class SpinIntake extends Command {
 	
-	int TS;
 	double speed;
 
-    public SpinIntake(int TS, double speed) {
+    public SpinIntake(double speed) {
         requires(Robot.intake);
-        TS = this.TS;
         speed = this.speed;
         this.setTimeout(0.5);
     }
@@ -31,12 +29,8 @@ public class SpinIntake extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(Robot.oi.isTSPressed(TS)){
-    		return false;
-    	}
-    	else {
-    		return true;
-    	}
+    	
+    	return false;
     }
 
     // Called once after isFinished returns true
@@ -47,6 +41,12 @@ public class SpinIntake extends Command {
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
+    /* So basically we had to do this because we wanted this to go to two buttons
+    but you can't do this so basically two buttons will call the same command and it will stop
+    from being interrupted after the timeout*/
+    
     protected void interrupted() {
+    	Robot.intake.setInOut(0);
+		Robot.intake.allStop();
     }
 }

@@ -12,7 +12,7 @@ public class ChevalDeFrise extends CommandGroup {
     
     public  ChevalDeFrise() {
     	addSequential(new AutoDrive(1.5,0.8));
-    	//addSequential(new ToggleIntakeLocation(1));
+    	addSequential(new ToggleIntakeLocation(-0.5));
     	addSequential(new AutoDrive(5.0,1.0));
     	
         // Add Commands here:

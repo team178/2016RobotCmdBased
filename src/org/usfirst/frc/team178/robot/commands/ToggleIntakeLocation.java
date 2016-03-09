@@ -13,7 +13,7 @@ public class ToggleIntakeLocation extends Command {
 	Intake intake;
 	double speed;
 
-    public ToggleIntakeLocation(int TS, double speed) {
+    public ToggleIntakeLocation(double speed) {
     	requires(Robot.intake);
     	speed = this.speed;
     	this.setTimeout(0.5);
