@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team178.robot;
 import java.io.*;
+
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -9,16 +10,23 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
-import org.usfirst.frc.team178.robot.*;
+
+import java.beans.Encoder;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+
+import org.usfirst.frc.team178.robot.autocommands.ChevalDeFrise;
 import org.usfirst.frc.team178.robot.commands.*;
-import org.usfirst.frc.team178.robot.subsystems.*;
+
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team178.robot.subsystems.*;
+import edu.wpi.first.wpilibj.vision.USBCamera;
 
-import java.util.logging.FileHandler;
-import java.util.logging.Handler;
-import java.util.logging.Logger;
+import org.usfirst.frc.team178.robot.subsystems.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -29,27 +37,27 @@ import java.util.logging.Logger;
  */
 public class Robot extends IterativeRobot {
 
-    public static Logger logger;
 	public static DriveTrain drivetrain;
 	public static OI oi;
 	public static Kicker kicker;
 	public static Encoders encoders;
 	public static Intake intake;
-	//public static TapeMeasureScalar tapemeasurescalar;
-	//public static AntennaScalar antennascalar;
 	public static PhotoelectricSensor sensor;
 	public static RelaybecauseAndrew relay;
-	public static Scalar scalar;
 	public static VisionValues vision;
-	public static LightController lights;
+	
+	//public static LightController lights;
+
 	BufferedReader br; 
 	BufferedWriter bw; 
+	
     Command autonomousCommand;
-    Command Teleop;
-    public static SendableChooser chooser;
-    public static USBCam usbCamera = new USBCam();
-    public static CameraServer cameraServer;
-
+    SendableChooser chooser;
+    public static USBCam usbcamera;
+	public static CameraServer cameraServer;
+	public static Ultrasonic uSonic = new Ultrasonic();
+	
+    
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -61,27 +69,95 @@ public class Robot extends IterativeRobot {
     	intake = new Intake();
     	sensor = new PhotoelectricSensor();
     	relay = new RelaybecauseAndrew();
-    	lights = new LightController();
+    	//lights = new LightController();
 		oi = new OI();
 		vision = new VisionValues();
-		//scalar = new Scalar();
-        chooser = new SendableChooser();
-        chooser.addObject("Rough Terrain", new RoughTerrain());
-        chooser.addObject("Do Nothing", null);
-        chooser.addObject("Ramparts", new Ramparts());
-        chooser.addObject("Moat", new Moat());
-        chooser.addObject("Rock Wall", new RockWall());
+        
+		chooser = new SendableChooser();
+        chooser.addDefault("Do Nothing", new AutoDoNothing());
+        chooser.addObject("Rough Terrain", new AutoDrive(5, 0.7));
+        chooser.addObject("Ramparts", new AutoDrive(5, 0.7));
+        chooser.addObject("Moat", new AutoDrive(5, 0.7));
+        chooser.addObject("Rock Wall", new AutoDrive(5, 0.7));
         chooser.addObject("Cheval de Frise", new ChevalDeFrise());
+        chooser.addObject("AUTO DEATH SPIN", new DeathSpin(2, 1));
+        
         SmartDashboard.putData("Auto mode", chooser);
+        
+		
+		//SmartDashboard.putData("Photoelectric Sensor", new PhotoelectricSensor());
+	/*	
+        usbcamera = new USBCam();
+        cameraServer = CameraServer.getInstance();
+        cameraServer.setSize(0);
+        cameraServer.setQuality(50);
+        cameraServer.startAutomaticCapture(usbcamera.getCamera());
+*/
         NetworkTable.getTable("VisionVars");
 
-        cameraServer = CameraServer.getInstance();
-		cameraServer.setSize(0);
-		cameraServer.setQuality(50);
-		cameraServer.startAutomaticCapture(usbCamera.getCamera());
-		SmartDashboard.putData("SwitchCams", new CameraSwitch());
     }
-	
+    
+	/**
+	 * This autonomous (along with the chooser code above) shows how to select between different autonomous modes
+	 * using the dashboard. The sendable chooser code works with the Java SmartDashboard. If you prefer the LabVIEW
+	 * Dashboard, remove all of the chooser code and uncomment the getString code to get the auto name from the text box
+	 * below the Gyro
+	 *
+	 * You can add additional auto modes by adding additional commands to the chooser code above (like the commented example)
+	 * or additional comparisons to the switch structure below with additional strings & commands.
+	 */
+    public void autonomousInit() {
+        
+		String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
+		switch(autoSelected) {
+		case "Rough Terrain":
+			autonomousCommand = new AutoDrive();
+			break;
+		case "Do Nothing":
+		default:
+			autonomousCommand = new AutoDoNothing();
+			break;
+		case "Ramparts":
+			autonomousCommand = new AutoDrive();
+			break;
+		case "Moat":
+			autonomousCommand = new AutoDrive();
+			break;
+		case "Rock Wall":
+			autonomousCommand = new AutoDrive();
+			break;
+		case "Cheval de Frise":
+			autonomousCommand = new ChevalDeFrise();
+			break;
+		
+		case "AUTO DEATH SPIN":
+			autonomousCommand = new DeathSpin();
+			break;
+		}
+		//autonomousCommand = ((Command) chooser.getSelected());
+    	if(autonomousCommand!=null){
+    		autonomousCommand.start();
+    	}
+    }
+    
+    public void autonomousPeriodic(){
+    	Scheduler.getInstance().run();
+    }
+    
+	@Override
+	public void teleopInit() {
+		// TODO Auto-generated method stuff
+		super.teleopInit();
+	}
+
+	@Override
+	public void teleopPeriodic() {
+		// TODO Auto-generated method stub
+		Scheduler.getInstance().run();
+		super.teleopPeriodic();
+		SmartDashboard.putNumber("UltrasonicData", (uSonic.getDistance()));
+	}
+
 	/**
      * This function is called once each time the robot enters Disabled mode.
      * You can use it to reset any subsystem information you want to clear when
@@ -93,68 +169,18 @@ public class Robot extends IterativeRobot {
 	
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+		SmartDashboard.putNumber("UltrasonicData", (uSonic.getVoltage()));
 	}
 
-	/**
-	 * This autonomous (along with the chooser code above) shows how to select between different autonomous modes
-	 * using the dashboard. The sendable chooser code works with the Java SmartDashboard. If you prefer the LabVIEW
-	 * Dashboard, remove all of the chooser code and uncomment the getString code to get the auto name from the text box
-	 * below the Gyro
-	 *
-	 * You can add additional auto modes by adding additional commands to the chooser code above (like the commented example)
-	 * or additional comparisons to the switch structure below with additional strings & commands.
-	 */
-    public void autonomousInit() {
 
-    	chooser.addObject("Rough Terrain", new RoughTerrain());
-        chooser.addObject("Do Nothing", null);
-        chooser.addObject("Ramparts", new Ramparts());
-        chooser.addObject("Moat", new Moat());
-        chooser.addObject("Rock Wall", new RockWall());
-        chooser.addObject("Cheval de Frise", new ChevalDeFrise());
-    	autonomousCommand = (Command) chooser.getSelected();
-        
-    }
-
-    /**
-     * This function is called periodically during autonomous
-     */
-    public void autonomousPeriodic() {
-        Scheduler.getInstance().run();
-    }
-
-    public void teleopInit() {
-		// This makes sure that the autonomous stops running when
-        // teleop starts running. If you want the autonomous to 
-        // continue until interrupted by another command, remove
-        // this line or comment it out.
-        if (autonomousCommand != null) autonomousCommand.cancel();
-        Teleop = new TeleOp();
-        Teleop.start();
-    }
-
-    /**
-     * This function is called periodically during operator control
-     */
-    public void teleopPeriodic() {
-    	//System.out.println(oi.getY()+" "+oi.getX()+" "+oi.getTwist());
-        Scheduler.getInstance().run();
-        System.out.println("Top: " + intake.isTopLimitSwitchTripped());
-        System.out.println("Bottom: " + intake.isBottomLimitSwitchTripped());
-    }
     
-    @Override
     public void testInit(){
-    	relay.setvalue(true);
     	
     }
     
-    /**
-     * This function is called periodically during test mode
-     */
     @Override
     public void testPeriodic() {
-    	  System.out.println("PHOTOELECTRIC IS :" + sensor.getstuff());        // PhotoElectric Sensor
+    	  System.out.println("PHOTOELECTRIC IS :" + sensor.isActivated());        // PhotoElectric Sensor
     	//  System.out.println("VOLTAGE IS:" + (new AnalogInput(0)).getVoltage());  // Encoders
     	
     	//System.out.println("Top: " + intake.isTopLimitSwitchTripped());
@@ -166,8 +192,6 @@ public class Robot extends IterativeRobot {
     	//}catch(Exception e){
     		
     	//}
-    	
-    	
     	
         LiveWindow.run();
         relay.setvalue(true);

@@ -32,9 +32,7 @@ public class OI {
 	Button lBumper = new JoystickButton(TriggerSappy, 6);
 	Button rBumper = new JoystickButton(TriggerSappy, 5);
 	Button buttonB = new JoystickButton(TriggerSappy, 2);
-	Button lTrigger = new JoystickButton(TriggerSappy, 7);
-	Button rTrigger = new JoystickButton(TriggerSappy, 8);
-
+	
 	
 
     //// CREATING BUTTONS
@@ -47,17 +45,15 @@ public class OI {
 	
     public OI (){
 
-        button3.whenPressed(new ChangeLightColor("enforcers"));
-        button4.whenPressed(new ChangeLightColor("off"));
+        /*button3.whenPressed(new ChangeLightColor("enforcers"));
+        button4.whenPressed(new ChangeLightColor("off"));*/
         buttonA.whenPressed(new Kick());
-        buttonB.whileHeld(new HoldBall());
-        buttonX.whenPressed(new LiftIntake());
-        buttonY.whenPressed(new DropIntake());
-        lBumper.whenPressed(new SpinIntakeIn());
-        rBumper.whenPressed(new SpinIntakeOut());
-        lTrigger.whenPressed(new TMScale());
-        rTrigger.whenPressed(new AScale());
-        button2.whileHeld(new AutoAim());
+        buttonB.whenPressed(new HoldBall());
+        buttonY.whenPressed(new ToggleIntakeLocation(4,-0.5));
+        buttonX.whenPressed(new ToggleIntakeLocation(3,0.5));
+        lBumper.whenPressed(new SpinIntake(6, 1));
+        rBumper.whenPressed(new SpinIntake(5, -1));
+        button2.whenPressed(new AutoAim());
     }
     
     // There are a few additional built in buttons you can use. Additionally,
