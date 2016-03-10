@@ -15,8 +15,8 @@ public class ChangeLightColor extends Command {
     public ChangeLightColor(String c) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.lights);
-    	lights = Robot.lights;
+    	//requires(Robot.lights);
+    //	lights = Robot.lights;
     	color = c;
     }
 

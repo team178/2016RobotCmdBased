@@ -46,6 +46,7 @@ public class JoystickDrive extends Command {
 		else {
 			drivetrain.drive(0,0);
 		}
+		//System.out.println("rick");
 	}
 
 	protected boolean isFinished() {
@@ -53,9 +54,10 @@ public class JoystickDrive extends Command {
 	}
 
 	protected void end() {
-		drivetrain.drive(0,0);
+	//	drivetrain.drive(0,0);
 	}
 
 	protected void interrupted() {
+
 	}
 }

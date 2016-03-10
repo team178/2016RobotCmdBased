@@ -80,7 +80,6 @@ public class Robot extends IterativeRobot {
         chooser.addObject("Moat", new AutoDrive(5, 0.7));
         chooser.addObject("Rock Wall", new AutoDrive(5, 0.7));
         chooser.addObject("Cheval de Frise", new ChevalDeFrise());
-        chooser.addObject("AUTO DEATH SPIN", new DeathSpin(2, 1));
         
         SmartDashboard.putData("Auto mode", chooser);
         
@@ -129,12 +128,8 @@ public class Robot extends IterativeRobot {
 		case "Cheval de Frise":
 			autonomousCommand = new ChevalDeFrise();
 			break;
-		
-		case "AUTO DEATH SPIN":
-			autonomousCommand = new DeathSpin();
-			break;
 		}
-		//autonomousCommand = ((Command) chooser.getSelected());
+		autonomousCommand = ((Command) chooser.getSelected());
     	if(autonomousCommand!=null){
     		autonomousCommand.start();
     	}
@@ -143,7 +138,6 @@ public class Robot extends IterativeRobot {
     public void autonomousPeriodic(){
     	Scheduler.getInstance().run();
     }
-    
 	@Override
 	public void teleopInit() {
 		// TODO Auto-generated method stuff

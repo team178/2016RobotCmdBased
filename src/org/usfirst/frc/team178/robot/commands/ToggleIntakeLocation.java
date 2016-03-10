@@ -11,11 +11,12 @@ import org.usfirst.frc.team178.robot.subsystems.*;
 public class ToggleIntakeLocation extends Command {
 	
 	Intake intake;
-	int buttonPressed;
+	double speed;
 
-    public ToggleIntakeLocation(int value) {
+    public ToggleIntakeLocation(double speed) {
     	requires(Robot.intake);
-    	buttonPressed = value;
+    	speed = this.speed;
+    	this.setTimeout(0.5);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -27,34 +28,24 @@ public class ToggleIntakeLocation extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(buttonPressed == 1)
-    	{
-    		intake.setIntakeLocation(true);
-    	}
-    	else if(buttonPressed == 0)
-    	{
-    		intake.setIntakeLocation(false);
-    	}
+    	Robot.intake.setUpDown(speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if(buttonPressed == 1 && intake.getIntakeLocation() == true||buttonPressed == 0 && intake.getIntakeLocation() == false)
-        {
-        	return true;
-        }
-        else
-        {
-        	return false;
-        }
+    	return (this.isTimedOut());
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.intake.setUpDown(0);
+		Robot.intake.allStop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	Robot.intake.setUpDown(0);
+		Robot.intake.allStop();
     }
 }
