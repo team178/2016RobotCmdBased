@@ -28,17 +28,19 @@ public class AutoAim extends Command {
     	// System.out.println("Isaac is a door.");
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.drivetrain);
+    	//requires(Robot.drivetrain);
     }
 
     // Called just before this Command runs the first time
 	// Initializes all the declared objects
     protected void initialize() {
-		VisionValues vision = Robot.vision;
+		VisionValues visionValues = Robot.vision;
 		visionPIDInput = new VisionPIDInterface();
 		pidOutput = new AutoAimPIDOutput(Robot.drivetrain);
-		pid = new PIDController(3.1, 1, 0, visionPIDInput, pidOutput);
+		//Below are the PID values you must edit. They are in the order: P,I,D.
+		pid = new PIDController(3.1, 50, 0, visionPIDInput, pidOutput);
 		pid.setAbsoluteTolerance(.1);
+		System.out.println("AutoAim initialized");
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -82,6 +84,7 @@ class VisionPIDInterface implements PIDSource{
 		//0 = IMAGE_WIDTH/2
 		//0 = -1
 		//IMAGE_WIDTH = 1
+		//System.out.println("This is the scaled deviation"+(((Robot.visionValues.getCOG_X()/Robot.visionValues.getIMAGE_WIDTH())*2)-1));
 		return (((Robot.vision.getCOG_X()/Robot.vision.getIMAGE_WIDTH())*2)-1);
 	}
 
@@ -102,8 +105,10 @@ class AutoAimPIDOutput implements PIDOutput{
 
 	@Override
 	public void pidWrite(double output) {
-		// TODO Auto-generated method stub
-		driveTrain.drive(-output,output);
+		// THIS IS WHERE THE OUTPUT IS GIVEN. YOU MUST call Robot.Drivetrain, and write the correct values to it. -1 is turn left, +1 is turn right.
+		driveTrain.drive(output,output);
+		System.out.println("This is the pidOutput: "+output);
+		//Robot.logger.fine("pidOutput is: ("+(-output)+","+(output));
 	}
 
 	public void pidAbort(){
