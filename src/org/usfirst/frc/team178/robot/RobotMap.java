@@ -16,10 +16,9 @@ public class RobotMap {
 	public static int SwitchPort4 = 4;
 	
 	
-    public static int PhotoelectricSensor = 8;//0;
+    public static int PhotoelectricSensor = 0;//0;
     public static int kickerEncoderin = 1;
 	public static int kickerEncoderout = 2;
-	public static int scalarMotor = 11;
 	public static int intakeEncoderin = 4;
 	public static int intakeEncoderout = 3;
 	public static int leftmotorEncoderin = 5;
@@ -28,8 +27,6 @@ public class RobotMap {
 	public static int rightmotorEncoderout = 15;
 	public static int topintakelimitswitch = 7;
 	public static int bottomintakelimitswitch = 9;
-	public static int arduino = 1;
-	
 	
 
     // For example to map the left and right motors, you could define the

@@ -25,12 +25,12 @@ public class OI {
 	Button button7 = new JoystickButton(TriggerHappy,7);
 	Button button8 = new JoystickButton(TriggerHappy, 8);
 
-	Joystick TriggerSappy = new Joystick(RobotMap.JoystickPortXbox);
+	public Joystick TriggerSappy = new Joystick(RobotMap.JoystickPortXbox);
 	Button buttonA = new JoystickButton(TriggerSappy, 1);
 	Button buttonX = new JoystickButton(TriggerSappy, 3);
 	Button buttonY = new JoystickButton(TriggerSappy, 4);
-	Button lBumper = new JoystickButton(TriggerSappy, 6);
-	Button rBumper = new JoystickButton(TriggerSappy, 5);
+	public Button lBumper = new JoystickButton(TriggerSappy, 6);
+	public Button rBumper = new JoystickButton(TriggerSappy, 5);
 	Button buttonB = new JoystickButton(TriggerSappy, 2);
 	
 	
@@ -49,10 +49,10 @@ public class OI {
         button4.whenPressed(new ChangeLightColor("off"));*/
         buttonA.whenPressed(new Kick());
         buttonB.whenPressed(new HoldBall());
-        buttonY.whenPressed(new ToggleIntakeLocation(4,-0.5));
-        buttonX.whenPressed(new ToggleIntakeLocation(3,0.5));
-        lBumper.whenPressed(new SpinIntake(6, 1));
-        rBumper.whenPressed(new SpinIntake(5, -1));
+        buttonY.whenPressed(new ToggleIntakeLocation(-0.5));
+        buttonX.whenPressed(new ToggleIntakeLocation(0.5));
+        lBumper.whileHeld(new SpinIntake(1));
+        rBumper.whileHeld(new SpinIntake(-1));
         button2.whenPressed(new AutoAim());
     }
     
@@ -69,10 +69,6 @@ public class OI {
     
     public double getTwist (){
     	return TriggerHappy.getRawAxis(3);//
-    }
-    
-    public boolean isPressed (int ButtonNumber){
-    	return TriggerHappy.getRawButton(ButtonNumber);
     }
     
     public boolean isTSPressed (int ButtonNumber){
