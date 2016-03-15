@@ -1,20 +1,17 @@
 package org.usfirst.frc.team178.robot.autocommands;
 
-import org.usfirst.frc.team178.robot.commands.AutoDrive;
-import org.usfirst.frc.team178.robot.commands.ToggleIntakeLocation;
+import org.usfirst.frc.team178.robot.commands.AutoDoNothing;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class ChevalDeFrise extends CommandGroup {
+public class AutoDoNothingGroup extends CommandGroup {
     
-    public  ChevalDeFrise() {
-    	addSequential(new AutoDrive(0.8),1.5);
-    	addSequential(new ToggleIntakeLocation(-0.5));
-    	addSequential(new AutoDrive(1.0),1.5);
+    public  AutoDoNothingGroup() {
     	
+    	addSequential(new AutoDoNothing(), 5);
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

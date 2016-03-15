@@ -90,14 +90,14 @@ public class Intake extends Subsystem {
 	public void liftIntake()
 	{
 		timer.start();
-		if(Robot.intake.isTopLimitSwitchTripped()||timer.get()>=2)
+		/*if(Robot.intake.isTopLimitSwitchTripped()||timer.get()>=2)
 		{
 			this.setUpDown(0);
 			this.timerReset();
-		}
-		else
+		}*/
+		while(timer.get() < 2)
 		{
-			this.setUpDown(-1);
+			this.setUpDown(-0.5);
 		}
 	}
 	

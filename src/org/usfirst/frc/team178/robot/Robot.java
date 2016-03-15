@@ -19,6 +19,8 @@ import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
+import org.usfirst.frc.team178.robot.autocommands.AutoDeathSpin;
+import org.usfirst.frc.team178.robot.autocommands.AutoDriveGroup;
 import org.usfirst.frc.team178.robot.autocommands.ChevalDeFrise;
 import org.usfirst.frc.team178.robot.commands.*;
 
@@ -62,6 +64,7 @@ public class Robot extends IterativeRobot {
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
+
     public void robotInit() {
     	drivetrain  = new DriveTrain();
     	kicker = new Kicker();
@@ -74,12 +77,12 @@ public class Robot extends IterativeRobot {
 		vision = new VisionValues();
         
 		chooser = new SendableChooser();
-        chooser.addDefault("Do Nothing", new AutoDoNothing());
-        chooser.addObject("Rough Terrain", new AutoDrive(5, 0.7));
-        chooser.addObject("Ramparts", new AutoDrive(5, 0.7));
-        chooser.addObject("Moat", new AutoDrive(5, 0.7));
-        chooser.addObject("Rock Wall", new AutoDrive(5, 0.7));
+		chooser.addDefault("Do Nothing", new AutoDoNothing());
+        chooser.addObject("Drive Forward", new AutoDriveGroup());
         chooser.addObject("Cheval de Frise", new ChevalDeFrise());
+        chooser.addDefault("Auto Death Spin", new AutoDeathSpin());
+        
+        
         
         SmartDashboard.putData("Auto mode", chooser);
         
@@ -107,7 +110,7 @@ public class Robot extends IterativeRobot {
 	 */
     public void autonomousInit() {
         
-		String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
+		/*String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
 		switch(autoSelected) {
 		case "Rough Terrain":
 			autonomousCommand = new AutoDrive();
@@ -128,7 +131,7 @@ public class Robot extends IterativeRobot {
 		case "Cheval de Frise":
 			autonomousCommand = new ChevalDeFrise();
 			break;
-		}
+		}*/
 		autonomousCommand = ((Command) chooser.getSelected());
     	if(autonomousCommand!=null){
     		autonomousCommand.start();
@@ -141,6 +144,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopInit() {
 		// TODO Auto-generated method stuff
+		autonomousCommand.cancel();
 		super.teleopInit();
 	}
 

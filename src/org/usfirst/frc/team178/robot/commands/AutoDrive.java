@@ -8,24 +8,26 @@ import org.usfirst.frc.team178.robot.subsystems.DriveTrain;
 public class AutoDrive extends Command{
 	
 	DriveTrain drivetrain;
-	double time;
+	//double time;
 	double speed;
 	
-	public AutoDrive()
+	//Screw this default constructor
+	/*public AutoDrive()
 	{
 		requires(Robot.drivetrain);
-	}
-	public AutoDrive(double timeout, double speed)
+	}*/
+	
+	public AutoDrive(double speed)
 	{
 		requires(Robot.drivetrain);
-		time = timeout; 
-		speed = this.speed;
+		//time = timeout; 
+		this.speed = speed;
 	}
 	
 	@Override
 	protected void initialize() {
     	drivetrain = Robot.drivetrain;
-    	 this.setTimeout(time);
+    	 //this.setTimeout(time);
 	}
 
 	protected void execute() {
@@ -38,11 +40,12 @@ public class AutoDrive extends Command{
 		//Without this, the motor speed is never upset. 
 		//The robot would continue moving at its last speed. This makes it stop.
 		
-		drivetrain.drive(speed, -speed);
+		drivetrain.drive(speed, -1 * speed);
+		System.out.println("Driveeeeee.");
 		}
 
 	protected boolean isFinished() {
-		return false;
+		return isTimedOut();
 	}
 
 	protected void end() {
