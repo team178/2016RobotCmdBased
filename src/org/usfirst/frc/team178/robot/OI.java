@@ -25,12 +25,12 @@ public class OI {
 	Button button7 = new JoystickButton(TriggerHappy,7);
 	Button button8 = new JoystickButton(TriggerHappy, 8);
 
-	public Joystick TriggerSappy = new Joystick(RobotMap.JoystickPortXbox);
+	Joystick TriggerSappy = new Joystick(RobotMap.JoystickPortXbox);
 	Button buttonA = new JoystickButton(TriggerSappy, 1);
 	Button buttonX = new JoystickButton(TriggerSappy, 3);
 	Button buttonY = new JoystickButton(TriggerSappy, 4);
-	public Button lBumper = new JoystickButton(TriggerSappy, 6);
-	public Button rBumper = new JoystickButton(TriggerSappy, 5);
+	Button lBumper = new JoystickButton(TriggerSappy, 6);
+	Button rBumper = new JoystickButton(TriggerSappy, 5);
 	Button buttonB = new JoystickButton(TriggerSappy, 2);
 	
 	

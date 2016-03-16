@@ -7,7 +7,7 @@ import org.usfirst.frc.team178.robot.subsystems.*;
 import edu.wpi.first.wpilibj.DriverStation;
 public class JoystickDrive extends Command {
 	
-	Encoders encoders;
+	//Encoders encoders;
 	OI oi;
 	DriveTrain drivetrain;
 	double yVal,twistVal;
@@ -15,12 +15,12 @@ public class JoystickDrive extends Command {
 	public JoystickDrive()
 	{
 		requires(Robot.drivetrain);
-		requires(Robot.encoders);
+		//requires(Robot.encoders);
 	}
 	
     protected void initialize() {
     	oi = Robot.oi;
-    	encoders = Robot.encoders;
+    	//encoders = Robot.encoders;
     	drivetrain = Robot.drivetrain;
     }
 	

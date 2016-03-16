@@ -27,6 +27,8 @@ import org.usfirst.frc.team178.robot.commands.*;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.vision.USBCamera;
+import edu.wpi.first.wpilibj.CANTalon;
+
 
 import org.usfirst.frc.team178.robot.subsystems.*;
 
@@ -42,7 +44,7 @@ public class Robot extends IterativeRobot {
 	public static DriveTrain drivetrain;
 	public static OI oi;
 	public static Kicker kicker;
-	public static Encoders encoders;
+	//public static Encoders encoders;
 	public static Intake intake;
 	public static PhotoelectricSensor sensor;
 	public static RelaybecauseAndrew relay;
@@ -68,13 +70,16 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
     	drivetrain  = new DriveTrain();
     	kicker = new Kicker();
-    	encoders = new Encoders();
+    	//encoders = new Encoders();
     	intake = new Intake();
     	sensor = new PhotoelectricSensor();
     	relay = new RelaybecauseAndrew();
     	//lights = new LightController();
 		oi = new OI();
 		vision = new VisionValues();
+		usbcamera = new USBCam();
+		cameraServer = CameraServer.getInstance();
+		cameraServer.startAutomaticCapture(usbcamera.getCamera());
         
 		chooser = new SendableChooser();
 		chooser.addDefault("Do Nothing", new AutoDoNothing());
@@ -144,8 +149,9 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopInit() {
 		// TODO Auto-generated method stuff
-		autonomousCommand.cancel();
-		super.teleopInit();
+		if(autonomousCommand!=null){
+    		autonomousCommand.cancel();
+		}
 	}
 
 	@Override

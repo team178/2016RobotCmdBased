@@ -3,6 +3,7 @@ package org.usfirst.frc.team178.robot.subsystems;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Ultrasonic;
 
+import org.usfirst.frc.team178.robot.RobotMap;
 import org.usfirst.frc.team178.robot.commands.JoystickDrive;
 
 import edu.wpi.first.wpilibj.CANTalon;
@@ -18,10 +19,10 @@ public class DriveTrain extends Subsystem
 	
 	public DriveTrain()  {
 		
-		left1 = new CANTalon(10);
-		left2 = new CANTalon(11);
-		right1 = new CANTalon(14);
-		right2 = new CANTalon(15);
+		left1 = new CANTalon(RobotMap.MOTOR.TOPleft);
+		left2 = new CANTalon(RobotMap.MOTOR.BOTTOMleft);
+		right1 = new CANTalon(RobotMap.MOTOR.TOPright);
+		right2 = new CANTalon(RobotMap.MOTOR.BOTTOMright);
 	}
 	
 

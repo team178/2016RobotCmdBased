@@ -15,7 +15,7 @@ public class SpinIntake extends Command {
     public SpinIntake(double speed) {
         requires(Robot.intake);
         speed = this.speed;
-        this.setTimeout(0.5);
+        //this.setTimeout(0.5);
     }
 
     // Called just before this Command runs the first time

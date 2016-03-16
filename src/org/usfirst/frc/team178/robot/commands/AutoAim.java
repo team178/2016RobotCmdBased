@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -21,6 +22,7 @@ public class AutoAim extends Command {
 	VisionPIDInterface visionPIDInput;
 	private AutoAimPIDOutput pidOutput;
 	private PIDController pid;
+	private double pValue,iValue;
 	
 
     public AutoAim() {
@@ -38,6 +40,8 @@ public class AutoAim extends Command {
 		visionPIDInput = new VisionPIDInterface();
 		pidOutput = new AutoAimPIDOutput(Robot.drivetrain);
 		//Below are the PID values you must edit. They are in the order: P,I,D.
+		SmartDashboard.putNumber("P Value", pValue);
+		SmartDashboard.putNumber("I Value", iValue);
 		pid = new PIDController(3.1, 50, 0, visionPIDInput, pidOutput);
 		pid.setAbsoluteTolerance(.1);
 		System.out.println("AutoAim initialized");
@@ -46,6 +50,7 @@ public class AutoAim extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
 		pid.enable();
+		pid.setPID(SmartDashboard.getNumber("P Value",3.1), SmartDashboard.getNumber("I Value",(.5)), 0);
     }
 
     // Make this return true when this Command no longer needs to run execute()

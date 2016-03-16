@@ -1,6 +1,9 @@
 package org.usfirst.frc.team178.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+
+import org.usfirst.frc.team178.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.Relay;
 
 /**
@@ -9,7 +12,7 @@ import edu.wpi.first.wpilibj.Relay;
 public class RelaybecauseAndrew extends Subsystem {
 	Relay icecreamsandwich; 
     public RelaybecauseAndrew (){
-    	icecreamsandwich = new Relay (0); 	
+    	icecreamsandwich = new Relay (RobotMap.RELAYINPUT); 	
     }
     public void setvalue (boolean isOn){
     	if (isOn){

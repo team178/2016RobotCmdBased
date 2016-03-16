@@ -17,7 +17,27 @@ public class RobotMap {
 	
 	
     public static int PhotoelectricSensor = 0;//0;
-    public static int kickerEncoderin = 1;
+    
+    public static int RELAYINPUT = 0;
+    public static int ULTRASONICINPUT = 0;
+    public static int KICKER_ONE = 12;
+    public static int KICKER_TWO = 13;
+    public static int SPININTAKE = 19;
+    public static int INTAKELIFT = 18;
+    
+    public static class MOTOR{
+    	public static int TOPright = 14;
+    	public static int TOPleft = 10;
+    	public static int BOTTOMright = 15;
+    	public static int BOTTOMleft = 11;
+    }
+    
+    
+    
+    
+    
+    
+    /*public static int kickerEncoderin = 1;
 	public static int kickerEncoderout = 2;
 	public static int intakeEncoderin = 4;
 	public static int intakeEncoderout = 3;
@@ -26,7 +46,7 @@ public class RobotMap {
 	public static int rightmotorEncoderin = 10; //7
 	public static int rightmotorEncoderout = 15;
 	public static int topintakelimitswitch = 7;
-	public static int bottomintakelimitswitch = 9;
+	public static int bottomintakelimitswitch = 9;*/
 	
 
     // For example to map the left and right motors, you could define the

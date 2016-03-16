@@ -1,5 +1,7 @@
 package org.usfirst.frc.team178.robot.subsystems;
 
+import org.usfirst.frc.team178.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -16,7 +18,7 @@ public class Ultrasonic extends Subsystem {
 	
 	
 	public Ultrasonic(){
-		sensor = new AnalogInput(0);
+		sensor = new AnalogInput(RobotMap.ULTRASONICINPUT);
 	}
 	
 	public double getVoltage(){

@@ -15,20 +15,20 @@ import edu.wpi.first.wpilibj.Timer;
 public class Intake extends Subsystem {
 	CANTalon inOut;//Turns pulleys on intake.
 	CANTalon upDown;//Lifts intake up and down.
-	DigitalInput limitSwitchTop;
+	//DigitalInput limitSwitchTop;
 	//DigitalInput limitSwitchBottom;
 	boolean isSupposedToBeUp;
 	Timer timer;
 	
 	public Intake(){
-		inOut = new CANTalon(19);
-		upDown = new CANTalon(18);
+		inOut = new CANTalon(RobotMap.SPININTAKE);
+		upDown = new CANTalon(RobotMap.INTAKELIFT);
 		isSupposedToBeUp = false;
-		timer = new Timer();
-		timer.stop();
-		timer.reset();
+		//timer = new Timer();
+		//timer.stop();
+		//timer.reset();
 		//limitSwitchBottom = new DigitalInput(RobotMap.bottomintakelimitswitch);	
-		limitSwitchTop = new DigitalInput(RobotMap.topintakelimitswitch);
+		//limitSwitchTop = new DigitalInput(RobotMap.topintakelimitswitch);
 	}
 	
 	/*public boolean isBottomLimitSwitchTripped(){
@@ -36,20 +36,20 @@ public class Intake extends Subsystem {
 		return limitSwitchBottom.get();
 	}*/
 	
-	public boolean isTopLimitSwitchTripped(){
+	/*public boolean isTopLimitSwitchTripped(){
 		//System.out.println("Top: " + limitSwitchTop.get());
 		return limitSwitchTop.get();
-	}
+	}*/
 	
-	public boolean getIntakeLocation()
+	/*public boolean getIntakeLocation()
 	{
 		return isSupposedToBeUp;
-	}
+	}*/
 	
-	public void setIntakeLocation(boolean value)
+	/*public void setIntakeLocation(boolean value)
 	{
 		isSupposedToBeUp = value;
-	}
+	}*/
 		
 	public void setInOut(double value)
 	{
@@ -61,11 +61,11 @@ public class Intake extends Subsystem {
 		upDown.set(value);
 	}
 	
-	public void timerReset()
+	/*public void timerReset()
 	{
 		timer.stop();
 		timer.reset();
-	}
+	}*/
 	
 	public void allStop()//Stops all intake motors.
 	{
@@ -75,30 +75,30 @@ public class Intake extends Subsystem {
 	
 	public void dropIntake()
 	{
-		timer.start();
+		//timer.start();
 		/*if(Robot.intake.isBottomLimitSwitchTripped()||timer.get()>=2)
 		{
 			this.setUpDown(0);
 			this.timerReset();
 		}*/
-		while(timer.get() < 2)
-		{
+		//while(timer.get() < 2)
+		//{
 			this.setUpDown(0.5);
-		}
+		//}
 	}
 	
 	public void liftIntake()
 	{
-		timer.start();
+		//timer.start();
 		/*if(Robot.intake.isTopLimitSwitchTripped()||timer.get()>=2)
 		{
 			this.setUpDown(0);
 			this.timerReset();
 		}*/
-		while(timer.get() < 2)
-		{
+		//while(timer.get() < 2)
+		//{
 			this.setUpDown(-0.5);
-		}
+		//}
 	}
 	
     // Put methods for controlling this subsystem
