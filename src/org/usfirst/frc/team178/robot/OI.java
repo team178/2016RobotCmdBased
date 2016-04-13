@@ -32,6 +32,7 @@ public class OI {
 	public Button lBumper = new JoystickButton(TriggerSappy, 6);
 	public Button rBumper = new JoystickButton(TriggerSappy, 5);
 	Button buttonB = new JoystickButton(TriggerSappy, 2);
+	Button lTrigger = new JoystickButton(TriggerSappy, 7);
 	
 	
 
@@ -54,6 +55,7 @@ public class OI {
         lBumper.whileHeld(new SpinIntake(1));
         rBumper.whileHeld(new SpinIntake(-1));
         button2.whenPressed(new AutoAim());
+        lTrigger.whenPressed(new RaiseLifter());
     }
     
     // There are a few additional built in buttons you can use. Additionally,

@@ -45,6 +45,7 @@ public class Robot extends IterativeRobot {
 	public static PhotoelectricSensor sensor;
 	public static RelaybecauseAndrew relay;
 	public static VisionValues vision;
+	public static PorticullisLifter lifter;
 	
 	//public static LightController lights;
 
@@ -72,6 +73,7 @@ public class Robot extends IterativeRobot {
     	//lights = new LightController();
 		oi = new OI();
 		vision = new VisionValues();
+		lifter = new PorticullisLifter();
         
 		chooser = new SendableChooser();
         chooser.addDefault("Do Nothing", new AutoDoNothing());
