@@ -5,6 +5,8 @@ import org.usfirst.frc.team178.robot.subsystems.PorticullisLifter;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.Timer;
 
+//I used the timer in this class as a sort of place holder, hopefully it doesn't mess stuff up...
+
 public class RaiseLifter extends Command {
 
 	Timer timer;
