@@ -57,7 +57,7 @@ public class OI {
         lBumper.whileHeld(new SpinIntakeIn());
         rBumper.whileHeld(new SpinIntakeOut());
         button2.whileHeld(new AutoAim());
-        button7.whileHeld(new AdjustKick());
+        backButton.whileHeld(new AdjustKick());
         button9.whileHeld(new AdjustWheelLeft());
         button10.whileHeld(new AdjustWheelRight());
     }

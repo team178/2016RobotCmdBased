@@ -25,7 +25,7 @@ public class AdjustWheelRight extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drivetrain.drive(1, 1);
+    	Robot.drivetrain.drive(0.7, 0.7);
     }
 
     // Make this return true when this Command no longer needs to run execute()
