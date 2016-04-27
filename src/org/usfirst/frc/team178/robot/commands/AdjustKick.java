@@ -24,7 +24,8 @@ public class AdjustKick extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	kicker.kick(0.2);
+    	kicker.kick(-0.2);
+    	System.out.println("kicker adjust move");
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -34,6 +35,7 @@ public class AdjustKick extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	kicker.kick(0);
     }
 
     // Called when another command which requires one or more of the same
