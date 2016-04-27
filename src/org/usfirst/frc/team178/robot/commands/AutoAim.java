@@ -41,7 +41,7 @@ public class AutoAim extends Command {
 		//Below are the PID values you must edit. They are in the order: P,I,D.
 		SmartDashboard.putNumber("P Value", pValue);
 		SmartDashboard.putNumber("I Value", iValue);
-		pid = new PIDController(.7, 1, 0, visionPIDInput, pidOutput);
+		pid = new PIDController(.7, 0, 0, visionPIDInput, pidOutput);
 		pid.setAbsoluteTolerance(.05);
 		System.out.println("AutoAim initialized");
     }
