@@ -14,7 +14,7 @@ public class DropIntake extends Command {
 
     public DropIntake() {
     	requires(Robot.intake);
-    	this.setTimeout(0.5);
+    	this.setTimeout(0.3);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }

@@ -41,8 +41,8 @@ public class AutoAim extends Command {
 		//Below are the PID values you must edit. They are in the order: P,I,D.
 		SmartDashboard.putNumber("P Value", pValue);
 		SmartDashboard.putNumber("I Value", iValue);
-		pid = new PIDController(0.1, 0.5, 0, visionPIDInput, pidOutput);
-		pid.setAbsoluteTolerance(.1);
+		pid = new PIDController(.7, 1, 0, visionPIDInput, pidOutput);
+		pid.setAbsoluteTolerance(.05);
 		System.out.println("AutoAim initialized");
     }
 
@@ -67,7 +67,7 @@ public class AutoAim extends Command {
     // subsystems is scheduled to run
     protected void interrupted() {
 		pid.disable();
-		pidOutput.pidAbort();
+		//pidOutput.pidAbort();
     }
 }
 
@@ -110,7 +110,7 @@ class AutoAimPIDOutput implements PIDOutput{
 	@Override
 	public void pidWrite(double output) {
 		// THIS IS WHERE THE OUTPUT IS GIVEN. YOU MUST call Robot.Drivetrain, and write the correct values to it. -1 is turn left, +1 is turn right.
-		driveTrain.drive(output,output);
+		driveTrain.drive(-output,-output);
 		System.out.println("This is the pidOutput: "+output);
 		//Robot.logger.fine("pidOutput is: ("+(-output)+","+(output));
 	}

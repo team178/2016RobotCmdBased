@@ -15,7 +15,7 @@ public class Intake extends Subsystem {
 	//DigitalInput limitSwitchTop;
 	//DigitalInput limitSwitchBottom;
 	boolean isSupposedToBeUp;
-	Timer timer;
+ 	Timer timer;
 	
 	public Intake(){
 		inOut = new CANTalon(RobotMap.SPININTAKE);
