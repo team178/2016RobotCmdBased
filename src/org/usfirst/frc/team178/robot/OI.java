@@ -49,11 +49,11 @@ public class OI {
         button4.whenPressed(new ChangeLightColor("off"));*/
         buttonA.whenPressed(new Kick());
         buttonB.whenPressed(new HoldBall());
-        buttonY.whenPressed(new ToggleIntakeLocation(-0.5));
-        buttonX.whenPressed(new ToggleIntakeLocation(0.5));
-        lBumper.whileHeld(new SpinIntake(1));
-        rBumper.whileHeld(new SpinIntake(-1));
-        button2.whenPressed(new AutoAim());
+        buttonY.whenPressed(new LiftIntake());
+        buttonX.whenPressed(new DropIntake());
+        lBumper.whileHeld(new SpinIntakeIn());
+        rBumper.whileHeld(new SpinIntakeOut());
+        button2.whileHeld(new AutoAim());
     }
     
     // There are a few additional built in buttons you can use. Additionally,
@@ -68,7 +68,7 @@ public class OI {
     }
     
     public double getTwist (){
-    	return TriggerHappy.getRawAxis(3);//
+    	return TriggerHappy.getTwist();//
     }
     
     public boolean isTSPressed (int ButtonNumber){

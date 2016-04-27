@@ -57,9 +57,9 @@ public class Robot extends IterativeRobot {
 	
     Command autonomousCommand;
     SendableChooser chooser;
-    public static USBCam usbcamera;
-	public static CameraServer cameraServer;
-	public static Ultrasonic uSonic = new Ultrasonic();
+    //public static USBCam usbcamera;
+	//public static CameraServer cameraServer;
+	//public static Ultrasonic uSonic = new Ultrasonic();
 	
     
     /**
@@ -77,9 +77,9 @@ public class Robot extends IterativeRobot {
     	//lights = new LightController();
 		oi = new OI();
 		vision = new VisionValues();
-		usbcamera = new USBCam();
-		cameraServer = CameraServer.getInstance();
-		cameraServer.startAutomaticCapture(usbcamera.getCamera());
+		//usbcamera = new USBCam();
+		//cameraServer = CameraServer.getInstance();
+		//cameraServer.startAutomaticCapture(usbcamera.getCamera());
         
 		chooser = new SendableChooser();
 		chooser.addDefault("Do Nothing", new AutoDoNothing());
@@ -101,7 +101,7 @@ public class Robot extends IterativeRobot {
         cameraServer.startAutomaticCapture(usbcamera.getCamera());
 */
         NetworkTable.getTable("VisionVars");
-
+        relay.setvalue(true);
     }
     
 	/**
@@ -159,7 +159,7 @@ public class Robot extends IterativeRobot {
 		// TODO Auto-generated method stub
 		Scheduler.getInstance().run();
 		super.teleopPeriodic();
-		SmartDashboard.putNumber("UltrasonicData", (uSonic.getDistance()));
+		//SmartDashboard.putNumber("UltrasonicData", (uSonic.getDistance()));
 	}
 
 	/**
@@ -173,7 +173,7 @@ public class Robot extends IterativeRobot {
 	
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
-		SmartDashboard.putNumber("UltrasonicData", (uSonic.getVoltage()));
+		//SmartDashboard.putNumber("UltrasonicData", (uSonic.getVoltage()));
 	}
 
 
@@ -184,7 +184,7 @@ public class Robot extends IterativeRobot {
     
     @Override
     public void testPeriodic() {
-    	  System.out.println("PHOTOELECTRIC IS :" + sensor.isActivated());        // PhotoElectric Sensor
+    	  //System.out.println("PHOTOELECTRIC IS :" + sensor.isActivated());        // PhotoElectric Sensor
     	//  System.out.println("VOLTAGE IS:" + (new AnalogInput(0)).getVoltage());  // Encoders
     	
     	//System.out.println("Top: " + intake.isTopLimitSwitchTripped());
