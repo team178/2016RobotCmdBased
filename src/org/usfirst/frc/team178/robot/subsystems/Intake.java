@@ -9,9 +9,6 @@ import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Timer;
 
-/**
- *!!!!!! ATTENTION !!!!!! The lift and reverse methods need to be fixed, probably removed. The commands that use them need to be fixed.
- */
 public class Intake extends Subsystem {
 	CANTalon inOut;//Turns pulleys on intake.
 	CANTalon upDown;//Lifts intake up and down.
@@ -23,10 +20,6 @@ public class Intake extends Subsystem {
 	public Intake(){
 		inOut = new CANTalon(RobotMap.SPININTAKE);
 		upDown = new CANTalon(RobotMap.INTAKELIFT);
-		isSupposedToBeUp = false;
-		//timer = new Timer();
-		//timer.stop();
-		//timer.reset();
 		//limitSwitchBottom = new DigitalInput(RobotMap.bottomintakelimitswitch);	
 		//limitSwitchTop = new DigitalInput(RobotMap.topintakelimitswitch);
 	}
