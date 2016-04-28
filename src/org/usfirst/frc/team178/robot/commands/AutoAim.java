@@ -89,6 +89,7 @@ class VisionPIDInterface implements PIDSource{
 		//0 = -1
 		//IMAGE_WIDTH = 1
 		//System.out.println("This is the scaled deviation"+(((Robot.visionValues.getCOG_X()/Robot.visionValues.getIMAGE_WIDTH())*2)-1));
+		//TODO Implement new function with new center
 		return (((Robot.vision.getCOG_X()/Robot.vision.getIMAGE_WIDTH())*2)-1);
 	}
 

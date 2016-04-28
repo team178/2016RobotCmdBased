@@ -46,6 +46,13 @@ public class VisionValues {
 	public double getPROCESS_TIME() {
 		return NetworkTable.getTable("VisionVars").getNumber("PROCESS_TIME",0);
 	}
+	
+	/**
+	 * 
+	 */
+	public double getAIMING_CENTER(){
+		return NetworkTable.getTable("VisionVars").getNumber("AIMING_CENTER",300);
+	}
 
 	public VisionValues() {
 		//Empty Constructor
