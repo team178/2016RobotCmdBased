@@ -41,8 +41,8 @@ public class AutoAim extends Command {
 		//Below are the PID values you must edit. They are in the order: P,I,D.
 		SmartDashboard.putNumber("P Value", pValue);
 		SmartDashboard.putNumber("I Value", iValue);
-		pid = new PIDController(5, 0, 1.5, visionPIDInput, pidOutput);
-		pid.setAbsoluteTolerance(.05);
+		pid = new PIDController(6, 0, 1, visionPIDInput, pidOutput);
+		pid.setAbsoluteTolerance(.01);
 		System.out.println("AutoAim initialized");
     }
 
@@ -90,7 +90,23 @@ class VisionPIDInterface implements PIDSource{
 		//IMAGE_WIDTH = 1
 		//System.out.println("This is the scaled deviation"+(((Robot.visionValues.getCOG_X()/Robot.visionValues.getIMAGE_WIDTH())*2)-1));
 		//TODO Implement new function with new center
-		return (((Robot.vision.getCOG_X()/Robot.vision.getIMAGE_WIDTH())*2)-1);
+		double offset = Robot.vision.getAIMING_CENTER()-(Robot.vision.getIMAGE_WIDTH()/2);
+		if(offset>0){
+			if(Robot.vision.getCOG_X()<offset){
+				return -1;
+			}
+			else {
+				return ((((Robot.vision.getCOG_X()-offset)/(Robot.vision.getIMAGE_WIDTH()-offset))*2)-1);
+			}
+		}
+		else{
+			if(Robot.vision.getCOG_X()<offset){
+				return -1;
+			}
+			else {
+				return (2/((Robot.vision.getIMAGE_WIDTH())-offset)-1);
+			}
+		}
 	}
 
 	@Override

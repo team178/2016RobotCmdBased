@@ -21,6 +21,7 @@ import java.io.OutputStreamWriter;
 
 import org.usfirst.frc.team178.robot.autocommands.AutoDeathSpin;
 import org.usfirst.frc.team178.robot.autocommands.AutoDriveGroup;
+import org.usfirst.frc.team178.robot.autocommands.AutoLowBarAutoAim;
 import org.usfirst.frc.team178.robot.autocommands.ChevalDeFrise;
 import org.usfirst.frc.team178.robot.commands.*;
 
@@ -83,6 +84,7 @@ public class Robot extends IterativeRobot {
 		chooser.addDefault("Do Nothing", new AutoDoNothing());
         chooser.addObject("Drive Forward", new AutoDriveGroup());
         chooser.addObject("Cheval de Frise", new ChevalDeFrise());
+        chooser.addObject("LowBar Auto Aim", new AutoLowBarAutoAim());
         chooser.addDefault("Auto Death Spin", new AutoDeathSpin());
         
         
@@ -198,6 +200,6 @@ public class Robot extends IterativeRobot {
         LiveWindow.run();
         relay.setvalue(true);
         //System.out.println(NetworkTable.getTable("VisionVars").getNumber("COG_X", 240));
-    //    System.out.println((new DigitalInput(14)).get());
+        //System.out.println((new DigitalInput(14)).get());
     }
 }
