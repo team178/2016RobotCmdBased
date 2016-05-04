@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -49,6 +50,7 @@ public class Robot extends IterativeRobot {
 	public static PhotoelectricSensor sensor;
 	public static RelaybecauseAndrew relay;
 	public static VisionValues vision;
+	public static PowerDistributionPanel powerDistributionPanel;
 	
 	//public static LightController lights;
 
@@ -76,10 +78,11 @@ public class Robot extends IterativeRobot {
     	//lights = new LightController();
 		oi = new OI();
 		vision = new VisionValues();
+		powerDistributionPanel = new PowerDistributionPanel();
 		//usbcamera = new USBCam();
 		//cameraServer = CameraServer.getInstance();
 		//cameraServer.startAutomaticCapture(usbcamera.getCamera());
-        
+		
 		chooser = new SendableChooser();
 		chooser.addDefault("Do Nothing", new AutoDoNothing());
         chooser.addObject("Drive Forward", new AutoDriveGroup());
@@ -145,6 +148,9 @@ public class Robot extends IterativeRobot {
     
     public void autonomousPeriodic(){
     	Scheduler.getInstance().run();
+    	SmartDashboard.putNumber("Total Current", powerDistributionPanel.getTotalCurrent());
+    	SmartDashboard.putNumber("Total Power", powerDistributionPanel.getTotalPower());
+    	SmartDashboard.putNumber("Total Temperature", powerDistributionPanel.getTemperature());
     }
 	@Override
 	public void teleopInit() {
@@ -159,6 +165,9 @@ public class Robot extends IterativeRobot {
 		// TODO Auto-generated method stub
 		Scheduler.getInstance().run();
 		super.teleopPeriodic();
+    	SmartDashboard.putNumber("Total Current", powerDistributionPanel.getTotalCurrent());
+    	SmartDashboard.putNumber("Total Power", powerDistributionPanel.getTotalPower());
+    	SmartDashboard.putNumber("Total Temperature", powerDistributionPanel.getTemperature());
 		//SmartDashboard.putNumber("UltrasonicData", (uSonic.getDistance()));
 	}
 
@@ -173,6 +182,9 @@ public class Robot extends IterativeRobot {
 	
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+    	SmartDashboard.putNumber("Total Current", powerDistributionPanel.getTotalCurrent());
+    	SmartDashboard.putNumber("Total Power", powerDistributionPanel.getTotalPower());
+    	SmartDashboard.putNumber("Total Temperature", powerDistributionPanel.getTemperature());
 		//SmartDashboard.putNumber("UltrasonicData", (uSonic.getVoltage()));
 	}
 
@@ -196,7 +208,10 @@ public class Robot extends IterativeRobot {
     	//}catch(Exception e){
     		
     	//}
-    	
+
+    	SmartDashboard.putNumber("Total Current", powerDistributionPanel.getTotalCurrent());
+    	SmartDashboard.putNumber("Total Power", powerDistributionPanel.getTotalPower());
+    	SmartDashboard.putNumber("Total Temperature", powerDistributionPanel.getTemperature());
         LiveWindow.run();
         relay.setvalue(true);
         //System.out.println(NetworkTable.getTable("VisionVars").getNumber("COG_X", 240));
