@@ -23,6 +23,7 @@ import java.io.OutputStreamWriter;
 import org.usfirst.frc.team178.robot.autocommands.AutoDeathSpin;
 import org.usfirst.frc.team178.robot.autocommands.AutoDriveGroup;
 import org.usfirst.frc.team178.robot.autocommands.AutoLowBarAutoAim;
+import org.usfirst.frc.team178.robot.autocommands.AutoRockWallAutoAim;
 import org.usfirst.frc.team178.robot.autocommands.ChevalDeFrise;
 import org.usfirst.frc.team178.robot.commands.*;
 
@@ -89,6 +90,7 @@ public class Robot extends IterativeRobot {
         chooser.addObject("Cheval de Frise", new ChevalDeFrise());
         chooser.addObject("LowBar Auto Aim", new AutoLowBarAutoAim());
         chooser.addDefault("Auto Death Spin", new AutoDeathSpin());
+        chooser.addObject("Drive Forward and Shoot", new AutoRockWallAutoAim());
         
         
         
