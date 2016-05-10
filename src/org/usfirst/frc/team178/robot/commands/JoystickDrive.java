@@ -38,8 +38,10 @@ public class JoystickDrive extends Command {
 		//and this makes sure that the robot doesn't do anything we don't want it to.
 		//Without this, the motor speed is never upset. 
 		//The robot would continue moving at its last speed. This makes it stop.
-		
-		if(Math.abs(yVal)>0.05 || Math.abs(twistVal)>0.05){
+		if(oi.isTHButtonPressed(2)){
+			//Let go of drivetrain
+		}
+		else if(Math.abs(yVal)>0.05 || Math.abs(twistVal)>0.05){
 			drivetrain.drive(-twistVal+yVal, -twistVal-yVal);
 		}
 		

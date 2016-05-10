@@ -80,6 +80,10 @@ public class OI {
     public boolean isTSPressed (int ButtonNumber){
     	return TriggerSappy.getRawButton(ButtonNumber);    	
     }
+    
+    public boolean isTHButtonPressed(int ButtonNumber){
+    	return TriggerHappy.getRawButton(ButtonNumber);
+    }
 
     //// TRIGGERING COMMANDS WITH BUTTONS
     // Once you have a button, it's trivial to bind it to a button in one of
