@@ -18,7 +18,6 @@ public class AutoAim extends Command {
 
 	// Declaration of variables
 	VisionValues vision;
-	double valueCorrect;
 	VisionPIDInterface visionPIDInput;
 	private AutoAimPIDOutput pidOutput;
 	private PIDController pid;
@@ -39,9 +38,7 @@ public class AutoAim extends Command {
 		visionPIDInput = new VisionPIDInterface();
 		pidOutput = new AutoAimPIDOutput(Robot.drivetrain);
 		//Below are the PID values you must edit. They are in the order: P,I,D.
-		SmartDashboard.putNumber("P Value", pValue);
-		SmartDashboard.putNumber("I Value", iValue);
-		pid = new PIDController(6, 0, 1, visionPIDInput, pidOutput);
+		pid = new PIDController(6, 0, 2, visionPIDInput, pidOutput);
 		pid.setAbsoluteTolerance(.01);
 		System.out.println("AutoAim initialized");
     }
@@ -49,6 +46,13 @@ public class AutoAim extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
 		pid.enable();
+		try {
+			wait(40);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		pid.disable();
 		//pid.setPID(SmartDashboard.getNumber("P Value",0.1), SmartDashboard.getNumber("I Value",(.5)), 0);
     }
 
