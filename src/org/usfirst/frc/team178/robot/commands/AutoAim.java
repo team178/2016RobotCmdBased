@@ -39,7 +39,7 @@ public class AutoAim extends Command {
 		pidOutput = new AutoAimPIDOutput(Robot.drivetrain);
 		//Below are the PID values you must edit. They are in the order: P,I,D.
 		pid = new PIDController(6, 0, 2, visionPIDInput, pidOutput);
-		pid.setAbsoluteTolerance(.01);
+		pid.setAbsoluteTolerance(.1);
 		System.out.println("AutoAim initialized");
     }
 
@@ -52,7 +52,7 @@ public class AutoAim extends Command {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		pid.disable();
+		Robot.drivetrain.drive(0, 0);
 		//pid.setPID(SmartDashboard.getNumber("P Value",0.1), SmartDashboard.getNumber("I Value",(.5)), 0);
     }
 

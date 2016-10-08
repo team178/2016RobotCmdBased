@@ -41,12 +41,14 @@ public class JoystickDrive extends Command {
 		if(oi.isTHButtonPressed(2)){
 			//Let go of drivetrain
 		}
-		else if(Math.abs(yVal)>0.05 || Math.abs(twistVal)>0.05){
+		else if(Math.abs(yVal)>0.1 || Math.abs(twistVal)>0.1){
 			drivetrain.drive(-twistVal+yVal, -twistVal-yVal);
 		}
-		
 		else {
 			drivetrain.drive(0,0);
+		}
+		while(oi.getAxisValue()<-0.5 || oi.getAxisValue()>0.5){
+			new KiddyDrive();
 		}
 		//System.out.println("rick");
 	}

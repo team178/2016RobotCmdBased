@@ -1,16 +1,17 @@
-package org.usfirst.frc.team178.robot.autocommands;
+package org.usfirst.frc.team178.robot.autocommandgroups;
 
-import org.usfirst.frc.team178.robot.commands.DeathSpin;
+import org.usfirst.frc.team178.robot.commands.AutoDoNothing;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class AutoDeathSpin extends CommandGroup {
+public class AutoDoNothingGroup extends CommandGroup {
     
-    public  AutoDeathSpin() {
-    	addSequential(new DeathSpin(), 2);
+    public  AutoDoNothingGroup() {
+    	
+    	addSequential(new AutoDoNothing(), 1);
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

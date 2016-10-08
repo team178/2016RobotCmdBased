@@ -27,7 +27,7 @@ public class OI {
 	Button button9 = new JoystickButton(TriggerHappy, 9);
 	Button button10 = new JoystickButton(TriggerHappy, 10);
 
-	Joystick TriggerSappy = new Joystick(RobotMap.JoystickPortXbox);
+	public Joystick TriggerSappy = new Joystick(RobotMap.JoystickPortXbox);
 	Button buttonA = new JoystickButton(TriggerSappy, 1);
 	Button buttonX = new JoystickButton(TriggerSappy, 3);
 	Button buttonY = new JoystickButton(TriggerSappy, 4);
@@ -35,8 +35,10 @@ public class OI {
 	Button rBumper = new JoystickButton(TriggerSappy, 5);
 	Button buttonB = new JoystickButton(TriggerSappy, 2);
 	Button backButton = new JoystickButton(TriggerSappy, 7);
+	Button startButton = new JoystickButton(TriggerSappy, 8);
 	
-	
+	//Button rTrigger = new JoystickButton(TriggerSappy, 12);
+
 
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
@@ -60,6 +62,9 @@ public class OI {
         backButton.whileHeld(new AdjustKick());
         button9.whileHeld(new AdjustWheelLeft());
         button10.whileHeld(new AdjustWheelRight());
+        startButton.whenPressed(new ParadeKick());
+        //rTrigger.whileHeld(new KiddyDrive());
+      //  rTrigger.whenPressed(new ParadeKickStop());
     }
     
     // There are a few additional built in buttons you can use. Additionally,
@@ -83,6 +88,18 @@ public class OI {
     
     public boolean isTHButtonPressed(int ButtonNumber){
     	return TriggerHappy.getRawButton(ButtonNumber);
+    }
+    
+    public double getKiddyY(){
+    	return TriggerSappy.getY();
+    }
+    
+    public double getKiddyTwist(){
+    	return TriggerSappy.getTwist();
+    }
+    
+    public double getAxisValue(){
+    	return TriggerSappy.getRawAxis(5);
     }
 
     //// TRIGGERING COMMANDS WITH BUTTONS

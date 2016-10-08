@@ -1,33 +1,40 @@
 package org.usfirst.frc.team178.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.Timer;
-
+import org.usfirst.frc.team178.robot.OI;
 import org.usfirst.frc.team178.robot.Robot;
-import org.usfirst.frc.team178.robot.subsystems.*;
+import org.usfirst.frc.team178.robot.subsystems.DriveTrain;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class AutoDoNothing extends Command {
+public class KiddyDrive extends Command {
 	
-	DriveTrain drivetrain;
-	Timer timer;
+	OI oi;
+    DriveTrain drivetrain;
+    double yVal, twistVal;
 
-    public AutoDoNothing() {
+    public KiddyDrive() {
         requires(Robot.drivetrain);
-        drivetrain = Robot.drivetrain;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	oi = Robot.oi;
+    	drivetrain = Robot.drivetrain;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	drivetrain.drive(0, 0);
-    	System.out.println("Nothing.");
-    }    
+    	yVal = -1*oi.getKiddyY();
+    	twistVal = -1*oi.getKiddyTwist();
+    	
+    	if(oi.TriggerSappy.getRawAxis(5)<-0.5 || oi.TriggerSappy.getRawAxis(5)>0.5){
+    		drivetrain.drive(-twistVal+yVal, -twistVal-yVal);
+    	}    	
+    	
+    }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
@@ -36,12 +43,10 @@ public class AutoDoNothing extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	drivetrain.drive(0, 0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	drivetrain.drive(0, 0);
     }
 }

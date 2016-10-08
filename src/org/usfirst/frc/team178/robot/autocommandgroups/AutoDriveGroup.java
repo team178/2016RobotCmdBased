@@ -1,4 +1,4 @@
-package org.usfirst.frc.team178.robot.autocommands;
+package org.usfirst.frc.team178.robot.autocommandgroups;
 
 import org.usfirst.frc.team178.robot.commands.AutoAim;
 import org.usfirst.frc.team178.robot.commands.AutoDrive;
@@ -15,7 +15,7 @@ public class AutoDriveGroup extends CommandGroup {
     
     public  AutoDriveGroup() {
     	
-    	addSequential(new AutoDrive(1), 5);
+    	addSequential(new AutoDrive(0.2), 5);
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

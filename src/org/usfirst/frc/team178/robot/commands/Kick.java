@@ -42,7 +42,7 @@ public class Kick extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    		kicker.kick(-1);
+    		kicker.kick(-0.75); //Decreased kick speed, change back to -1 for competition
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -1,4 +1,4 @@
-package org.usfirst.frc.team178.robot.autocommands;
+package org.usfirst.frc.team178.robot.autocommandgroups;
 
 import org.usfirst.frc.team178.robot.commands.AutoAim;
 import org.usfirst.frc.team178.robot.commands.AutoDrive;
@@ -10,11 +10,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class AutoRockWallAutoAim extends CommandGroup {
 	public AutoRockWallAutoAim(){
-		addSequential(new AutoDrive(1), 2.5);
-    	addSequential(new AutoAim());
+		addSequential(new AutoDrive(0.9), 1.5);
+    	/*addSequential(new AutoAim());
     	addSequential(new DropIntake());
     	addSequential(new HoldBall());
-    	addSequential(new Kick());
+    	addSequential(new Kick());*/
 	}
 }
 	// by pooja swami and anusha patel

@@ -1,4 +1,4 @@
-package org.usfirst.frc.team178.robot.autocommands;
+package org.usfirst.frc.team178.robot.autocommandgroups;
 
 import org.usfirst.frc.team178.robot.commands.AutoAim;
 import org.usfirst.frc.team178.robot.commands.AutoDoNothing;
@@ -14,16 +14,20 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class ChevalDeFrise extends CommandGroup {
+public class ChevalDeFriseAutoAim extends CommandGroup {
     
-    public  ChevalDeFrise() {
-    	addSequential(new AutoDrive(0.4),1.27);
+    public  ChevalDeFriseAutoAim() {
+    	addSequential(new AutoDrive(0.4),1.25);
     	addSequential(new DropIntake());
+    	
     	addSequential(new AutoDoNothing(),.1);
-    	addSequential(new AutoDrive(0.6),2.0);
+    	addSequential(new AutoDrive(-.2),.1); //?
+    	addSequential(new AutoDrive(0.6),1.5);
     	addSequential(new SpinIntakeIn(), 1);
-    	addSequential(new AutoAim());
+    	addSequential(new LiftIntake(),.5);
+    	addSequential(new DropIntake(),.3);
     	addParallel(new HoldBall());
+    	addSequential(new AutoAim(), 6);
     	addSequential(new Kick());
     	
     	//addParallel(new LiftIntake());

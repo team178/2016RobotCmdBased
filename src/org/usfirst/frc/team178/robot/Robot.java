@@ -20,11 +20,14 @@ import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-import org.usfirst.frc.team178.robot.autocommands.AutoDeathSpin;
-import org.usfirst.frc.team178.robot.autocommands.AutoDriveGroup;
-import org.usfirst.frc.team178.robot.autocommands.AutoLowBarAutoAim;
-import org.usfirst.frc.team178.robot.autocommands.AutoRockWallAutoAim;
-import org.usfirst.frc.team178.robot.autocommands.ChevalDeFrise;
+import org.usfirst.frc.team178.robot.autocommandgroups.AutoDeathSpin;
+import org.usfirst.frc.team178.robot.autocommandgroups.AutoDriveGroup;
+import org.usfirst.frc.team178.robot.autocommandgroups.AutoLowBar;
+import org.usfirst.frc.team178.robot.autocommandgroups.AutoLowBarAutoAim;
+import org.usfirst.frc.team178.robot.autocommandgroups.AutoRockWallAutoAim;
+import org.usfirst.frc.team178.robot.autocommandgroups.AutoRoughTerrain;
+import org.usfirst.frc.team178.robot.autocommandgroups.ChevalDeFriseAutoAim;
+import org.usfirst.frc.team178.robot.autocommandgroups.ChevalDeFriseNoAutoAim;
 import org.usfirst.frc.team178.robot.commands.*;
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -87,11 +90,14 @@ public class Robot extends IterativeRobot {
 		chooser = new SendableChooser();
 		chooser.addDefault("Do Nothing", new AutoDoNothing());
         chooser.addObject("Drive Forward", new AutoDriveGroup());
-        chooser.addObject("Cheval de Frise", new ChevalDeFrise());
+        chooser.addObject("Cheval de Frise Auto Aim", new ChevalDeFriseAutoAim());
+        chooser.addObject("ChevalDeFrise No Tech Foul pls", new ChevalDeFriseNoAutoAim());
         chooser.addObject("LowBar Auto Aim", new AutoLowBarAutoAim());
-        chooser.addDefault("Auto Death Spin", new AutoDeathSpin());
-        chooser.addObject("Drive Forward and Shoot", new AutoRockWallAutoAim());
-        
+        chooser.addObject("LowBar", new AutoLowBar());
+        chooser.addObject("Auto Death Spin", new AutoDeathSpin());
+        chooser.addObject("Rock Wall Drive Forward", new AutoRockWallAutoAim());
+        chooser.addObject("Rough Terrain Drive Forward", new AutoRoughTerrain());
+        	
         
         
         SmartDashboard.putData("Auto mode", chooser);
@@ -132,7 +138,10 @@ public class Robot extends IterativeRobot {
 		case "Ramparts":
 			autonomousCommand = new AutoDrive();
 			break;
-		case "Moat":
+		case "Moat":3
+		
+		
+		
 			autonomousCommand = new AutoDrive();
 			break;
 		case "Rock Wall":
@@ -143,6 +152,7 @@ public class Robot extends IterativeRobot {
 			break;
 		}*/
 		autonomousCommand = ((Command) chooser.getSelected());
+    	//autonomousCommand = ((Command)new AutoRoughTerrain());
     	if(autonomousCommand!=null){
     		autonomousCommand.start();
     	}
