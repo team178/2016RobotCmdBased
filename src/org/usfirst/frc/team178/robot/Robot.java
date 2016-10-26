@@ -20,7 +20,7 @@ import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-import org.usfirst.frc.team178.robot.autocommandgroups.AutoDeathSpin;
+/* org.usfirst.frc.team178.robot.autocommandgroups.AutoDeathSpin;
 import org.usfirst.frc.team178.robot.autocommandgroups.AutoDriveGroup;
 import org.usfirst.frc.team178.robot.autocommandgroups.AutoLowBar;
 import org.usfirst.frc.team178.robot.autocommandgroups.AutoLowBarAutoAim;
@@ -28,7 +28,7 @@ import org.usfirst.frc.team178.robot.autocommandgroups.AutoRockWallAutoAim;
 import org.usfirst.frc.team178.robot.autocommandgroups.AutoRoughTerrain;
 import org.usfirst.frc.team178.robot.autocommandgroups.ChevalDeFriseAutoAim;
 import org.usfirst.frc.team178.robot.autocommandgroups.ChevalDeFriseNoAutoAim;
-import org.usfirst.frc.team178.robot.commands.*;
+import org.usfirst.frc.team178.robot.commands.*;*/
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -88,7 +88,7 @@ public class Robot extends IterativeRobot {
 		//cameraServer.startAutomaticCapture(usbcamera.getCamera());
 		
 		chooser = new SendableChooser();
-		chooser.addDefault("Do Nothing", new AutoDoNothing());
+	/*	chooser.addDefault("Do Nothing", new AutoDoNothing());
         chooser.addObject("Drive Forward", new AutoDriveGroup());
         chooser.addObject("Cheval de Frise Auto Aim", new ChevalDeFriseAutoAim());
         chooser.addObject("ChevalDeFrise No Tech Foul pls", new ChevalDeFriseNoAutoAim());
@@ -97,7 +97,7 @@ public class Robot extends IterativeRobot {
         chooser.addObject("Auto Death Spin", new AutoDeathSpin());
         chooser.addObject("Rock Wall Drive Forward", new AutoRockWallAutoAim());
         chooser.addObject("Rough Terrain Drive Forward", new AutoRoughTerrain());
-        	
+        	*/
         
         
         SmartDashboard.putData("Auto mode", chooser);

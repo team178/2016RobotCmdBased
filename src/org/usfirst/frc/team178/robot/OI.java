@@ -62,7 +62,7 @@ public class OI {
         backButton.whileHeld(new AdjustKick());
         button9.whileHeld(new AdjustWheelLeft());
         button10.whileHeld(new AdjustWheelRight());
-        startButton.whenPressed(new ParadeKick());
+      //  startButton.whenPressed(new ParadeKick());
         //rTrigger.whileHeld(new KiddyDrive());
       //  rTrigger.whenPressed(new ParadeKickStop());
     }

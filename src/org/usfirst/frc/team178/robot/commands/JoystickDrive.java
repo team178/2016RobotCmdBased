@@ -47,9 +47,9 @@ public class JoystickDrive extends Command {
 		else {
 			drivetrain.drive(0,0);
 		}
-		while(oi.getAxisValue()<-0.5 || oi.getAxisValue()>0.5){
+	/*	while(oi.getAxisValue()<-0.5 || oi.getAxisValue()>0.5){
 			new KiddyDrive();
-		}
+		}*/
 		//System.out.println("rick");
 	}
 
