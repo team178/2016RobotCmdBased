@@ -9,6 +9,7 @@ public class RobotMap {
 	
 	public static int JoystickPort = 0;
 	public static int JoystickPortXbox = 1;
+	public static int JoystickPortNew = 2;
 	
 	public static int SwitchPort1 = 1;
 	public static int SwitchPort2 = 2;

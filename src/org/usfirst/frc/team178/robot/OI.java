@@ -37,6 +37,8 @@ public class OI {
 	Button backButton = new JoystickButton(TriggerSappy, 7);
 	Button startButton = new JoystickButton(TriggerSappy, 8);
 	
+	public Joystick Skorpionne = new Joystick(RobotMap.JoystickPortNew);
+	
 	//Button rTrigger = new JoystickButton(TriggerSappy, 12);
 
 
@@ -48,7 +50,7 @@ public class OI {
     // Button button = new JoystickButton(stick, buttonNumber);
 	
 	
-    public OI (){
+    public OI(){
 
         /*button3.whenPressed(new ChangeLightColor("enforcers"));
         button4.whenPressed(new ChangeLightColor("off"));*/
@@ -62,6 +64,9 @@ public class OI {
         backButton.whileHeld(new AdjustKick());
         button9.whileHeld(new AdjustWheelLeft());
         button10.whileHeld(new AdjustWheelRight());
+        if(getTriggerVal()){
+        	new KiddyDrive();
+        }
       //  startButton.whenPressed(new ParadeKick());
         //rTrigger.whileHeld(new KiddyDrive());
       //  rTrigger.whenPressed(new ParadeKickStop());
@@ -82,6 +87,14 @@ public class OI {
     	return TriggerHappy.getTwist();//
     }
     
+    public double getNewTwist(){
+    	return Skorpionne.getZ();
+    }
+    
+    public double getNewY(){
+    	return Skorpionne.getY(); 
+    }
+    
     public boolean isTSPressed (int ButtonNumber){
     	return TriggerSappy.getRawButton(ButtonNumber);    	
     }
@@ -100,6 +113,10 @@ public class OI {
     
     public double getAxisValue(){
     	return TriggerSappy.getRawAxis(5);
+    }
+    
+    public boolean getTriggerVal(){
+    	return TriggerSappy.getTrigger();
     }
 
     //// TRIGGERING COMMANDS WITH BUTTONS
