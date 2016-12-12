@@ -27,8 +27,8 @@ public class JoystickDrive2 extends Command {
 	protected void execute() {
 		//Joystick returns from -1 to 1, motor takes values from -1 to 1.
 		//Motors are attached backwards, hence the negatives
-		yVal = -1*oi.getNewY();
-		twistVal = -1*oi.getNewTwist();
+		yVal = -1*oi.getY();
+		twistVal = -1*oi.getTwist();
 		//System.out.println("Y Val: " + yVal);
 		//System.out.println("Twist Val: " + twistVal);
 		//System.out.println("X Val: " + oi.getX());

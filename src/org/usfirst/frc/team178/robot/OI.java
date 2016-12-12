@@ -37,10 +37,10 @@ public class OI {
 	Button backButton = new JoystickButton(TriggerSappy, 7);
 	Button startButton = new JoystickButton(TriggerSappy, 8);
 	
-	public Joystick Skorpionne = new Joystick(RobotMap.JoystickPortNew);
+	//public Joystick Skorpionne = new Joystick(RobotMap.JoystickPortNew);
 	
 	//Button rTrigger = new JoystickButton(TriggerSappy, 12);
-
+	
 
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
@@ -87,13 +87,13 @@ public class OI {
     	return TriggerHappy.getRawAxis(3); //Maybe?
     }
     
-    public double getNewTwist(){
-    	return Skorpionne.getZ();
+    /*public double getNewTwist(){
+    	return Skorpionne.getRawAxis(3);
     }
     
     public double getNewY(){
     	return Skorpionne.getY(); 
-    }
+    }*/
     
     public boolean isTSPressed (int ButtonNumber){
     	return TriggerSappy.getRawButton(ButtonNumber);    	

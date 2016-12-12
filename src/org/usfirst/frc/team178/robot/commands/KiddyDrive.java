@@ -28,11 +28,7 @@ public class KiddyDrive extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	yVal = -1*oi.getKiddyY();
-    	twistVal = -1*oi.getKiddyTwist();
-    	
-    	if(oi.TriggerSappy.getRawAxis(5)<-0.5 || oi.TriggerSappy.getRawAxis(5)>0.5){
-    		drivetrain.drive(-twistVal+yVal, -twistVal-yVal);
-    	}    	
+    	twistVal = -1*oi.getKiddyTwist();  	
     	
     }
 
