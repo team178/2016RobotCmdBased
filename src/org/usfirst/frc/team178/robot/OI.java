@@ -84,7 +84,7 @@ public class OI {
     }
     
     public double getTwist (){
-    	return TriggerHappy.getTwist();//
+    	return TriggerHappy.getRawAxis(3); //Maybe?
     }
     
     public double getNewTwist(){

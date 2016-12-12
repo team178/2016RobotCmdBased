@@ -5,14 +5,14 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team178.robot.*;
 import org.usfirst.frc.team178.robot.subsystems.*;
 import edu.wpi.first.wpilibj.DriverStation;
-public class JoystickDrive extends Command {
+public class JoystickDrive2 extends Command {
 	
 	//Encoders encoders;
 	OI oi;
 	DriveTrain drivetrain;
 	double yVal,twistVal;
 	
-	public JoystickDrive()
+	public JoystickDrive2()
 	{
 		requires(Robot.drivetrain);
 		//requires(Robot.encoders);
