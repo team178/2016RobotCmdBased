@@ -6,23 +6,23 @@ import edu.wpi.first.wpilibj.Ultrasonic;
 import org.usfirst.frc.team178.robot.RobotMap;
 import org.usfirst.frc.team178.robot.commands.JoystickDrive;
 
-import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class DriveTrain extends Subsystem
 {
 
-	public static CANTalon left1;
-	public static CANTalon left2;
-	public static CANTalon right1;
-	public static CANTalon right2;
+	public static Victor left1;
+	public static Victor left2;
+	public static Victor right1;
+	public static Victor right2;
 	
 	public DriveTrain()  {
 		
-		left1 = new CANTalon(RobotMap.MOTOR.TOPleft);
-		left2 = new CANTalon(RobotMap.MOTOR.BOTTOMleft);
-		right1 = new CANTalon(RobotMap.MOTOR.TOPright);
-		right2 = new CANTalon(RobotMap.MOTOR.BOTTOMright);
+		left1 = new Victor(RobotMap.MOTOR.TOPleft);
+		left2 = new Victor(RobotMap.MOTOR.BOTTOMleft);
+		right1 = new Victor(RobotMap.MOTOR.TOPright);
+		right2 = new Victor(RobotMap.MOTOR.BOTTOMright);
 	}
 	
 

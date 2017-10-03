@@ -4,19 +4,18 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 import org.usfirst.frc.team178.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.Victor;
 
 /**
  *
  */
 public class Kicker extends Subsystem {
-	public static CANTalon motor1;
-	public static CANTalon motor2;
+	public static Victor motor1;
+	public static Victor motor2;
 
 	public Kicker() {
-		motor1 = new CANTalon(RobotMap.KICKER_ONE);
-		motor2 = new CANTalon(RobotMap.KICKER_TWO);
+		motor1 = new Victor(RobotMap.KICKER_ONE);
+		motor2 = new Victor(RobotMap.KICKER_TWO);
 	}
     
     // Put methods for controlling this subsystem

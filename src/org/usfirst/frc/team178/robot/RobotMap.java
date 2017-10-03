@@ -27,10 +27,10 @@ public class RobotMap {
     public static int INTAKELIFT = 18;
     
     public static class MOTOR{
-    	public static int TOPright = 14;
-    	public static int TOPleft = 10;
-    	public static int BOTTOMright = 15;
-    	public static int BOTTOMleft = 11;
+    	public static int TOPright = 0;
+    	public static int TOPleft = 1;
+    	public static int BOTTOMright = 2;
+    	public static int BOTTOMleft = 3;
     }
     
     

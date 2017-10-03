@@ -5,21 +5,21 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team178.robot.Robot;
 import org.usfirst.frc.team178.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Timer;
 
 public class Intake extends Subsystem {
-	CANTalon inOut;//Turns pulleys on intake.
-	CANTalon upDown;//Lifts intake up and down.
+	Victor inOut;//Turns pulleys on intake.
+	Victor upDown;//Lifts intake up and down.
 	//DigitalInput limitSwitchTop;
 	//DigitalInput limitSwitchBottom;
 	boolean isSupposedToBeUp;
  	Timer timer;
 	
 	public Intake(){
-		inOut = new CANTalon(RobotMap.SPININTAKE);
-		upDown = new CANTalon(RobotMap.INTAKELIFT);
+		inOut = new Victor(RobotMap.SPININTAKE);
+		upDown = new Victor(RobotMap.INTAKELIFT);
 		//limitSwitchBottom = new DigitalInput(RobotMap.bottomintakelimitswitch);	
 		//limitSwitchTop = new DigitalInput(RobotMap.topintakelimitswitch);
 	}

@@ -32,8 +32,8 @@ import org.usfirst.frc.team178.robot.commands.*;*/
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.vision.USBCamera;
-import edu.wpi.first.wpilibj.CANTalon;
+//import edu.wpi.first.wpilibj.vision.USBCamera;
+import edu.wpi.first.wpilibj.Victor;
 
 
 import org.usfirst.frc.team178.robot.subsystems.*;

@@ -1,17 +1,17 @@
 package org.usfirst.frc.team178.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.vision.USBCamera;
+//import edu.wpi.first.wpilibj.vision.USBCamera;
 
 public class USBCam extends Subsystem {
 
-	USBCamera camera;
+/*	USBCamera camera;
 	String camname = "cam0";
 	String fakecamname = "cam10";
 	Boolean camOn = true;
-
+*/
 	public USBCam() {
-		try {
+	/*	try {
 			camera = new USBCamera(camname);
 		} catch (Exception ae1) {
 			try {
@@ -28,7 +28,7 @@ public class USBCam extends Subsystem {
 					
 				}
 			}
-		}
+		}*/
 	}
 
 	@Override
@@ -37,8 +37,8 @@ public class USBCam extends Subsystem {
 
 	}
 
-	public void cameraSwitch() {
-		if (camOn) {
+//	public void cameraSwitch() {
+	/*	if (camOn) {
 			try {
 				camera.stopCapture();
 			} catch (Exception e) {
@@ -52,10 +52,10 @@ public class USBCam extends Subsystem {
 				// Do nothing
 			}
 			camOn = true;
-		}
-	}
+		}*/
+//	}
 
-	public USBCamera getCamera() {
-		return camera;
-	}
+//	public USBCamera getCamera() {
+		//return camera;
+//	}
 }
